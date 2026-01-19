@@ -37,10 +37,7 @@ export default function Footer() {
                                     className="h-[3.5rem] w-auto ml-[1rem]"
                                 />
                             </div>
-                            <p>
-                                O maior grupo de inteligência artificial da Universidade de São
-                                Paulo.
-                            </p>
+                            <p> O maior grupo de inteligência artificial da Universidade de São Paulo.</p>
                         </div>
                         <div className="flex flex-col">
                             <p>Páginas:</p>
@@ -85,7 +82,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="flex w-[100%] h-auto min-h-[10vh] bg-[#F1863D] items-center justify-center">
-                <p>@Turing 2026. Todos os direitos são reservados</p>
+                <p>@Turing 2026. Todos os direitos são reservados.</p>
             </div>
         </div>
     );
