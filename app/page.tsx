@@ -1,10 +1,11 @@
 import Navbar from '../components/navbar';
 import Image from 'next/image';
+import Carousel from '../components/carousel';
 
 export default function Home() {
     return (
         <main>
-            <div className='fixed top-0 left-0 right-0 z-10'>
+            <div className='relative top-0 left-0 right-0 z-10'>
                 <Navbar/>
             </div>
             <div className='h-[100vh] flex flex-row z-0 items-center'>
@@ -12,16 +13,220 @@ export default function Home() {
                     <p className='text-[#000000] text-[4rem] text-center font-bold'>CONSTRUINDO O FUTURO DA <span className='text-[#F1863D]'>IA</span></p>
                     <p className='mt-[5%] text-[#000000] text-center text-[1.5rem]'>Desde 2015 o Turing é o maior grupo voltado a inteligência artificial da USP</p>
                 </div>
-                <div className='absolute bg-gradient-to-b from-[#EBB84A] to-[#F1863D] w-[40%] h-[100%] top-0 right-0'>
-                   
+                <div className='absolute bg-gradient-to-b from-[#EBB84A] to-[#F1863D] w-[40%] h-[100%] top-0 right-0 rounded-tl-[2rem] rounded-bl-[2rem] overflow-hidden'>
+                   <Image 
+                        src="/circuito.svg"
+                        alt="Circuitos"
+                        width={100}
+                        height={100}
+                        className='absolute w-[10vh] h-auto object-cover z-0 left-[10%] top-0 rotate-90'
+                   />
+                    <Image 
+                        src="/circuito.svg"
+                        alt="Circuitos"
+                        width={100}
+                        height={100}
+                        className='absolute w-[10vh] h-auto object-cover bottom-0 z-0 rotate-35 left-[8%] origin-left'
+                   />
+                   <Image 
+                        src="/circuito.svg"
+                        alt="Circuitos"
+                        width={100}
+                        height={100}
+                        className='absolute w-[10vh] h-auto object-cover bottom-0 z-0 rotate-0 right-0'
+                   />
+                   <Image 
+                        src="/circuito.svg"
+                        alt="Circuitos"
+                        width={100}
+                        height={100}
+                        className='absolute w-[10vh] h-auto object-cover z-0 right-[7%] rotate-215 top-0'
+                   />
                 </div>
                 <Image
                     src="/processadorini.svg"
                     alt="Processador"
                     width={100}
                     height={100}
-                    className='w-[75vh] h-auto object-contain relative z-20'
+                    className='w-[75vh] h-auto object-contain relative z-0'
                 />
+            </div>
+            <div className='flex flex-row items-center h-[100vh] z-0 relative overflow-hidden'>
+                <div className='ml-[5%] flex flex-col w-[45%] items-center justify-center h-[100%]'>
+                    <Image
+                        src="/fotointe2.jpeg"
+                        alt="Robô"
+                        width={800}
+                        height={800}
+                        className='w-[55vh] h-auto border border-[#F1863D] border-[0.2rem] mb-[5%] rotate-354'
+                    />
+                    <Image
+                        src="/fotointeg.jpg"
+                        alt="Robô"
+                        width={800}
+                        height={800}
+                        className='w-[55vh] h-auto border border-[#F1863D] border-[0.2rem] rotate-6'
+                    />
+                </div>
+                <div className='mr-[5%] flex flex-col w-[45%] '>
+                    <p className='text-[#000000] text-[3rem]  font-bold'>QUEM SOMOS</p>
+                    <div className='w-[50%] h-[0.5vh] bg-[#F1863D]'></div>
+                    <p className='mt-[5%] text-[#000000]  text-[1.5rem]'>O Turing é um grupo de extensão da USP campus Butantã que foi fundado em 2015 por 5 amigos. Desde então é referência na pesquisa e produção do assunto.</p>
+                    <p className='mt-[5%] text-[#000000] text-[1.5rem]'>O grupo tem como objeto de estudos diferentes áreas da inteligência artificial: Data Science, Processamento de Linguagem Natural, Computação visual, Aprendizado por reforço e finanças quantitativas.</p>
+                </div>
+                <Image 
+                    src="/circuitoorange.svg"
+                    alt="Circuitos"
+                    width={100}
+                    height={100}
+                    className='absolute w-[8vh] h-auto object-cover z-0 rotate-90 top-0'
+                />
+                <Image 
+                    src="/circuitoorange.svg"
+                    alt="Circuitos"
+                    width={100}
+                    height={100}
+                    className='absolute w-[8vh] h-auto object-cover z-0 rotate-65 origin-left-bottom bottom-0'
+                />
+                <Image 
+                    src="/circuitoorange.svg"
+                    alt="Circuitos"
+                    width={100}
+                    height={100}
+                    className='absolute w-[8vh] h-auto object-cover z-0 rotate-270 origin-right-top top-0 right-[7%]'
+                />
+            </div>
+            <div className='flex flex-col h-[100vh] z-0 relative bg-[#162B3F]'>
+                <Image 
+                    src="/circuito.svg"
+                    alt="Circuitos"
+                    width={100}
+                    height={100}
+                    className='left-[4%] absolute w-[10vh] h-auto object-cover z-0 origin-right-top top-10 rotate-90 '
+                />
+                <div className='flex justify-center mt-[5%]'>
+                    <p className='text-[#FFFFFF] text-[3rem] font-bold'>NOSSOS PROJETOS</p>
+                </div>
+                <div className='flex mr-[5%] ml-[5%] mt-[5%] gap-[10%]'>
+                   <div className='bg-[#FFFFFF] flex-1 h-[60vh] flex flex-col items-center justify-center rounded-[1rem]'>
+                        <Image 
+                            src="/ssd.svg"
+                            alt="SSD"
+                            width={800}
+                            height={800}
+                            className='w-[15vh] h-auto mb-[5%]'
+                        />
+                        <p className=' text-[#000000] text-[1.5rem] text-center mx-[10%] mb-[5%]'>PESQUISAR</p>
+                        <p className=' text-[#000000] text-[1rem] mx-[10%] text-center'>Exploramos artigos científicos e descobertas para aplicarmos em necessidades do cotidiano.</p>
+                   </div>
+                   <div className='bg-[#FFFFFF] flex-1 h-[60vh] flex flex-col items-center justify-center rounded-[1rem]'>
+                        <Image 
+                            src="/processador.svg"
+                            alt="Processador"
+                            width={800}
+                            height={800}
+                            className='w-[22vh] h-auto mb-[5%]'
+                        />
+                        <p className=' text-[#000000] text-[1.5rem] text-center mx-[10%] mb-[5%]'>APLICAR</p>
+                        <p className=' text-[#000000] text-[1rem] mx-[10%] text-center'>Transformamos teoria em código. Desenvolvemos modelos inéditos e aplicações robustas para diversos tipos de uso.</p>
+                   </div>
+                   <div className='bg-[#FFFFFF] flex-1 h-[60vh] flex flex-col items-center justify-center rounded-[1rem]'>
+                        <Image 
+                            src="/share.svg"
+                            alt="Disseminar"
+                            width={800}
+                            height={800}
+                            className='w-[20vh] h-auto mb-[5%]'
+                        />
+                        <p className=' text-[#000000] text-[1.5rem] text-center mx-[10%] mb-[5%]'>DISSEMINAR</p>
+                        <p className=' text-[#000000] text-[1rem] mx-[10%] text-center'>Democratizamos o conhecimento técnico através de cursos, workshops e conteúdos abertos, conectando a USP à sociedade e ao mercado.</p>
+                   </div>
+                </div>
+            </div>
+            <div className='flex flex-col h-[100vh] z-0 items-center mt-[5%]'>
+                <p className='text-[#000000] text-[3rem] font-bold'>RELATOS</p>
+                <Image 
+                    src="/background.svg"
+                    alt="background"
+                    width={800}
+                    height={800}
+                    className='relative w-[130vh] h-auto object-cover z-0 top-0 left-0 overflow-hidden'
+                />
+                <div className='absolute z-10 mt-[10%] w-[70%]'>
+                    <Carousel/>
+                </div>
+            </div>
+            <div className='relative flex flex-col h-[100vh]'>
+                <Image 
+                    src="/detalheporta.svg"
+                    alt="Detalhe arredondado"
+                    width={100}
+                    height={100}
+                    className='absolute w-[11vh] object-cover z-0 opacity-50'
+                />
+                <Image 
+                    src="/detalheporta.svg"
+                    alt="Detalhe arredondado"
+                    width={100}
+                    height={100}
+                    className='absolute w-[11vh] object-cover z-0 opacity-80 rotate-180 bottom-0 right-0'
+                />
+                <p className='text-[#000000] text-[3rem] font-bold flex mx-[5%] mt-[5%] mb-[2%]'>O QUE FAZEMOS</p>
+                <div className='flex flex-row mx-[5%] gap-[5%]'>
+                    <button className='flex-1 bg-[#162B3F] text-[#FFFFFF] text-[1rem] h-[8vh] rounded-[1rem] hover:bg-[#F1863D] cursor-pointer duration-500 ease-in-out focus:bg-[#F1863D]'>Projetos</button>
+                    <button className='flex-1 bg-[#162B3F] text-[#FFFFFF] text-[1rem] h-[8vh] rounded-[1rem] hover:bg-[#F1863D] cursor-pointer duration-500 ease-in-out focus:bg-[#F1863D]'>Eventos</button>
+                    <button className='flex-1 bg-[#162B3F] text-[#FFFFFF] text-[1rem] h-[8vh] rounded-[1rem] hover:bg-[#F1863D] cursor-pointer duration-500 ease-in-out focus:bg-[#F1863D]'>Disseminação</button>
+                    <button className='flex-1 bg-[#162B3F] text-[#FFFFFF] text-[1rem] h-[8vh] rounded-[1rem] hover:bg-[#F1863D] cursor-pointer duration-500 ease-in-out focus:bg-[#F1863D]'>Competições</button>
+                </div>
+                <div className='mx-[10%] my-[2%] bg-[#162B3F] flex flex-row h-[50vh] rounded-[1rem] relative overflow-hidden'>
+                    <div className='w-[45%]'>
+                        <div className=' ml-[5%] flex items-center justify-center h-[100%]'>
+                            <Image
+                            src="/processador.svg"
+                            alt="Processador"
+                            width={800}
+                            height={800}
+                            className='w-[30vh] h-auto border p-[1%] border-[#F1863D] border-[0.2rem] '
+                            />
+                        </div>
+                        <div className=''>
+                            <Image 
+                                src="/circuitoorange.svg"
+                                alt="Circuitos"
+                                width={100}
+                                height={100}
+                                className='absolute w-[2.5vh] h-auto object-cover z-0 rotate-270 top-1/2 -translate-y-1/2 left-[11%]'
+                            />
+                            <Image
+                                src="/circuitoorange.svg"
+                                alt="Circuitos"
+                                width={100}
+                                height={100}
+                                className='absolute w-[2.5vh] h-auto object-cover z-0 rotate-0 top-0 left-[22%]'
+                            />
+                            <Image
+                                src="/circuitoorange.svg"
+                                alt="Circuitos"
+                                width={100}
+                                height={100}
+                                className='absolute w-[2.5vh] h-auto object-cover z-0 rotate-180 bottom-0 left-[25%]'
+                            />
+                            <Image
+                                src="/circuitoorange.svg"
+                                alt="Circuitos"
+                                width={100}
+                                height={100}
+                                className='absolute w-[2.5vh] h-auto object-cover z-0 rotate-90 top-1/2 -translate-y-1/2 left-[35%]'
+                            />
+                        </div>
+                        
+                    </div>
+                    <div className='w-[45%] mx-[5%] flex flex-col justify-center items-center'>
+                        <p className='text-[#FFFFFF] text-[2rem] font-bold'>Título</p>
+                        <p className='text-[#FFFFFF]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempus a neque non pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempus a neque non pharetra.</p>
+                        <button className='bg-[#F1863D] text-[#FFFFFF] text-[1rem] h-[5vh] w-[15vh] mt-[2%] rounded-[1rem] hover:bg-[#162B3F] cursor-pointer duration-500 ease-in-out focus:bg-[#162B3F]'>SAIBA MAIS</button>
+                    </div>
+                </div>
             </div>
         </main>
     );
