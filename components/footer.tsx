@@ -9,33 +9,34 @@ export default function Footer() {
                     <div className="flex flex-row items-center gap-[5%]">
                         <div className="flex flex-col">
                             <div className="flex flex-row items-center">
-                                <Image
-                                    src="/logo-branca.svg"
-                                    alt="Logo Turing USP"
-                                    width={50}
-                                    height={50}
-                                    className="h-[5rem] mr-[0.3rem]"
-                                />
-                                <p
-                                    className="text-[1rem] text-[#FFFFFF]"
-                                    style={{ fontFamily: "var(--font-orbitron)" }}
-                                >
-                                    turing.usp
-                                </p>
-                                <Image
-                                    src="/poli-logo.png"
-                                    alt="POLI USP"
-                                    width={100}
-                                    height={100}
-                                    className="h-[6rem] w-auto ml-[1rem]"
-                                />
-                                <Image
-                                    src="/logo_usp_branco.png"
-                                    alt="USP"
-                                    width={100}
-                                    height={100}
-                                    className="h-[3.5rem] w-auto ml-[1rem]"
-                                />
+                                <Link href="/" className="flex flex-row justify-center items-center">
+                                    <Image
+                                        src="/logo-branca.svg"
+                                        alt="Logo Turing USP"
+                                        width={50}
+                                        height={50}
+                                        className="h-[5rem] mr-[0.5rem]"
+                                    />
+                                    <p className="text-[1rem] text-[#FFFFFF]"style={{ fontFamily: "var(--font-orbitron)" }}>turing.usp</p>
+                                </Link>
+                                <Link href="https://www.poli.usp.br/">
+                                    <Image
+                                        src="/poli-logo.png"
+                                        alt="POLI USP"
+                                        width={100}
+                                        height={100}
+                                        className="h-[6rem] w-auto ml-[1rem]"
+                                    />      
+                                </Link>
+                                <Link href="https://www.usp.br/">
+                                    <Image
+                                        src="/logo_usp_branco.png"
+                                        alt="USP"
+                                        width={100}
+                                        height={100}
+                                        className="h-[3.5rem] w-auto ml-[1rem]"
+                                    />
+                                </Link>
                             </div>
                             <p> O maior grupo de inteligência artificial da Universidade de São Paulo.</p>
                         </div>

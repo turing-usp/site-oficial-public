@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const CONTEUDOS = [
     {
@@ -8,28 +9,32 @@ const CONTEUDOS = [
         titulo: "Projetos",
         descricao: "Desenvolvemos soluções para problemas reais utilizando inteligência artificial. São mais de 10 anos de experiência em projetos inovadores e impactantes para o mercado e para a sociedade.",
         imagem: "/heteronimos.png",
-        escala: "scale-130"
+        escala: "scale-130",
+        href: "/projetos"
     },
     {
         id: 2,
         titulo: "Eventos",
         descricao: "Organizamos eventos para compartilhar conhecimento e promover a integração entre os membros e a comunidade, por meio de workshops, palestras e encontros para a comunidade interna e externa da USP.",
         imagem: "/w4h2025.jpeg",
-        escala: "scale-100"
+        escala: "scale-100",
+        href: "#"
     },
     {
         id: 3,
         titulo: "Disseminação",
         descricao: "Promovemos a disseminação do conhecimento em inteligência artificial por meio de publicações, cursos e textos escritos com uma linguagem acessível para todos, com o intuito de democratizar o acesso à informação.",
         imagem: "/disseminacao.png",
-        escala: "scale-100"
+        escala: "scale-100",
+        href: "/turingtalks"
     },
     {
         id: 4,
         titulo: "Competições",
         descricao: "Participamos de competições nacionais e internacionais de inteligência artificial, desafiando nossas habilidades e conhecimentos para alcançar resultados excepcionais e colocar o Turing USP em destaque no cenário global.",
         imagem: "/ABII.jpg",
-        escala: "scale-100"
+        escala: "scale-100",
+        href: "#"
     }
 ]
 
@@ -81,9 +86,9 @@ export default function OqueFazemos() {
                     <p className='text-[#FFFFFF] text-center my-[3%]'>
                         {CONTEUDOS[abaAtiva].descricao}
                     </p>
-                    <button className='bg-[#F1863D] text-[#FFFFFF] text-[1rem] h-[5vh] w-[25vh] mt-[2%] rounded-[1rem] hover:bg-[#162B3F] cursor-pointer duration-500 ease-in-out'>
+                    <Link className='flex bg-[#F1863D] text-[#FFFFFF] text-[1rem] h-[5vh] w-[25vh] mt-[2%] rounded-[1rem] text-center items-center justify-center hover:bg-[#162B3F] cursor-pointer duration-500 ease-in-out' href={CONTEUDOS[abaAtiva].href}>
                         SAIBA MAIS
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>
