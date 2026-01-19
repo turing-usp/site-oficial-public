@@ -1,11 +1,13 @@
 import Navbar from '../components/navbar';
 import Image from 'next/image';
 import Carousel from '../components/carousel';
+import OqueFazemos from '../components/oquefazemos';
+import Footer from '../components/footer';
 
 export default function Home() {
     return (
         <main>
-            <div className='relative top-0 left-0 right-0 z-10'>
+            <div className='fixed top-0 left-0 right-0 z-10'>
                 <Navbar/>
             </div>
             <div className='h-[100vh] flex flex-row z-0 items-center'>
@@ -46,9 +48,9 @@ export default function Home() {
                 <Image
                     src="/processadorini.svg"
                     alt="Processador"
-                    width={100}
-                    height={100}
-                    className='w-[75vh] h-auto object-contain relative z-0'
+                    width={800}
+                    height={800}
+                    className='absolute w-[75vh] h-auto object-contain relative z-0'
                 />
             </div>
             <div className='flex flex-row items-center h-[100vh] z-0 relative overflow-hidden'>
@@ -172,61 +174,12 @@ export default function Home() {
                     className='absolute w-[11vh] object-cover z-0 opacity-80 rotate-180 bottom-0 right-0'
                 />
                 <p className='text-[#000000] text-[3rem] font-bold flex mx-[5%] mt-[5%] mb-[2%]'>O QUE FAZEMOS</p>
-                <div className='flex flex-row mx-[5%] gap-[5%]'>
-                    <button className='flex-1 bg-[#162B3F] text-[#FFFFFF] text-[1rem] h-[8vh] rounded-[1rem] hover:bg-[#F1863D] cursor-pointer duration-500 ease-in-out focus:bg-[#F1863D]'>Projetos</button>
-                    <button className='flex-1 bg-[#162B3F] text-[#FFFFFF] text-[1rem] h-[8vh] rounded-[1rem] hover:bg-[#F1863D] cursor-pointer duration-500 ease-in-out focus:bg-[#F1863D]'>Eventos</button>
-                    <button className='flex-1 bg-[#162B3F] text-[#FFFFFF] text-[1rem] h-[8vh] rounded-[1rem] hover:bg-[#F1863D] cursor-pointer duration-500 ease-in-out focus:bg-[#F1863D]'>Disseminação</button>
-                    <button className='flex-1 bg-[#162B3F] text-[#FFFFFF] text-[1rem] h-[8vh] rounded-[1rem] hover:bg-[#F1863D] cursor-pointer duration-500 ease-in-out focus:bg-[#F1863D]'>Competições</button>
+                <div>
+                    <OqueFazemos/>
                 </div>
-                <div className='mx-[10%] my-[2%] bg-[#162B3F] flex flex-row h-[50vh] rounded-[1rem] relative overflow-hidden'>
-                    <div className='w-[45%]'>
-                        <div className=' ml-[5%] flex items-center justify-center h-[100%]'>
-                            <Image
-                            src="/processador.svg"
-                            alt="Processador"
-                            width={800}
-                            height={800}
-                            className='w-[30vh] h-auto border p-[1%] border-[#F1863D] border-[0.2rem] '
-                            />
-                        </div>
-                        <div className=''>
-                            <Image 
-                                src="/circuitoorange.svg"
-                                alt="Circuitos"
-                                width={100}
-                                height={100}
-                                className='absolute w-[2.5vh] h-auto object-cover z-0 rotate-270 top-1/2 -translate-y-1/2 left-[11%]'
-                            />
-                            <Image
-                                src="/circuitoorange.svg"
-                                alt="Circuitos"
-                                width={100}
-                                height={100}
-                                className='absolute w-[2.5vh] h-auto object-cover z-0 rotate-0 top-0 left-[22%]'
-                            />
-                            <Image
-                                src="/circuitoorange.svg"
-                                alt="Circuitos"
-                                width={100}
-                                height={100}
-                                className='absolute w-[2.5vh] h-auto object-cover z-0 rotate-180 bottom-0 left-[25%]'
-                            />
-                            <Image
-                                src="/circuitoorange.svg"
-                                alt="Circuitos"
-                                width={100}
-                                height={100}
-                                className='absolute w-[2.5vh] h-auto object-cover z-0 rotate-90 top-1/2 -translate-y-1/2 left-[35%]'
-                            />
-                        </div>
-                        
-                    </div>
-                    <div className='w-[45%] mx-[5%] flex flex-col justify-center items-center'>
-                        <p className='text-[#FFFFFF] text-[2rem] font-bold'>Título</p>
-                        <p className='text-[#FFFFFF]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempus a neque non pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempus a neque non pharetra.</p>
-                        <button className='bg-[#F1863D] text-[#FFFFFF] text-[1rem] h-[5vh] w-[15vh] mt-[2%] rounded-[1rem] hover:bg-[#162B3F] cursor-pointer duration-500 ease-in-out focus:bg-[#162B3F]'>SAIBA MAIS</button>
-                    </div>
-                </div>
+            </div>
+            <div>
+                <Footer/>
             </div>
         </main>
     );

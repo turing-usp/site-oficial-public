@@ -5,9 +5,9 @@ import {useState, useEffect} from 'react';
 const relatos = [
     {
         id:1,
-        nome: "João Silva",
-        imagem: "/processador.svg",
-        relato: "O Turing me proporcionou uma experiência incrível em IA. Aprendi muito e fiz amizades duradouras."
+        nome: "João Pedro Canabrava",
+        imagem: "/chefe.jpeg",
+        relato: "Entrei no Turing USP em 2024 e logo me apaixonei pelo projeto. É um grupo com enorme atuação e potencial de crescimento que reúne pessoas brilhantes para trabalhar em um dos temas que considero mais relevantes para o futuro da sociedade: IA e ML. Integrei a área de finanças quantitativas e fui diretor da área de estratégia nas quais aprendi muito sobre aplicações de ML no mercado financeiro, administração de grupos e liderança, consegui evoluir muito como estudante e profissional e recebi oportunidades no mercado por conta do networking feito. Além disso, tão importante quanto, conheci pessoas e construí relações que levo com muito carinho. Considero que o grupo foi uma das melhores escolhas do meu período universitário e acompanho, animado, os caminhos que o grupo está trilhando e construindo."
     },
     {
         id:2,
@@ -41,7 +41,7 @@ export default function Carousel() {
 
     return (
         <div className="flex flex-col w-full h-[60vh] bg-[#162B3F] rounded-[1rem] overflow-hidden justify-center">
-            <div className="flex flex-row items-center w-full px-[5%] gap-[4%] pt-[5%]">
+            <div className="flex flex-row items-center w-full px-[5%] gap-[4%] pt-[3%]">
                 <div className="flex-shrink-0 w-[10vh] h-[10vh] rounded-full overflow-hidden border-[0.2rem] border-[#F1863D]">
                     <Image 
                         src={relatoAtual.imagem}
@@ -56,7 +56,7 @@ export default function Carousel() {
                     <p className="text-[#F1863D] text-[3.5rem] ml-[1rem] self-start">&#10078;</p>
                 </div>
             </div>
-            <div className='flex flex-row px-[5%] my-[5%]'>
+            <div className='flex flex-row px-[5%] my-[3%]'>
                 <button onClick={() => setCurrentIndex(currentIndex === 0 ? relatos.length - 1 : currentIndex - 1)} className='text-[#F1863D] text-[2rem] mr-[5%]'>&#10094;</button>
                 <p className='flex-1 text-center text-[#FFFFFF] text-[1rem]'>{relatoAtual.relato}</p>
                 <button onClick={() => setCurrentIndex(currentIndex === relatos.length - 1 ? 0 : currentIndex + 1)} className='text-[#F1863D] text-[2rem] ml-[5%]'>&#10095;</button>
