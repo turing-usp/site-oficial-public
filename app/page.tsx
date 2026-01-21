@@ -12,8 +12,8 @@ export default function Home() {
             </div>
             <div className='h-[100vh] flex flex-row z-0 items-center'>
                 <div className='ml-[5%] mr-[5%] flex flex-col w-[45%] items-center justify-center h-[100%]'>
-                    <p className='text-[#000000] text-[4rem] text-center font-bold'>CONSTRUINDO O FUTURO DA <span className='text-[#F1863D]'>IA</span></p>
-                    <p className='mt-[5%] text-[#000000] text-center text-[1.5rem]'>Desde 2015 o Turing é o maior grupo voltado a inteligência artificial da USP</p>
+                    <p className='text-[#000000] text-[4rem] text-center font-bold leading-tight'>CONSTRUINDO O FUTURO DA <span className='text-[#F1863D]'>IA</span></p>
+                    <p className='mt-[5%] text-[#000000] text-center text-[1.5rem] leading-tight'>Desde 2015 o Turing é o maior grupo voltado a inteligência artificial da USP</p>
                 </div>
                 <div className='absolute bg-gradient-to-b from-[#EBB84A] to-[#F1863D] w-[40%] h-[100%] top-0 right-0 rounded-tl-[2rem] rounded-bl-[2rem] overflow-hidden'>
                    <Image 
@@ -107,7 +107,7 @@ export default function Home() {
                     className='left-[4%] absolute w-[10vh] h-auto object-cover z-0 origin-right-top top-10 rotate-90 '
                 />
                 <div className='flex justify-center mt-[5%]'>
-                    <p className='text-[#FFFFFF] text-[3rem] font-bold'>NOSSOS PROJETOS</p>
+                    <p className='text-[#FFFFFF] text-[3rem] font-bold'>NOSSOS PILARES</p>
                 </div>
                 <div className='flex mr-[5%] ml-[5%] mt-[5%] gap-[10%]'>
                    <div className='bg-[#FFFFFF] flex-1 h-[60vh] flex flex-col items-center justify-center rounded-[1rem]'>

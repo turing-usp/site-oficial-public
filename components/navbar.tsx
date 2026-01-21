@@ -15,10 +15,10 @@ export default function Navbar() {
                     <p className='text-[1rem] text-[#F1863D]' style={{ fontFamily: 'var(--font-orbitron)' }}>turing.usp</p>
                 </Link>
                 <div className='flex items-center ml-[15%] gap-[1rem]'>
-                    <Link href ="/" className='text-[1rem] text-[#000000]'>INÍCIO</Link>
-                    <Link href ="/projetos" className='text-[1rem] text-[#000000]'>PROJETOS</Link>
-                    <Link href ="" className='text-[1rem] text-[#000000]'>EQUIPES</Link>
-                    <Link href ="" className='text-[1rem] text-[#000000]'>CONTATO</Link>
+                    <Link href ="/" className='text-[1rem] text-[#000000] hover:text-[#F1863D]'>INÍCIO</Link>
+                    <Link href ="/projetos" className='text-[1rem] text-[#000000] hover:text-[#F1863D]'>PROJETOS</Link>
+                    <Link href ="" className='text-[1rem] text-[#000000] hover:text-[#F1863D]'>EQUIPES</Link>
+                    <Link href ="" className='text-[1rem] text-[#000000] hover:text-[#F1863D]'>CONTATO</Link>
                 </div>
             </div>
             <div className='flex gap-[1rem]'>

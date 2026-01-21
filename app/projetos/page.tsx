@@ -92,7 +92,7 @@ export default function Projetos() {
                                 <button 
                                     key={categoria}
                                     onClick={() => setAbaAtiva(Categorias.indexOf(categoria))}
-                                    className={`mx-[5%] my-[2%] text-[#000000] text-[1.5rem] w-[20vw] h-[8vh] rounded-[1rem] cursor-pointer duration-500 ease-in-out
+                                    className={`mx-[5%] my-[2%] text-[#000000] text-[1.5rem] w-[20vw] h-[8vh] rounded-[1rem] border border-[#F1863D] cursor-pointer duration-500 ease-in-out
                                     ${abaAtiva === Categorias.indexOf(categoria) ? 'bg-[#F1863D] text-[#FFFFFF]' : 'bg-[#FFFFFF] hover:bg-[#F1863D] hover:text-[#FFFFFF]'}`}
                                 >
                                     {categoria}
@@ -106,7 +106,7 @@ export default function Projetos() {
                                 <button
                                     key={area.nome}
                                     onClick ={() => setSubAbaAtiva((abaAtiva === 0 ? ÁREAS_DE_FOCO : ÁREAS_DE_GESTÃO).indexOf(area))}
-                                    className={`mx-[2%] my-[1%] text-[#000000] text-[1rem] flex-1 h-[8vh] rounded-[1rem] cursor-pointer duration-500 ease-in-out
+                                    className={`mx-[2%] my-[1%] text-[#000000] text-[1rem] flex-1 h-[8vh] rounded-[1rem] border border-[#F1863D] cursor-pointer duration-500 ease-in-out
                                     ${subAbaAtiva === (abaAtiva === 0 ? ÁREAS_DE_FOCO : ÁREAS_DE_GESTÃO).indexOf(area) ? 'bg-[#F1863D] text-[#FFFFFF]' : 'bg-[#FFFFFF] hover:bg-[#F1863D] hover:text-[#FFFFFF]'}`}
                                 >
                                     {area.nome}
