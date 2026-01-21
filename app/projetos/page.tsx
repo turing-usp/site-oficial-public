@@ -92,8 +92,8 @@ export default function Projetos() {
                                 <button 
                                     key={categoria}
                                     onClick={() => setAbaAtiva(Categorias.indexOf(categoria))}
-                                    className={`mx-[5%] my-[2%] text-[#FFFFFF] text-[1.5rem] w-[20vw] h-[8vh] rounded-[1rem] cursor-pointer duration-500 ease-in-out
-                                    ${abaAtiva === Categorias.indexOf(categoria) ? 'bg-[#F1863D]' : 'bg-[#162B3F] hover:bg-[#F1863D]'}`}
+                                    className={`mx-[5%] my-[2%] text-[#000000] text-[1.5rem] w-[20vw] h-[8vh] rounded-[1rem] cursor-pointer duration-500 ease-in-out
+                                    ${abaAtiva === Categorias.indexOf(categoria) ? 'bg-[#F1863D] text-[#FFFFFF]' : 'bg-[#FFFFFF] hover:bg-[#F1863D] hover:text-[#FFFFFF]'}`}
                                 >
                                     {categoria}
                                 </button>
@@ -106,8 +106,8 @@ export default function Projetos() {
                                 <button
                                     key={area.nome}
                                     onClick ={() => setSubAbaAtiva((abaAtiva === 0 ? ÁREAS_DE_FOCO : ÁREAS_DE_GESTÃO).indexOf(area))}
-                                    className={`mx-[2%] my-[1%] text-[#FFFFFF] text-[1rem] flex-1 h-[8vh] rounded-[1rem] cursor-pointer duration-500 ease-in-out
-                                    ${subAbaAtiva === (abaAtiva === 0 ? ÁREAS_DE_FOCO : ÁREAS_DE_GESTÃO).indexOf(area) ? 'bg-[#F1863D]' : 'bg-[#162B3F] hover:bg-[#F1863D]'}`}
+                                    className={`mx-[2%] my-[1%] text-[#000000] text-[1rem] flex-1 h-[8vh] rounded-[1rem] cursor-pointer duration-500 ease-in-out
+                                    ${subAbaAtiva === (abaAtiva === 0 ? ÁREAS_DE_FOCO : ÁREAS_DE_GESTÃO).indexOf(area) ? 'bg-[#F1863D] text-[#FFFFFF]' : 'bg-[#FFFFFF] hover:bg-[#F1863D] hover:text-[#FFFFFF]'}`}
                                 >
                                     {area.nome}
                                 </button>
@@ -115,28 +115,42 @@ export default function Projetos() {
                             }
                         </div>
                     </div>
-                    <div className="flex flex-col"> 
+                    <div className="flex flex-col mt-[2%]"> 
                         {projetosFiltrados.map((projeto, index) => (
-                            <div key={index}>
-                                    <div className="flex bg-[#000000] h-[0.05rem] w-[100%] object-contain"></div>
-                                    <div className="flex flex-row mx-[5%] h-[20vh] items-center justify-center">
-                                    <Image
-                                        alt="Em breve"
-                                        src={projeto.nome_imagem}
-                                        width={800}
-                                        height={800}
-                                        className="w-[12rem] h-auto object-contain"
-                                    />
-                                    <div className="flex flex-col mx-[10%]">
-                                        <p className="text-[2rem] text-[#000000] font-bold">{projeto.titulo}</p>
-                                        <p className="text-[1rem] text-[#000000]">{projeto.resumo}</p>
-                                    </div>
-                                    <Link href={`/projetos/${projeto.slug}`} className="flex bg-transparent text-[#000000] text-[1rem] h-[5vh] w-[15vh] rounded-[1rem] text-center items-center justify-center border-[0.1rem] border-[#F1863D] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer duration-500 ease-in-out">
-                                        Veja mais
-                                    </Link>
+                            <Link href={`/projetos/${projeto.slug}`} className="group flex flex-col bg-[#FFFFFF] overflow-hidden hover: cursor-pointer">
+                                <div key={index}>
+                                        {/* <div className="flex bg-[#000000] h-[0.05rem] w-[100%] object-contain"></div> */}
+                                        <div className="flex flex-row  h-[20vh] items-center justify-center group-hover:bg-[#F5F5F5] group-hover:scale-103 duration-500 ease-in-out">
+                                            <div className="flex flex-row h-[20vh] items-center justify-center mx-[5%]">
+                                                <Image
+                                                    alt="Em breve"
+                                                    src={projeto.nome_imagem}
+                                                    width={800}
+                                                    height={800}
+                                                    className="w-[12rem] h-auto object-contain"
+                                                />
+                                                <div className="flex flex-col mx-[10%]">
+                                                    <p className="text-[2rem] text-[#000000] font-bold">{projeto.titulo}</p>
+                                                    <p className="text-[1rem] text-[#000000]">{projeto.resumo}</p>
+                                                </div>
+                                                <Link href={`/projetos/${projeto.slug}`} className="flex bg-transparent text-[#000000] text-[1rem] h-[5vh] w-[15vh] rounded-[1rem] text-center items-center justify-center border-[0.1rem] border-[#F1863D] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer duration-500 ease-in-out">
+                                                    Veja mais
+                                                </Link>
+                                            </div>     
+                                        </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
+                        {/* <div className="flex bg-[#000000] h-[0.05rem] w-[100%] object-contain"></div> */}
+                    </div>
+                    <div className="flex flex-row justify-center items-center h-[30vh] w-[100%]">
+                        <Image
+                            alt="Em breve"
+                            src="/logo.svg"
+                            width={800}
+                            height={800}
+                            className="w-[8rem] h-auto object-contain"
+                        />
                     </div>
                 </div>
                 <div>
