@@ -57,14 +57,14 @@ export default function Home() {
                 <div className='ml-[5%] flex flex-col w-[45%] items-center justify-center h-[100%]'>
                     <Image
                         src="/fotointe2.jpeg"
-                        alt="Robô"
+                        alt=""
                         width={800}
                         height={800}
                         className='w-[55vh] h-auto border border-[#F1863D] border-[0.2rem] mb-[5%] rotate-354'
                     />
                     <Image
                         src="/fotointeg.jpg"
-                        alt="Robô"
+                        alt=""
                         width={800}
                         height={800}
                         className='w-[55vh] h-auto border border-[#F1863D] border-[0.2rem] rotate-6'
@@ -110,7 +110,7 @@ export default function Home() {
                     <p className='text-[#FFFFFF] text-[3rem] font-bold'>NOSSOS PILARES</p>
                 </div>
                 <div className='flex mr-[5%] ml-[5%] mt-[5%] gap-[10%]'>
-                   <div className='bg-[#FFFFFF] flex-1 h-[60vh] flex flex-col items-center justify-center rounded-[1rem]'>
+                   <div className='bg-[#FFFFFF] flex-1 h-[60vh] flex flex-col items-center justify-center rounded-[1rem] hover:scale-105 transition-transform durantion-500'>
                         <Image 
                             src="/ssd.svg"
                             alt="SSD"
@@ -121,7 +121,7 @@ export default function Home() {
                         <p className=' text-[#000000] text-[1.5rem] text-center mx-[10%] mb-[5%]'>PESQUISAR</p>
                         <p className=' text-[#000000] text-[1rem] mx-[10%] text-center'>Exploramos artigos científicos e descobertas para aplicarmos em necessidades do cotidiano.</p>
                    </div>
-                   <div className='bg-[#FFFFFF] flex-1 h-[60vh] flex flex-col items-center justify-center rounded-[1rem]'>
+                   <div className='bg-[#FFFFFF] flex-1 h-[60vh] flex flex-col items-center justify-center rounded-[1rem] hover:scale-105 transition-transform duration-500'>
                         <Image 
                             src="/processador.svg"
                             alt="Processador"
@@ -132,7 +132,7 @@ export default function Home() {
                         <p className=' text-[#000000] text-[1.5rem] text-center mx-[10%] mb-[5%]'>APLICAR</p>
                         <p className=' text-[#000000] text-[1rem] mx-[10%] text-center'>Transformamos teoria em código. Desenvolvemos modelos inéditos e aplicações robustas para diversos tipos de uso.</p>
                    </div>
-                   <div className='bg-[#FFFFFF] flex-1 h-[60vh] flex flex-col items-center justify-center rounded-[1rem]'>
+                   <div className='bg-[#FFFFFF] flex-1 h-[60vh] flex flex-col items-center justify-center rounded-[1rem] hover:scale-105 transition-transform duration-500'>
                         <Image 
                             src="/share.svg"
                             alt="Disseminar"

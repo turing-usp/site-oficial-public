@@ -22,8 +22,8 @@ export default function Navbar() {
                 </div>
             </div>
             <div className='flex gap-[1rem]'>
-                <button className='text-[1rem] text-[#000000] border border-[#162B3F] w-[9rem] h-[2rem] rounded rounded-[2rem] hover:bg-[#162B3F] hover:text-[#FFFFFF]'>CADASTRE-SE</button>
-                <button className='text-[1rem] text-[#FFFFFF] bg-[#162B3F] w-[9rem] h-[2rem] rounded rounded-[2rem]'>LOGIN</button>
+                <button className='text-[1rem] text-[#000000] border border-[#162B3F] w-[9rem] h-[2rem] rounded rounded-[2rem] hover:bg-[#162B3F] hover:text-[#FFFFFF] transition-ease-in-out duration-500 cursor-pointer'>CADASTRE-SE</button>
+                <button className='text-[1rem] text-[#FFFFFF] bg-[#162B3F] w-[9rem] h-[2rem] rounded rounded-[2rem] hover:scale-103 transition-transform duration-300'>LOGIN</button>
             </div>
         </nav>
     );
