@@ -11,7 +11,7 @@ export default function Login() {
             </div>
             <div className='flex flex-row h-[100vh] w-[100%] items-center justify-center'>
                 <div className="flex mx-[5%] mt-[5%]">
-                    <div className='flex flex-1'>
+                    <div className='flex flex-1 justify-center'>
                         <div className='flex flex-col bg-[#162B3F] h-[80vh] w-[70%] rounded rounded-[2rem] items-center'>
                             <Image
                                 src="/cadeado.svg"
@@ -30,7 +30,7 @@ export default function Login() {
                             <input
                                 type="email"
                                 placeholder="EMAIL"
-                                className='h-[5vh] w-[25vw]'
+                                className='h-[5vh] w-[30vw]'
                                 >
                             </input>
                         </div>
