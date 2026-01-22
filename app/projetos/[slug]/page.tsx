@@ -32,7 +32,7 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
                 <Navbar/>
             </div>
             <div className="flex flex-row h-[100vh] w-[100%]">
-
+                
             </div>
             <div>
                 <Footer />
