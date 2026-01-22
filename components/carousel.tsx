@@ -11,9 +11,9 @@ const relatos = [
     },
     {
         id:2,
-        nome: "Maria Oliveira",
-        imagem: "/processadorini.svg",
-        relato: "Participar do Turing foi um divisor de águas na minha carreira. Os projetos são desafiadores e gratificantes."
+        nome: "Renata Leite Leandro",
+        imagem: "/RenataLeite.jpeg",
+        relato: "Como estudante da FFLCH interessada em processamento de linguagem natural, o Turing foi essencial para construir a ponte entre linguística e programação. O grupo teve um papel fundamental no meu desenvolvimento profissional e pessoal, e considero que meus anos de Turing foram os melhores da minha graduação."
     },
     {
         id:3,
