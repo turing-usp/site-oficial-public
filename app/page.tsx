@@ -110,7 +110,7 @@ export default function Home() {
                     <p className='text-[#FFFFFF] text-[3rem] font-bold'>NOSSOS PILARES</p>
                 </div>
                 <div className='flex mr-[5%] ml-[5%] mt-[5%] gap-[10%]'>
-                   <div className='bg-[#FFFFFF] flex-1 h-[60vh] flex flex-col items-center justify-center rounded-[1rem] hover:scale-105 transition-transform durantion-500'>
+                   <div className='bg-[#FFFFFF] flex-1 h-[60vh] flex flex-col items-center justify-center rounded-[1rem] hover:scale-105 transition-transform duration-500'>
                         <Image 
                             src="/ssd.svg"
                             alt="SSD"

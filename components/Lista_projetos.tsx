@@ -112,28 +112,27 @@ export default function Lista_Projetos({projetosIniciais}: {projetosIniciais?: P
                     </div>
                     <div className="flex flex-col mt-[2%]"> 
                         {projetosFiltrados.map((projeto, index) => (
-                            <Link href={`/projetos/${projeto.slug}`} className="group flex flex-col bg-[#FFFFFF] overflow-hidden hover: cursor-pointer">
-                                <div key={index}>
-                                        {/* <div className="flex bg-[#000000] h-[0.05rem] w-[100%] object-contain"></div> */}
-                                        <div className="flex flex-row  h-[20vh] items-center justify-center group-hover:bg-[#F5F5F5] group-hover:scale-103 duration-500 ease-in-out">
-                                            <div className="flex flex-row h-[20vh] items-center justify-center mx-[5%]">
-                                                <Image
-                                                    alt="Em breve"
-                                                    src={projeto.nome_imagem}
-                                                    width={800}
-                                                    height={800}
-                                                    className="w-[12rem] h-auto object-contain"
-                                                />
-                                                <div className="flex flex-col mx-[10%]">
-                                                    <p className="text-[2rem] text-[#000000] font-bold">{projeto.titulo}</p>
-                                                    <p className="text-[1rem] text-[#000000]">{projeto.resumo}</p>
-                                                </div>
-                                                <Link href={`/projetos/${projeto.slug}`} className="flex bg-transparent text-[#000000] text-[1rem] h-[5vh] w-[15vh] rounded-[1rem] text-center items-center justify-center border-[0.1rem] border-[#F1863D] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer duration-500 ease-in-out">
-                                                    Veja mais
-                                                </Link>
-                                            </div>     
+                            <Link href={`/projetos/${projeto.slug}`} className="group flex flex-col bg-[#FFFFFF] overflow-hidden hover: cursor-pointer" key={index}>
+                                {/* <div className="flex bg-[#000000] h-[0.05rem] w-[100%] object-contain"></div> */}
+                                <div className="flex flex-row  h-[20vh] items-center justify-center group-hover:bg-[#F5F5F5] group-hover:scale-103 duration-500 ease-in-out">
+                                    <div className="flex flex-row h-[20vh] items-center justify-center mx-[5%]">
+                                        <Image
+                                            alt="Em breve"
+                                            src={projeto.nome_imagem}
+                                            width={800}
+                                            height={800}
+                                            className="w-[12rem] h-auto object-contain"
+                                        />
+                                        <div className="flex flex-col mx-[10%]">
+                                            <p className="text-[2rem] text-[#000000] font-bold">{projeto.titulo}</p>
+                                            <p className="text-[1rem] text-[#000000]">{projeto.resumo}</p>
                                         </div>
+                                        <div className="flex bg-transparent text-[#000000] text-[1rem] h-[5vh] w-[15vh] rounded-[1rem] text-center items-center justify-center border-[0.1rem] border-[#F1863D] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer duration-500 ease-in-out">
+                                            Veja mais
+                                        </div>
+                                    </div>     
                                 </div>
+                               
                             </Link>
                         ))}
                         {/* <div className="flex bg-[#000000] h-[0.05rem] w-[100%] object-contain"></div> */}

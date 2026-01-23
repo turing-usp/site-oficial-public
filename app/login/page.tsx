@@ -30,7 +30,7 @@ export default function Login() {
                             <input
                                 type="email"
                                 placeholder="EMAIL"
-                                className='h-[5vh] w-[30vw]'
+                                className='h-[5vh] w-[40vw]'
                                 >
                             </input>
                         </div>

@@ -38,7 +38,7 @@ export const gerarProjetoAleatorio = (index: number): Projeto => {
     titulo: titulo,
     resumo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempus a neque non pharetra. Um resumo longo para testar o layout do header.",
     parceiros: `/parceiro-${Math.floor(Math.random() * 3) + 1}.png`,
-    nome_imagem: "/pro.png",
+    nome_imagem: "/logo.svg",
     cat1: categoriasDisponiveis[Math.floor(Math.random() * categoriasDisponiveis.length)],
     cat2: Math.random() > 0.5 ? "Deep Learning" : null,
     cat3: Math.random() > 0.8 ? "Python" : null,
