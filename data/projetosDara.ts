@@ -14,6 +14,8 @@ export interface Projeto {
   problema: string;
   confeccao: string;
   resultados: string;
+  anoinicio?: number;
+  anofim?: number;
 }
 
 const categoriasDisponiveis = ["QUANT", "NLP", "RL", "Data Science", "Computer Vision", "Marketing", "RH", "Estratégia"];
@@ -37,14 +39,16 @@ export const gerarProjetoAleatorio = (index: number): Projeto => {
     area3: getRandomArea(true),
     titulo: titulo,
     resumo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempus a neque non pharetra. Um resumo longo para testar o layout do header.",
-    parceiros: `/parceiro-${Math.floor(Math.random() * 3) + 1}.png`,
-    nome_imagem: "/logo.svg",
+    parceiros: ``,
+    nome_imagem: "/heteronimos.png",
     cat1: categoriasDisponiveis[Math.floor(Math.random() * categoriasDisponiveis.length)],
     cat2: Math.random() > 0.5 ? "Deep Learning" : null,
     cat3: Math.random() > 0.8 ? "Python" : null,
     problema: "Descrição longa do problema: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.",
     confeccao: "Descrição da confecção: Utilizamos modelos de última geração, integrando bibliotecas como PyTorch e Scikit-learn para garantir a máxima eficiência.",
-    resultados: "Resultados obtidos: Conseguimos uma acurácia de 95% nos testes iniciais, superando as expectativas do grupo de pesquisa."
+    resultados: "Resultados obtidos: Conseguimos uma acurácia de 95% nos testes iniciais, superando as expectativas do grupo de pesquisa.",
+    anoinicio: 2022,
+    anofim: 2023
   };
 };
 
