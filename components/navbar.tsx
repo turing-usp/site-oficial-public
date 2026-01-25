@@ -18,7 +18,7 @@ export default function Navbar() {
                     <Link href ="/" className='text-[1rem] text-[#000000] hover:text-[#F1863D]'>INÍCIO</Link>
                     <Link href ="/projetos" className='text-[1rem] text-[#000000] hover:text-[#F1863D]'>PROJETOS</Link>
                     <Link href ="" className='text-[1rem] text-[#000000] hover:text-[#F1863D]'>EQUIPES</Link>
-                    <Link href ="" className='text-[1rem] text-[#000000] hover:text-[#F1863D] whitespace-nowrap'>TURING TALKS</Link>
+                    <Link href ="/turing-talks" className='text-[1rem] text-[#000000] hover:text-[#F1863D] whitespace-nowrap'>TURING TALKS</Link>
                     <Link href ="" className='text-[1rem] text-[#000000] hover:text-[#F1863D]'>CONTATO</Link>
                 </div>
             </div>

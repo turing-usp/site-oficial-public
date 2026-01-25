@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Orbitron,Inter } from "next/font/google";
+import { Orbitron,Inter,Irish_Grover } from "next/font/google";
 import "./globals.css";
 
 const OrbitronFont = Orbitron({
@@ -12,6 +12,12 @@ const InterFont = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   weight: ["400", "700"],
+});
+
+const IrishGroverFont = Irish_Grover({
+  subsets: ["latin"],
+  variable: "--font-irish-grover",
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -27,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${OrbitronFont.variable} ${InterFont.variable} antialiased`}
+        className={`${OrbitronFont.variable} ${InterFont.variable} ${IrishGroverFont.variable} antialiased`}
       >
         {children}
       </body>

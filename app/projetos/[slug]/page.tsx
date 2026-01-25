@@ -46,8 +46,8 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
             0: "Quant",
             1: "NLP",
             2: "RL",
-            3: "Data Science",
-            4: "Computer Vision",
+            3: "DS",
+            4: "Comp Visual",
             5: "Marketing",
             6: "RH",
             7: "Estratégia"
@@ -57,6 +57,7 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
         if (projeto.area3 !== null) areas.push(areaMap[projeto.area3]);
         return areas;
     }
+    
     return (
         <div>
             <div className='fixed top-0 left-0 right-0 z-10'>
@@ -69,7 +70,7 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
                 </div>
             </div>
             <div className="flex flex-row bg-[#F1863D] w-[100%] h-[12vh] justify-between items-center">
-                    <p className="text-[#FFFFFF] text-[1.2rem] mx-[5%]">PARCEIROS:</p>
+                    <p className="text-[#FFFFFF] text-[1.2rem] mx-[5%] font-bold">PARCEIROS:</p>
                     <div className="flex flex-row mx-[5%]">
                         {projeto.parceiros && (
                             <Image
@@ -172,7 +173,6 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
             <div>
                 <Footer />
             </div>
-             
         </div>
     )
 }
