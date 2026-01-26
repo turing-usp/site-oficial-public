@@ -1,6 +1,7 @@
 import Navbar from '@/components/navbar';
 import Image from 'next/image';
 import Footer from '@/components/footer';
+import Link from 'next/link';
 
 export default function TuringTalks(){
     const backgroundWords = [
@@ -64,7 +65,54 @@ export default function TuringTalks(){
             </div>
         </div>
         <div className='flex h-[30vh] w-[100%] items-center justify-center bg-[#162B3F]'>
+            <div className='relative mx-[5%] items-center justify-center'>
+                <input type="text" placeholder='Digite o termo que deseja pesquisar' className='h-[8vh] w-[50vw] bg-[#FFFFFF] text-[#000000] text-center border-[#F1863D] border-[0.15rem] rounded-[2rem] focus:outline-none'></input>
+                <Link href="/turing-talks/search">
+                    <Image 
+                        src="/lupa.svg"
+                        alt="Search Icon"
+                        width={30}
+                        height={30}
+                        className='absolute top-3 right-3 cursor-pointer'
+                    />
+                </Link>
+            </div>
+        </div>
+        <div className='hidden h-auto min-h-[30vh] w-[100%] items-center justify-center bg-[#162B3F]'>
+            <div className='relative mx-[5%] items-center justify-center'>
+                {/* Additional content can be added here in the future */}
+            </div>
+        </div>
+        <div className='flex w-[100%] h-auto'>
+            <div className='flex flex-col mx-[5%] my-[5%]'>
+                <p className='text-[#000000] text-[2rem] font-bold mb-[2%]' style={{fontFamily: 'var(--font-irish-grover)'}}>ÚLTIMAS NOTÍCIAS:</p>
+                <div className='flex h-[30vh] w-[100%] object-contain justify-between'>
+                    <Image
+                        src="/heteronimos.png"
+                        alt="Notícia 1"
+                        width={400}
+                        height={300}
+                        className='h-[15vh] w-auto flex-1 mt-[2%] object-contain'
+                    />
+                    <div className='flex flex-col flex-1'>
+                        <p className='text-[#000000] text-[1.2rem] font-bold mb-[1%]'>HETERÔNIMOS: A NOVA FERRAMENTA DE IA QUE VAI REVOLUCIONAR A CRIAÇÃO DE CONTEÚDO</p>
+                        <p className='text-[#000000] text-[1rem] mb-[1%] w-[40vw]'>Descubra como a mais recente inovação em inteligência artificial está transformando a maneira como criamos conteúdo. Com a ferramenta Heterônimos, desenvolvida por nossa equipe de especialistas, você poderá gerar textos, imagens e vídeos de alta qualidade com apenas alguns cliques. Saiba mais sobre essa tecnologia revolucionária e como ela pode beneficiar você e sua empresa.</p>
+                        <div className='flex mt-auto items-center gap-[5%]'>
+                            <Image
+                                src="/chefe.jpeg"
+                                alt="Author Icon"
+                                width={20}
+                                height={20}
+                                className='h-[1.8rem] rounded-full w-[1.8rem] mr-[1%]'
+                            />
+                            <p className='text-[#000000] text-[0.9rem]'>Kauã Fillipe</p>
+                            <p className='text-[#000000] text-[0.9rem]'>14 de abril de 2026</p>
 
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
         <div>
             <Footer/>
