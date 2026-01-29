@@ -80,12 +80,13 @@ export default function TuringTalks(){
         </div>
         <div className='hidden h-auto min-h-[30vh] w-[100%] items-center justify-center bg-[#162B3F]'>
             <div className='relative mx-[5%] items-center justify-center'>
-                {/* Additional content can be added here in the future */}
+                {/* Função que retorna valores da pesquisa */}
+                <p className='text-[#000000] text-[1.2rem]'>X Resultados encontrados</p>
             </div>
         </div>
         <div className='flex w-[100%] h-auto'>
             <div className='flex flex-col mx-[5%] my-[5%]'>
-                <p className='text-[#000000] text-[2rem] font-bold mb-[2%]' style={{fontFamily: 'var(--font-irish-grover)'}}>ÚLTIMAS NOTÍCIAS:</p>
+                <p className='text-[#000000] text-[2rem] font-bold mb-[2%]'>ÚLTIMOS <span style={{fontFamily: 'var(--font-irish-grover)'}}>TALKS:</span></p>
                 <div className='flex h-[30vh] w-[100%] object-contain justify-between'>
                     <Image
                         src="/heteronimos.png"
@@ -106,11 +107,20 @@ export default function TuringTalks(){
                                 className='h-[1.8rem] rounded-full w-[1.8rem] mr-[1%]'
                             />
                             <p className='text-[#000000] text-[0.9rem]'>Kauã Fillipe</p>
-                            <p className='text-[#000000] text-[0.9rem]'>14 de abril de 2026</p>
+                            <p className='text-[#000000] text-[0.9rem]'>14 de abril de 2025</p>
 
                         </div>
                     </div>
-
+                </div>
+            </div>
+        </div>
+        <div className='flex w-[100%] h-auto'>
+            <div className='flex flex-col mx-[5%] my-[5%]'>
+                <div className='grid grid-cols-3 gap-[5%]'>
+                    {/* Aqui a gente adiciona o map depois */}
+                    <div className='flex flex-col flex-1'>
+                        {/* Aqui os ítens*/}
+                    </div>
                 </div>
             </div>
         </div>
