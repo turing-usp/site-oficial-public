@@ -6,8 +6,8 @@ import Link from "next/link";
 interface MembroEquipe {
     id: number;
     nome: string;
-    cargo?: string;
-    areas?: number;
+    areas_formatadas?: Record<string, string>;
+    redes_sociais?: Record<string, string>;
     [key: string]: any;
 }
 
@@ -22,18 +22,21 @@ export default function Botoesnav({ equipe }: BotoesnavProps) {
     const Categorias = ["TODOS", "ÁREAS DE FOCO", "ÁREAS DE GESTÃO"];
     
     const area_de_foco = [
-        { nome: "Visão Computacional", id: 7,sigla:"CV" },
-        { nome: "Processamento de Linguagem Natural", id: 3,sigla:"NLP" },
-        { nome: "Finanças Quantitativas", id: 4,sigla:"QF" },
-        { nome: "Data Science", id: 5,sigla:"DS" },
-        { nome: "Aprendizado por Reforço", id: 6,sigla:"RL" }
+        { nome: "Visão Computacional", id: 7, sigla: "CompV", logo: "/cv.svg", descricao: "" },
+        { nome: "Processamento de Linguagem Natural", id: 3, sigla: "NLP", logo: "/nlp.svg", descricao: "Fazemos a comunicação entre as máquinas e os humanos. Por meio de números e letras mapeamos e interpretamos a linguagem natural para a construção de ferramentas como chatbots e assistentes virtuais." },
+        { nome: "Finanças Quantitativas", id: 4, sigla: "Quant", logo: "/quant.svg", descricao: "" },
+        { nome: "Data Science", id: 5, sigla: "DS", logo: "/ds.svg", descricao: "" },
+        { nome: "Aprendizado por Reforço", id: 6, sigla: "RL", logo: "/rl.svg", descricao: "" }
     ];
     
     const area_de_gestao = [
-        { nome: "RH", id: 0, sigla:"RH" },
-        { nome: "Marketing", id: 1, sigla:"MK" },
-        { nome: "Estratégia", id: 2, sigla:"EST"}
+        { nome: "RH", id: 0, sigla: "RH", logo: "/rh.svg", descricao: "" },
+        { nome: "Marketing", id: 1, sigla: "Marketing", logo: "/mkt.svg", descricao: "" },
+        { nome: "Estratégia", id: 2, sigla: "Estratégia", logo: "/estrategia.svg", descricao: "Como bons enxadristas, os membros de estratégia devem ser responsáveis por analisar estratégias e formas de ganhar um jogo. Somos responsáveis pelo planejamento e direcionamento estratégico da equipe com empresas e com a própria equipe." }
     ];
+
+    const areas = [...area_de_foco, ...area_de_gestao];
+    const areaPorSigla = Object.fromEntries(areas.map(area => [area.sigla, area]));
 
     const handleCategoriaClick = (index: number) => {
         setAbaAtiva(index);
@@ -50,7 +53,10 @@ export default function Botoesnav({ equipe }: BotoesnavProps) {
                 return null;
             } else {
                 // Se uma área foi selecionada, filtrar por ela
-                return equipe.filter(membro => membro.areas === areaEspecificaSelecionada);
+                const areaSelecionada = area_de_foco.find(area => area.id === areaEspecificaSelecionada);
+                if (!areaSelecionada) return [];
+                const areaKey = areaSelecionada.sigla;
+                return equipe.filter(membro => !!membro.areas_formatadas && areaKey in membro.areas_formatadas);
             }
         } else if (abaAtiva === 2) {
             // ÁREAS DE GESTÃO
@@ -58,7 +64,10 @@ export default function Botoesnav({ equipe }: BotoesnavProps) {
                 return null;
             } else {
                 // Se uma área foi selecionada, filtrar por ela
-                return equipe.filter(membro => membro.areas === areaEspecificaSelecionada);
+                const areaSelecionada = area_de_gestao.find(area => area.id === areaEspecificaSelecionada);
+                if (!areaSelecionada) return [];
+                const areaKey = areaSelecionada.sigla;
+                return equipe.filter(membro => !!membro.areas_formatadas && areaKey in membro.areas_formatadas);
             }
         }
         return equipe;
@@ -101,16 +110,88 @@ export default function Botoesnav({ equipe }: BotoesnavProps) {
                         ))}
                     </div>
                 )}
+                {abaAtiva !== 0 && areaEspecificaSelecionada !== null && (
+                    <div className="flex h-auto min-h-[10vh] w-[100%] items-center justify-center mt-[3%]">
+                        <div className="flex mx-[5%] object-contain items-center justify-center">
+                            <div className="flex w-[40%] items-center justify-center">
+                                <Image 
+                                    src={(() => {
+                                        const areaSelecionada = (abaAtiva === 1 ? area_de_foco : area_de_gestao)
+                                            .find(area => area.id === areaEspecificaSelecionada);
+                                        return areaSelecionada?.logo || "/logo.svg";
+                                    })()}
+                                    alt="Logo da Área"
+                                    width={100}
+                                    height={100}
+                                    className="h-[10vh] w-auto object-contain"
+                                />
+                            </div>
+                            <div className="flex flex-col">
+                                <p className="text-gray-400 text-[1.2rem] italic">
+                                    {(() => {
+                                        const areaSelecionada = (abaAtiva === 1 ? area_de_foco : area_de_gestao)
+                                            .find(area => area.id === areaEspecificaSelecionada);
+                                        return areaSelecionada?.nome || "";
+                                    })()}
+                                </p>
+                                <p className="text-gray-400 text-lg italic">{(() => {
+                                        const areaSelecionada = (abaAtiva === 1 ? area_de_foco : area_de_gestao)
+                                            .find(area => area.id === areaEspecificaSelecionada);
+                                        return areaSelecionada?.descricao || "";
+                                    })()}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
             {/* Grid de Membros */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-[5%] pb-[10%]">
                 {equipeFiltrada && equipeFiltrada.length > 0 ? (
-                    equipeFiltrada.map((membro) => (
-                        <Link 
-                            href={`/membro/${membro.id}`} 
-                            key={membro.id}
-                            className="group flex flex-col items-center bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
+                    equipeFiltrada.map((membro, index) => (
+                        <div
+                            key={`membro-${membro.id}-${index}`}
+                            className="group relative flex flex-col items-center bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
                         >
+                            {/* Emblemas das Áreas - Posicionados no canto superior esquerdo */}
+                            {membro.areas_formatadas && (
+                                <div className="absolute top-2 left-2 flex flex-col gap-1">
+                                    {Object.keys(membro.areas_formatadas).map((sigla) => (
+                                        <div
+                                            key={`emblema-${membro.id}-${sigla}`}
+                                            className="relative flex items-center justify-center h-auto w-auto min-w-8 min-h-8"
+                                            title={areaPorSigla[sigla]?.nome || sigla}
+                                        >
+                                            {membro.areas_formatadas?.[sigla] === "Diretor" && (
+                                                <Image
+                                                    src={"/diretor.svg"}
+                                                    alt="Diretor"
+                                                    width={20}
+                                                    height={20}
+                                                    className="absolute h-10 w-auto object-contain group-hover:scale-110 transition-transform duration-500"
+                                                />
+                                            )}
+                                            {membro.areas_formatadas?.[sigla] === "Vice-Diretor" && (
+                                                <Image
+                                                    src={"/vicediretor.svg"}
+                                                    alt="Vice-Diretor"
+                                                    width={20}
+                                                    height={20}
+                                                    className="absolute h-10 w-auto object-contain group-hover:scale-110 transition-transform duration-500"
+                                                />
+                                            )}
+                                            <Image
+                                                src={areaPorSigla[sigla]?.logo}
+                                                alt={sigla}
+                                                width={16}
+                                                height={16}
+                                                className="relative h-5 w-auto object-contain group-hover:scale-110 transition-transform duration-500"
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+        
                             {/* Container da Imagem */}
                             <div className="relative w-32 h-32 mb-4 overflow-hidden rounded-full border-4 border-[#F1863D]">
                                 <Image
@@ -126,25 +207,51 @@ export default function Botoesnav({ equipe }: BotoesnavProps) {
                                 {membro.nome}
                             </h3>
                             <p className="text-[#F1863D] font-medium text-sm">
-                                {membro.cargo || "Membro"}
+                                {abaAtiva === 0 || areaEspecificaSelecionada === null
+                                    ? "Membro"
+                                    : (() => {
+                                        const areaSelecionada = (abaAtiva === 1 ? area_de_foco : area_de_gestao)
+                                            .find(area => area.id === areaEspecificaSelecionada);
+                                        return membro.areas_formatadas?.[areaSelecionada?.sigla || ""] || "Membro";
+                                    })()
+                                }
                             </p>
-                            
-                            {/* Ano de Entrada (Histórico que criamos) */}
-                            {membro.ano_entrada && (
-                                <span className="text-gray-400 text-xs mt-2">
-                                    Desde {membro.ano_entrada}
-                                </span>
-                            )}
-                        </Link>
+                            <div className="flex flex-row w-[100%] items-center justify-center">
+                                <div className="relative flex">
+                                    <Link href={membro.redes_sociais?.linkedin || "#"} target="_blank" rel="noopener noreferrer">
+                                        <Image
+                                            src="/linkedin.svg"
+                                            alt="LinkedIn"
+                                            width={20}
+                                            height={20}
+                                            className="flex flex-1 object-contain h-8 w-auto"
+                                        />
+                                    </Link>
+                                    <Link href={membro.redes_sociais?.github || "#"} target="_blank" rel="noopener noreferrer">
+                                        <Image
+                                            src="/github.svg"
+                                            alt="GitHub"
+                                            width={20}
+                                            height={20}
+                                            className="flex flex-1 object-contain h-8 w-auto mx-[10%]"
+                                        />
+                                    </Link>
+                                </div>
+
+                            </div>
+                        </div>
                     ))
                 ) : (
                     <div className="col-span-full flex flex-col items-center justify-center py-20">
                         <p className="text-gray-400 text-lg italic">
                             {abaAtiva === 0 
                                 ? "Nenhum membro cadastrado." 
-                                : "Selecione uma sub-área para ver os membros."}
+                                : areaEspecificaSelecionada === null
+                                    ? "Selecione uma sub-área para ver os membros."
+                                    : "Nenhum membro nesta área."}
                         </p>
                     </div>
+                    
                 )}
             </div>
         </div>
