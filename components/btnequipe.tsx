@@ -8,6 +8,7 @@ interface MembroEquipe {
     nome: string;
     areas_formatadas?: Record<string, string>;
     redes_sociais?: Record<string, string>;
+    avatar_url?: string;
     [key: string]: any;
 }
 
@@ -195,7 +196,7 @@ export default function Botoesnav({ equipe }: BotoesnavProps) {
                             {/* Container da Imagem */}
                             <div className="relative w-32 h-32 mb-4 overflow-hidden rounded-full border-4 border-[#F1863D]">
                                 <Image
-                                    src={membro.foto_perfil || "/avatar.svg"}
+                                    src={membro.avatar_url || "/avatar.svg"}
                                     alt={membro.nome}
                                     fill
                                     className="object-cover group-hover:scale-110 transition-transform duration-500"
