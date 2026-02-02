@@ -1,6 +1,4 @@
-import Navbar from "@/components/navbar";
 import Image from "next/image";
-import Footer from "@/components/footer";
 import { projetosSimulados, Projeto } from "@/data/projetosDara";
 import { notFound } from "next/navigation";
 

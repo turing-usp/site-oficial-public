@@ -1,8 +1,6 @@
-import Navbar from '../../components/navbar';
 import Image from 'next/image';
-import Carousel from '../../components/carousel';
-import OqueFazemos from '../../components/oquefazemos';
-import Footer from '../../components/footer';
+import Carousel from '../../components/public/carousel';
+import OqueFazemos from '../../components/public/oquefazemos';
 import Link from 'next/link';
 
 export default function Home() {

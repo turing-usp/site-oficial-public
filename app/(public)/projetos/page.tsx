@@ -1,6 +1,4 @@
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
-import Lista_Projetos from "@/components/Lista_projetos";
+import Lista_Projetos from "@/components/public/Lista_projetos";
 import { projetosSimulados } from "@/data/projetosDara";
 
 export default async function Projetos() {

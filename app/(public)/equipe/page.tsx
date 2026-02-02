@@ -1,8 +1,6 @@
-import Navbar from "@/components/navbar";
 import Image from "next/image";
-import Footer from "@/components/footer";
 import { supabase } from "@/lib/supabaseclient";
-import Botoes from "@/components/btnequipe";
+import Botoes from "@/components/public/btnequipe";
 
 export default async function Equipe(){
     const {data,error} = await supabase
