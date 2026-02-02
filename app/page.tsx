@@ -3,11 +3,12 @@ import Image from 'next/image';
 import Carousel from '../components/carousel';
 import OqueFazemos from '../components/oquefazemos';
 import Footer from '../components/footer';
+import Link from 'next/link';
 
 export default function Home() {
     return (
         <main>
-            <div className='fixed top-0 left-0 right-0 z-10'>
+            <div className='fixed top-0 left-0 right-0 z-50'>
                 <Navbar/>
             </div>
             <div className='h-[100vh] flex flex-row z-0 items-center'>
@@ -75,6 +76,11 @@ export default function Home() {
                     <div className='w-[50%] h-[0.5vh] bg-[#F1863D]'></div>
                     <p className='mt-[5%] text-[#000000]  text-[1.5rem]'>O Turing é um grupo de extensão da USP campus Butantã que foi fundado em 2015 por 5 amigos. Desde então é referência na pesquisa e produção do assunto.</p>
                     <p className='mt-[5%] text-[#000000] text-[1.5rem]'>O grupo tem como objeto de estudos diferentes áreas da inteligência artificial: Data Science, Processamento de Linguagem Natural, Computação visual, Aprendizado por reforço e finanças quantitativas.</p>
+                    <div className='mt-[5%] self-center'>
+                        <Link href="/equipe">
+                            <button className='text-[#000000] bg-[#FFFFFF] border border-[#F1863D] w-[12rem] h-[3rem] rounded rounded-[2rem] hover:scale-103 transition-transform duration-300 cursor-pointer hover:bg-[#F1863D] hover:text-[#FFFFFF]'>CONHEÇA A EQUIPE</button>
+                        </Link>
+                    </div>
                 </div>
                 <Image 
                     src="/circuitoorange.svg"
@@ -98,7 +104,7 @@ export default function Home() {
                     className='absolute w-[8vh] h-auto object-cover z-0 rotate-270 origin-right-top top-0 right-[7%]'
                 />
             </div>
-            <div className='flex flex-col h-[100vh] z-0 relative bg-[#162B3F]'>
+            <div id='secao azul' className='flex flex-col h-[100vh] z-0 relative bg-[#162B3F]'>
                 <Image 
                     src="/circuito.svg"
                     alt="Circuitos"

@@ -26,7 +26,7 @@ const CONTEUDOS = [
         descricao: "Promovemos a disseminação do conhecimento em inteligência artificial por meio de publicações, cursos e textos escritos com uma linguagem acessível para todos, com o intuito de democratizar o acesso à informação.",
         imagem: "/disseminacao.png",
         escala: "scale-100",
-        href: "/turingtalks"
+        href: "/turing-talks"
     },
     {
         id: 4,
@@ -86,7 +86,7 @@ export default function OqueFazemos() {
                     <p className='text-[#FFFFFF] text-center my-[3%]'>
                         {CONTEUDOS[abaAtiva].descricao}
                     </p>
-                    <Link className='flex bg-[#F1863D] text-[#FFFFFF] text-[1rem] h-[5vh] w-[25vh] mt-[2%] rounded-[1rem] text-center items-center justify-center hover:bg-[#162B3F] cursor-pointer duration-500 ease-in-out' href={CONTEUDOS[abaAtiva].href}>
+                    <Link className='flex bg-[#F1863D] text-[#FFFFFF] text-[1rem] h-[5vh] w-[25vh] mt-[2%] rounded-[1rem] text-center items-center justify-center hover:bg-[#C25E1A] cursor-pointer duration-500 ease-in-out' href={CONTEUDOS[abaAtiva].href}>
                         SAIBA MAIS
                     </Link>
                 </div>
