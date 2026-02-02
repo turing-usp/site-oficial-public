@@ -17,9 +17,6 @@ export default async function Equipe(){
 
     return(
         <>
-            <div className="fixed top-0 left-0 right-0 z-10">
-                <Navbar/>
-            </div>
             <div className="relative flex h-[100vh] w-[100%] items-center justify-center">
                         <div className="flex flex-1 items-center relative">
                             <Image
@@ -62,10 +59,6 @@ export default async function Equipe(){
             <div>
                 <Botoes equipe={equipe} />
             </div>
-            <div>
-                <Footer/>
-            </div>
-
         </>
     );
 }

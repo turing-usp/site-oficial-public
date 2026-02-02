@@ -10,9 +10,6 @@ import { handleLogin } from "./actions";
 export default function Login() {
     return (
         <main>
-            <div className='fixed top-0 left-0 right-0 z-10'>
-                <Navbar/>
-            </div>
             <div className='flex flex-row h-[100vh] w-[100%] items-center justify-center'>
                 <div className="flex mx-[5%] mt-[5%]">
                     <div className='flex flex-1 justify-center'>
@@ -52,9 +49,6 @@ export default function Login() {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div>
-                <Footer/>
             </div>
         </main>
     );

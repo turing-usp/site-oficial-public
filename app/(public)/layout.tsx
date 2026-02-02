@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Orbitron,Inter,Irish_Grover } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 const OrbitronFont = Orbitron({
   subsets: ["latin"],
@@ -35,7 +37,13 @@ export default function RootLayout({
       <body
         className={`${OrbitronFont.variable} ${InterFont.variable} ${IrishGroverFont.variable} antialiased`}
       >
+        <div className='fixed top-0 left-0 right-0 z-50'>
+          <Navbar/>
+        </div>
         {children}
+        <div>
+          <Footer/>
+        </div>
       </body>
     </html>
   );

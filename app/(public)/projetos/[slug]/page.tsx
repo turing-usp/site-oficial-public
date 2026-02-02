@@ -60,9 +60,6 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
     
     return (
         <div>
-            <div className='fixed top-0 left-0 right-0 z-10'>
-                <Navbar/>
-            </div>
             <div className="flex flex-row h-[88vh] w-[100%] justify-center items-center">
                 <div className="flex mx-[5%]">
                     <p className="flex flex-1 text-[#000000] text-[4rem]">{projeto.titulo}</p>
@@ -169,9 +166,6 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
                 </div>
                 <p className="text-[#000000] text-[3rem] font-bold text-center mb-[5%]">RESULTADOS</p>
                 <p className="text-[#000000] text-[1.2rem] mb-[2%]">{projeto.resultados}</p>
-            </div>
-            <div>
-                <Footer />
             </div>
         </div>
     )

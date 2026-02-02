@@ -25,9 +25,6 @@ export default function TuringTalks(){
 
     return(
     <main>
-        <div className='fixed top-0 left-0 right-0 z-10'>
-            <Navbar/>
-        </div>
         <div className='relative h-[100vh] w-[100%]'>
             <div className='flex h-full w-full items-center justify-between z-5'>
                 <div className='flex mx-[5%] object-contain'>
@@ -123,9 +120,6 @@ export default function TuringTalks(){
                     </div>
                 </div>
             </div>
-        </div>
-        <div>
-            <Footer/>
         </div>
     </main>
     );

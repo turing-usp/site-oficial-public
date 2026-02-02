@@ -1,16 +1,13 @@
-import Navbar from '../components/navbar';
+import Navbar from '../../components/navbar';
 import Image from 'next/image';
-import Carousel from '../components/carousel';
-import OqueFazemos from '../components/oquefazemos';
-import Footer from '../components/footer';
+import Carousel from '../../components/carousel';
+import OqueFazemos from '../../components/oquefazemos';
+import Footer from '../../components/footer';
 import Link from 'next/link';
 
 export default function Home() {
     return (
         <main>
-            <div className='fixed top-0 left-0 right-0 z-50'>
-                <Navbar/>
-            </div>
             <div className='h-[100vh] flex flex-row z-0 items-center'>
                 <div className='ml-[5%] mr-[5%] flex flex-col w-[45%] items-center justify-center h-[100%]'>
                     <p className='text-[#000000] text-[4rem] text-center font-bold leading-tight'>CONSTRUINDO O FUTURO DA <span className='text-[#F1863D]'>IA</span></p>
@@ -183,9 +180,6 @@ export default function Home() {
                 <div>
                     <OqueFazemos/>
                 </div>
-            </div>
-            <div>
-                <Footer/>
             </div>
         </main>
     );
