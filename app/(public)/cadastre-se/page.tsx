@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Cadastre_se(){
     return(
         <>
-        <div className="flex h-[100vh]">
+        <div className="flex h-auto my-[2%] min-h-[100vh]">
             <div className="flex mx-[5%] items-center justify-center w-[90%]">
                 <div className="flex flex-col flex-1 h-[80vh] w-[70%] bg-[#162B3F] rounded-[2rem] items-center justify-center">
                     <Image
