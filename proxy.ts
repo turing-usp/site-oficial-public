@@ -31,12 +31,17 @@ const supabase = createServerClient(
   const { data: { user } } = await supabase.auth.getUser()
 
   // 2. Se tentar entrar em rota protegida sem login, tchau.
-  if (!user && request.nextUrl.pathname.startsWith('/dashboard')) {
+  if (!user && request.nextUrl.pathname.startsWith('/plataforma')) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
-  // 3. PROTEÇÃO DE ADMIN: Se a rota for /dashboard/admin, checamos o tipo no banco
-  if (request.nextUrl.pathname.startsWith('/dashboard/admin')) {
+  // 3. Se JÁ estiver logado e tentar acessar login/cadastro, redireciona para plataforma
+  if (user && (request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/cadastre-se')) {
+    return NextResponse.redirect(new URL('/plataforma', request.url))
+  }
+
+  // 4. PROTEÇÃO DE ADMIN: Se a rota for /plataforma/admin, checamos o tipo no banco
+  if (request.nextUrl.pathname.startsWith('/plataforma/admin')) {
     const { data: perfil } = await supabase
       .from('Perfis')
       .select('tipo_usuario')
@@ -44,8 +49,8 @@ const supabase = createServerClient(
       .single()
 
     if (perfil?.tipo_usuario !== 2) {
-      // Se não for admin (tipo 2), manda para a home do dashboard
-      return NextResponse.redirect(new URL('/dashboard', request.url))
+      // Se não for admin (tipo 2), manda para a home da plataforma
+      return NextResponse.redirect(new URL('/plataforma', request.url))
     }
   }
 
@@ -53,5 +58,5 @@ const supabase = createServerClient(
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*'], // Monitora tudo dentro de dashboard
+  matcher: ['/plataforma/:path*', '/login', '/cadastre-se'], // Monitora plataforma + páginas de auth
 }

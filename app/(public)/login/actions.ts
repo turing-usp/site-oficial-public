@@ -1,6 +1,6 @@
 "use server";
-
 import { redirect } from "next/navigation";
+import { loginUser } from "@/lib/auth-actions";
 
 export async function handleLogin(formData: FormData) {
     const email = (formData.get("email") || "").toString();
@@ -8,17 +8,20 @@ export async function handleLogin(formData: FormData) {
 
     // Validação básica no servidor
     if (!email || !password) {
-        // Em produção, use um retorno com estado de erro ou redirecione com query params
-        // Aqui, apenas interrompemos se os campos estiverem vazios
+        redirect("/login?error=campos-vazios");
         return;
     }
 
-    // TODO: Autenticar o usuário (consultar DB/serviço de auth)
-    // Exemplo (placeholder):
-    // const user = await authService.login(email, password)
-    // if (!user) return;
+    // loginUser agora cria cookies automaticamente via createSupabaseServer
+    const { data, error } = await loginUser({ email, senha: password });
 
-    // Após autenticar, criar sessão/cookies HttpOnly e redirecionar
-    // Por ora, apenas redireciona para a página de projetos
-    redirect("/projetos");
+    if (error || !data?.user) {
+        redirect("/login?error=credenciais-invalidas");
+        console.error("Erro ao fazer login:", error);
+        return;
+    }
+
+    // ✅ Cookies HttpOnly criados automaticamente pelo Supabase SSR
+    // Redireciona para dashboard (middleware do proxy.ts vai proteger)
+    redirect("/plataforma");
 }

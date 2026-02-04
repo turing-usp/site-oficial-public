@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Orbitron,Inter,Irish_Grover } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 
 const OrbitronFont = Orbitron({
   subsets: ["latin"],

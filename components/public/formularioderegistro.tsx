@@ -1,8 +1,15 @@
+"use client";
+
 import { useState } from "react";
 import Image from "next/image";
 import { handleCadastro } from "@/app/(public)/cadastre-se/actions";
 
-export default function FormularioDeRegistro() {
+interface FormularioDeRegistroProps {
+    error?: string;
+    success?: string;
+}
+
+export default function FormularioDeRegistro({ error, success }: FormularioDeRegistroProps) {
     const [isAlunoUSP, setIsAlunoUSP] = useState("");
     const [genero, setGenero] = useState("");
     const [senha, setSenha] = useState("");
@@ -10,6 +17,19 @@ export default function FormularioDeRegistro() {
     const [showPassword, setShowPassword] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
     const [senhaFocused, setSenhaFocused] = useState(false);
+
+    // Mapa de mensagens de erro
+    const getErrorMessage = (errorCode: string): string => {
+        const erros: { [key: string]: string } = {
+            "senha-nao-confere": "As senhas não coincidem.",
+            "senha-muito-curta": "A senha deve ter no mínimo 8 caracteres.",
+            "senha-sem-maiuscula": "A senha deve conter pelo menos uma letra maiúscula.",
+            "senha-sem-numero": "A senha deve conter pelo menos um número.",
+            "senha-sem-caractere-especial": "A senha deve conter pelo menos um caractere especial.",
+            "registro-falhou": "Erro ao registrar. Tente novamente."
+        };
+        return erros[errorCode] || "Erro desconhecido. Tente novamente.";
+    };
 
     // Função para verificar os requisitos da senha
     const validarSenha = (senha: string) => {
@@ -28,6 +48,21 @@ export default function FormularioDeRegistro() {
         <>
         <div className="flex flex-col items-center justify-center">
             <p className='text-[#000000] text-[2rem] font-bold'>CADASTRE-SE:</p>
+            
+            {/* Exibição de erros */}
+            {error && (
+                <div className="w-[40vw] mt-[3%] p-[2%] bg-red-100 border border-red-500 rounded-[0.5rem] text-red-700 text-center">
+                    {getErrorMessage(error)}
+                </div>
+            )}
+            
+            {/* Exibição de sucesso */}
+            {success && (
+                <div className="w-[40vw] mt-[3%] p-[2%] bg-green-100 border border-green-500 rounded-[0.5rem] text-green-700 text-center">
+                    {success === "cadastro-realizado" && "Cadastro realizado com sucesso! Redirecionando para login..."}
+                </div>
+            )}
+            
             <form action={handleCadastro}>
                 <div className="flex flex-col">
                     <input 
@@ -50,19 +85,20 @@ export default function FormularioDeRegistro() {
                             className='flex-1 h-[5vh]  rounded rounded-[2rem] bg-transparent text-[#000000] text-[1rem] mt-[3%] border-[0.1rem] border-[#F1863D] focus:outline-none text-center'
                         ></input>
                         <select 
+                            name="genero"
                             required 
                             value={genero}
                             onChange={(e) => setGenero(e.target.value)}
                             className='flex-1 h-[5vh] rounded rounded-[2rem] bg-transparent text-[#000000] text-[1rem] mt-[3%] border-[0.1rem] border-[#F1863D] focus:outline-none text-center'
                         >
                             <option value="" disabled className="text-[#000000]">GÊNERO</option>
-                            <option value="masculino" className="text-[#000000]">Homem-cis</option>
-                            <option value="feminino" className="text-[#000000]">Mulher-cis</option>
-                            <option value="outro" className="text-[#000000]">Homem-Trans</option>
-                            <option value="outro" className="text-[#000000]">Mulher-Trans</option>
-                            <option value="outro" className="text-[#000000]">Não-binário</option>
-                            <option value="outro" className="text-[#000000]">Outro</option>
-                            <option value="outro" className="text-[#000000]">Prefiro não dizer</option>
+                            <option value="Homem-cis" className="text-[#000000]">Homem-cis</option>
+                            <option value="Mulher-cis" className="text-[#000000]">Mulher-cis</option>
+                            <option value="Homem-Trans" className="text-[#000000]">Homem-Trans</option>
+                            <option value="Mulher-Trans" className="text-[#000000]">Mulher-Trans</option>
+                            <option value="Não-binário" className="text-[#000000]">Não-binário</option>
+                            <option value="Outro" className="text-[#000000]">Outro</option>
+                            <option value="Prefiro não dizer" className="text-[#000000]">Prefiro não dizer</option>
                         </select>
                     </div>
                     <select 

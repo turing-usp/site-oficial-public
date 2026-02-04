@@ -1,7 +1,13 @@
-'use client';
+"use client";
+
 import Forms from "@/components/public/formularioderegistro";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+
 export default function Cadastre_se(){
+    const searchParams = useSearchParams();
+    const error = searchParams.get("error") || undefined;
+    const success = searchParams.get("success") || undefined;
     return(
         <>
         <div className="flex h-auto my-[2%] min-h-[100vh]">
@@ -18,7 +24,7 @@ export default function Cadastre_se(){
                     <p className='text-[#FFFFFF] text-[1rem] text-center mx-[20%] mb-[2%]'>Cadastre as suas informações para aproveitar os nossos serviços. O site é composto por diversas funcionalidades que facilitam sua experiência. Para se cadastrar você está ciente que todas as informações serão armazenadas em um banco de dados.</p>
                 </div>
                 <div className="flex-col flex-1 h-[70vh] w-full bg-[#FFFFFF] ">
-                    <Forms />
+                    <Forms error={error} success={success} />
                 </div>
             </div>
         </div>
