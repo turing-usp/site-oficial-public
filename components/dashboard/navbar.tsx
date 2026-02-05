@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import Logout from "@/components/dashboard/btnlogout";
+import { getUserWithProfile } from "@/lib/auth-actions";
 
-export default function NavbarDashboard() {
+export default async function NavbarDashboard() {
+    const { user, tipo_usuario } = await getUserWithProfile();
 
     return(
         <nav className="flex bg-transparent fixed z-10 my-[1%] mx-[5%] w-[90%] justify-between items-center">
@@ -15,8 +17,17 @@ export default function NavbarDashboard() {
                 />
                 <p className='text-[1rem] text-[#F1863D]' style={{ fontFamily: 'var(--font-orbitron)' }}>turing.usp</p>
             </Link>
-            <div>
+            <div className="flex gap-[1.5rem]">
                 <Logout />
+                <Link href="/perfil">
+                    <Image
+                        src={`${user?.user_metadata?.avatar_url || '/avatar.svg'}`}
+                        alt="User Icon"
+                        width={35}
+                        height={35}
+                        className="cursor-pointer rounded-full overflow-hidden border-[#F1863D] border-2 inline-block mr-[1%]"
+                    />
+                </Link>
             </div>
         </nav>
     );
