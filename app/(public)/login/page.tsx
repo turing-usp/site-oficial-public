@@ -18,7 +18,7 @@ export default function Login() {
                                 height={300}
                                 className='mt-[10%]'
                             />
-                            <p className='text-[#FFFFFF] text-[2rem] font-bold mt-[5%]'>BEM VINDO DE VOLTA!</p>
+                            <p className='text-[#FFFFFF] text-[2rem] font-bold mt-[15%]'>BEM VINDO DE VOLTA!</p>
                             <p className='text-[#FFFFFF] text-[1rem] text-center mx-[20%] mt-[2%]'>Digite seu email e senha cadastrados para acessar sua conta Turing! Em caso de esquecimento, utilize a opção de recuperação de senha.</p>
                         </div>
                     </div>
@@ -35,12 +35,11 @@ export default function Login() {
                                         placeholder="EMAIL"
                                         required
                                         autoComplete="email"
-                                        className='h-[5vh] w-[40vw] border-none bg-transparent text-[#000000] text-[1rem] mt-[5%] focus:outline-none'
+                                        className='h-[5vh] w-[40vw] bg-transparent text-black text-[1rem] mt-[5%] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1'
                                     />
-                                    <div className="flex bg-[#000000] opacity-51 h-[0.1rem] w-[100%]"></div>
                                     <Senha/>
                                     <button className="h-[3rem] w-[12rem] border border-[#F1863D] border-[0.1rem] text-[#000000] text-[1rem] mt-[5%] rounded-[2rem] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer transition-ease-in-out duration-300">ENTRAR</button>
-                                    <Link href="/cadastre-se" className="text-[#000000] italic text-[1rem] mt-[5%] hover:underline">Esqueceu a senha?</Link>
+                                    <Link href="/cadastre-se" className="text-[#000000] italic text-[1rem] mt-[3%] hover:underline">Esqueci minha senha</Link>
                                 </div>
                             </form>
                         </div>
