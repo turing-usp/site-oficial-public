@@ -17,6 +17,7 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
     const [showPassword, setShowPassword] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
     const [senhaFocused, setSenhaFocused] = useState(false);
+    const [datanasc, setDatanasc] = useState("");
 
     // Mapa de mensagens de erro
     const getErrorMessage = (errorCode: string): string => {
@@ -72,9 +73,9 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                         placeholder="NOME COMPLETO"
                         required
                         autoComplete="name"
-                        className='flex h-[5vh] w-[40vw] rounded rounded-[2rem] bg-transparent text-[#000000] text-[1rem] mt-[3%] border-[0.1rem] border-[#F1863D] focus:outline-none text-center'
+                        className='h-[5vh] w-[40vw] bg-transparent text-black text-[1rem] mt-[7%] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1'
                     ></input>
-                    <div className="flex flex-row gap-[2%]">
+                    <div className="flex flex-row w-[40vw] gap-[4%] items-end mt-[-3%]">
                         <input 
                             id="datanasc"
                             name="datanasc"
@@ -82,14 +83,18 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                             placeholder="DATA DE NASCIMENTO"
                             required
                             autoComplete="bday"
-                            className='flex-1 h-[5vh]  rounded rounded-[2rem] bg-transparent text-[#000000] text-[1rem] mt-[3%] border-[0.1rem] border-[#F1863D] focus:outline-none text-center'
+                            value={datanasc}
+                            onChange={(e) => setDatanasc(e.target.value)}
+                            className={`flex-1 h-[5vh] bg-transparent text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 text-left px-1 
+                            ${datanasc === "" ? "text-[#B9BBBD]" : "text-black"}`}
                         ></input>
                         <select 
                             name="genero"
                             required 
                             value={genero}
                             onChange={(e) => setGenero(e.target.value)}
-                            className='flex-1 h-[5vh] rounded rounded-[2rem] bg-transparent text-[#000000] text-[1rem] mt-[3%] border-[0.1rem] border-[#F1863D] focus:outline-none text-center'
+                            className={`h-[5vh] w-[40vw] bg-transparent text-[1rem] mt-[5%] focus:outline-none border-b-[0.1rem] border-black/50 text-left px-1 appearance-none cursor-pointer 
+                            ${genero === "" ? "text-[#A6A6B0]" : "text-black"}`}
                         >
                             <option value="" disabled className="text-[#000000]">GÊNERO</option>
                             <option value="Homem-cis" className="text-[#000000]">Homem-cis</option>
@@ -102,14 +107,16 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                         </select>
                     </div>
                     <select 
+                        name="isAlunoUSP"
                         required 
                         value={isAlunoUSP}
                         onChange={(e) => setIsAlunoUSP(e.target.value)}
-                        className='h-[5vh] rounded rounded-[2rem] bg-transparent text-[#000000] text-[1rem] mt-[3%] border-[0.1rem] border-[#F1863D] focus:outline-none text-center'
+                        className={`h-[5vh] w-[40vw] bg-transparent text-[1rem] mt-[3%] focus:outline-none border-b-[0.1rem] border-black/50 text-left px-1 appearance-none cursor-pointer 
+                            ${isAlunoUSP === "" ? "text-[#A6A6B0]" : "text-black"}`} 
                     >
-                        <option value="" disabled className="text-[#000000]">É Aluno da USP?</option>
-                        <option value="sim" className="text-[#000000]">Sim</option>
-                        <option value="nao" className="text-[#000000]">Não</option>
+                        <option value="" disabled>É Aluno da USP?</option>
+                        <option value="sim" className="text-black">Sim</option>
+                        <option value="nao" className="text-black">Não</option>
                     </select>
                     
                     {isAlunoUSP === "sim" && (
@@ -123,7 +130,7 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                                 placeholder="EMAIL USP"
                                 required
                                 autoComplete="email"
-                                className='h-[5vh] w-[40vw] rounded rounded-[2rem] bg-transparent text-[#000000] text-[1rem] mt-[3%] border-[0.1rem] border-[#F1863D] focus:outline-none text-center valid:text-[#000000] border-[#F1863D] invalid:text-red-500'
+                                className='h-[5vh] w-[40vw] bg-transparent text-black text-[1rem] mt-[3%] focus:outline-none border-b-[0.1rem] border-black/50 text-left px-1'
                             />
                             <p className="text-[0.8rem] text-[#000000] italic">Obs: Só será aceito caso seja um email USP.</p>
                         </div>
@@ -136,7 +143,7 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                             placeholder="EMAIL"
                             required
                             autoComplete="email"
-                            className='h-[5vh] w-[40vw] rounded rounded-[2rem] bg-transparent text-[#000000] text-[1rem] mt-[3%] border-[0.1rem] border-[#F1863D] focus:outline-none text-center'
+                            className='h-[5vh] w-[40vw] bg-transparent text-black text-[1rem] mt-[3%] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1'
                         />
                     )}
                     <div className="flex relative w-full ">
@@ -153,12 +160,12 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                             onChange={(e) => setSenha(e.target.value)}
                             onFocus={() => setSenhaFocused(true)}
                             onBlur={() => setSenhaFocused(false)}
-                            className='h-[5vh] w-[40vw] rounded rounded-[2rem] bg-transparent text-[#000000] text-[1rem] mt-[3%] border-[0.1rem] border-[#F1863D] focus:outline-none text-center'
+                            className='h-[5vh] w-[40vw] bg-transparent text-black text-[1rem] mt-[3%] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1'
                         />
                         <button
                             type="button"
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute right-0 top-[50%] right-[2%] cursor-pointer"
+                            className="absolute right-0 top-[65%] right-[2%] cursor-pointer"
                             aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
                         >
                         <Image
@@ -205,12 +212,12 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                                     autoComplete="new-password"
                                     value={confirmarSenha}
                                     onChange={(e) => setConfirmarSenha(e.target.value)}
-                                    className='h-[5vh] w-[40vw] rounded rounded-[2rem] bg-transparent text-[#000000] text-[1rem] mt-[3%] border-[0.1rem] border-[#F1863D] focus:outline-none text-center'
+                                    className='h-[5vh] w-[40vw] bg-transparent text-black text-[1rem] mt-[3%] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1'
                                 />
                                 <button
                                 type="button"
                                 onClick={() => setShowPassword2(!showPassword2)}
-                                className="absolute right-0 top-[50%] right-[2%] cursor-pointer"
+                                className="absolute right-0 top-[65%] right-[2%] cursor-pointer"
                                 aria-label={showPassword2 ? "Ocultar senha" : "Mostrar senha"}
                                 >
                                 <Image
