@@ -15,12 +15,12 @@ export default function Senha() {
                     placeholder="SENHA"
                     required
                     autoComplete="current-password"
-                    className='h-[5vh] w-[40vw] border-none bg-transparent text-[#000000] text-[1rem] mt-[5%] focus:outline-none pr-8'
+                    className='h-[5vh] w-[40vw] bg-transparent text-black text-[1rem] mt-[5%] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1'
                 />
                 <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-0 top-[50%] -translate-y-1/2 cursor-pointer"
+                    className="absolute right-0 top-[70%] -translate-y-1/2 cursor-pointer"
                     aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
                 >
                 <Image
@@ -32,7 +32,6 @@ export default function Senha() {
                 />
                 </button>
             </div>
-            <div className="flex bg-[#000000] opacity-51 h-[0.1rem] w-[100%]"></div>
         </>
     );
 }
