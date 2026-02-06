@@ -30,15 +30,15 @@ export default async function ContainerBlue({ children }: ContainerBlueProps) {
             );
         }
     return(
-        <div className="relative flex h-auto min-h-[100vh] w-full mb-[8%]">
-                    <div className="w-[90%] mx-[5%]">
-                        <Subnav pages={pages} />
-                    </div>
-                    <div className="absolute h-full w-[80%] bg-[#162B3F] rounded-tl-[2rem] rounded-bl-[2rem] top-[10%] right-0 overflow-hidden">
-                        <div className="p-8">
-                            {children}
+            <div className="flex h-auto min-h-[100vh]">
+                        <div className=" flex w-[10%] mx-[5%] mt-[5%]">
+                            <Subnav pages={pages} />
                         </div>
-                    </div>
-                </div>
+                        <div className="flex h-auto w-[80%] bg-[#162B3F] rounded-tl-[2rem] rounded-bl-[2rem] mt-[5%]">
+                            <div className="p-8 w-full">
+                                {children}
+                            </div>
+                        </div>
+            </div>
     );
 }

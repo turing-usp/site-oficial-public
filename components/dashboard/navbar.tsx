@@ -19,7 +19,7 @@ export default async function NavbarDashboard() {
             </Link>
             <div className="flex gap-[1.5rem]">
                 <Logout />
-                <Link href="/perfil">
+                <Link href="/plataforma/perfil">
                     <Image
                         src={`${user?.user_metadata?.avatar_url || '/avatar.svg'}`}
                         alt="User Icon"

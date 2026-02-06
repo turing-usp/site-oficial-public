@@ -23,7 +23,7 @@ export default function Contato() {
                         <input name="email" type="email" placeholder="EMAIL" required className="h-[5vh] flex-1 bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
                     </div>
                     <select
-                        name="areasInteresse"
+                        name="areasDeInteresse"
                         required
                         value={areaDeInteresse}
                         onChange={(e) => setAreaDeInteresse(e.target.value)}
@@ -54,7 +54,7 @@ export default function Contato() {
                             <option value="Outro" className="text-[#000000]">Outro</option>
                     </select>
                     <textarea
-                        name="descricaoProjeto"
+                        name="mensagem"
                         placeholder="CONTE UM POUCO SOBRE SUA IDEIA"
                         required
                         className="w-full h-[15vh] bg-[#162B3F] text-white p-4 rounded-xl focus:outline-none placeholder:text-gray-400 mt-[5%] resize-none border-none"
@@ -79,7 +79,7 @@ export default function Contato() {
                         <input name="anoDeIngresso" type="number" placeholder="ANO DE INGRESSO" required className="h-[5vh] flex-1 bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
                     </div>
                     <select
-                        name="areasInteresse"
+                        name="areasDeInteresse"
                         required
                         value={areaDeInteresse}
                         onChange={(e) => setAreaDeInteresse(e.target.value)}
@@ -123,10 +123,10 @@ export default function Contato() {
                 <div className='w-full max-w-[500px]'>
                     <form action={handleContato} className="flex flex-col">
                         {conteudos[estadoAtual].formCampos}
+                        <div className="flex w-full justify-center">
+                            <button type="submit" className="h-[3rem] w-[12rem] border border-[#F1863D] border-[0.1rem] text-[#000000] text-[1rem] mt-[5%] rounded-[2rem] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer transition-ease-in-out duration-300 self-center">ENVIAR</button>
+                        </div>
                     </form>
-                </div>
-                <div className="flex w-full justify-center">
-                <button type="submit" className="h-[3rem] w-[12rem] border border-[#F1863D] border-[0.1rem] text-[#000000] text-[1rem] mt-[5%] rounded-[2rem] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer transition-ease-in-out duration-300 self-center">ENVIAR</button>
                 </div>
             </div>
     </main>

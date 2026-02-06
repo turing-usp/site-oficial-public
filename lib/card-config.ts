@@ -62,3 +62,8 @@ export function getAccessiblePages(tipo_usuario: number): { title: string; link:
     }
     return accessiblePages;
 }
+
+// Função para verificar se usuário pode alterar imagem de perfil
+export function canChangeProfileImage(tipo_usuario: number): boolean {
+  return tipo_usuario === 1 || tipo_usuario === 2;
+}

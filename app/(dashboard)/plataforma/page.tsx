@@ -24,7 +24,6 @@ export default async function Plataforma() {
             <p className="text-black text-[4rem] text-center font-bold">Olá, {nome}</p>
             <p className="text-black text-[1.2rem] my-[2%] text-center">Bem-vindo à plataforma Turing USP! Aqui você encontrará conteúdos exclusivos e recursos para aprimorar seus conhecimentos em inteligência artificial.</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 px-[5%] pb-[10%]">
-              {/* Renderiza apenas cards visíveis (configuração no servidor) */}
               {visibleCards.map((card) => (
                 <Cards 
                   key={card.id} 
