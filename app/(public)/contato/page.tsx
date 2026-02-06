@@ -17,8 +17,8 @@ export default function Contato() {
             formTitulo: "FORMULÁRIO DE PARCERIAS",
             formCampos: (
                 <>
-                    <input name="nome" type="text" placeholder="NOME COMPLETO" required className="h-[5vh] w-full bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
-                    <div className="flex flex-row gap-4">
+                    <input name="nome" type="text" placeholder="NOME COMPLETO" required className="h-[5vh] w-[40vw] bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
+                    <div className="flex flex-row w-[40vw] gap-4">
                         <input name="telefone" type="tel" placeholder="TELEFONE" required className="h-[5vh] flex-1 bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
                         <input name="email" type="email" placeholder="EMAIL" required className="h-[5vh] flex-1 bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
                     </div>
@@ -27,7 +27,7 @@ export default function Contato() {
                         required
                         value={areaDeInteresse}
                         onChange={(e) => setAreaDeInteresse(e.target.value)}
-                        className={`h-[5vh] w-[40vw] bg-transparent text-[1rem] mt-[5%] focus:outline-none border-b-[0.1rem] border-black/50 text-left px-1 appearance-none cursor-pointer
+                        className={`h-[5vh] w-[40vw] bg-transparent text-[1rem] mt-[-3%] focus:outline-none border-b-[0.1rem] border-black/50 text-left px-1 appearance-none cursor-pointer
                         ${areaDeInteresse === "" ? "text-[#A6A6B0]" : "text-black"}`}
                         >
                             <option value="" disabled className="text-[#A6A6B0]">ÁREA DE INTERESSE</option>
@@ -53,27 +53,37 @@ export default function Contato() {
                             <option value="Divulgação" className="text-[#000000]">Divulgação</option>
                             <option value="Outro" className="text-[#000000]">Outro</option>
                     </select>
+                    <textarea
+                        name="descricaoProjeto"
+                        placeholder="CONTE UM POUCO SOBRE SUA IDEIA"
+                        required
+                        className="w-full h-[15vh] bg-[#162B3F] text-white p-4 rounded-xl focus:outline-none placeholder:text-gray-400 mt-[5%] resize-none border-none"
+                    ></textarea>
                 </>
             ),
         },
         processoSeletivo: {
-            imagemSrc: "/queroturing.svg",
+            imageSrc: "/queroturing.svg",
             titulo: "QUERO SER TURING",
             descricao: "Se interessou e gostaria de fazer o processo seletivo do grupo? Preencha o formulário ao lado. É preciso ser aluno da USP na cidade de São Paulo.",
             formTitulo: "FORMULÁRIO DE INSCRIÇÃO",
             formCampos: (
                 <>
-                    <input name="nome" type="text" placeholder="NOME COMPLETO" required className="h-[5vh] w-full bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
-                    <div className="flex flex-row gap-4">
+                    <input name="nome" type="text" placeholder="NOME COMPLETO" required className="h-[5vh] w-[40vw] bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
+                    <div className="flex flex-row gap-4 w-[40vw]">
                         <input name="telefone" type="tel" placeholder="TELEFONE" required className="h-[5vh] flex-1 bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
                         <input name="email" type="email" placeholder="EMAIL" required className="h-[5vh] flex-1 bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
+                    </div>
+                    <div className="flex flex-row gap-4 w-[40vw]">
+                        <input name="curso" type="text" placeholder="CURSO E UNIDADE" required className="h-[5vh] flex-1 bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
+                        <input name="anoDeIngresso" type="number" placeholder="ANO DE INGRESSO" required className="h-[5vh] flex-1 bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
                     </div>
                     <select
                         name="areasInteresse"
                         required
                         value={areaDeInteresse}
                         onChange={(e) => setAreaDeInteresse(e.target.value)}
-                        className={`h-[5vh] w-[40vw] bg-transparent text-[1rem] mt-[5%] focus:outline-none border-b-[0.1rem] border-black/50 text-left px-1 appearance-none cursor-pointer
+                        className={`h-[5vh] w-[40vw] bg-transparent text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 text-left px-1 appearance-none cursor-pointer
                         ${areaDeInteresse === "" ? "text-[#A6A6B0]" : "text-black"}`}
                         >
                             <option value="" disabled className="text-[#A6A6B0]">ÁREA DE INTERESSE</option>
@@ -84,8 +94,6 @@ export default function Contato() {
                             <option value="Aprendizado por Reforço" className="text-[#000000]">Aprendizado por Reforço</option>
                             <option value="Outros" className="text-[#000000]">Outros</option>
                     </select>
-                    <input name="curso" type="text" placeholder="CURSO" required className="h-[5vh] w-full bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
-                    <input name="anoDeEntrada" type="number" placeholder="ANO DE ENTRADA" required className="h-[5vh] w-full bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
                 </>
             ),
         }
@@ -93,17 +101,32 @@ export default function Contato() {
     
     return (
     <main className='flex flex-row h-[100vh] w-[100%] items-center justify-start'>
-            <div className="flex flex-col bg-[#162B3F] h-[80vh] w-[28%] rounded rounded-[2rem] justify-between items-center ml-[10%] mt-[5%]">
+            <div className="flex flex-col bg-[#162B3F] h-[80vh] w-[30%] rounded-[2rem] items-center ml-[15%] mt-[5%] py-8">
                 <Image
                     src={conteudos[estadoAtual].imageSrc}
                     alt="Contato Image"
                     width={300}
                     height={300}
-                    className="mt-[10%]"
+                    className="mt-[3%]"
                 />
-                <div className="flex flex-col items-center mb-[60%]">
+                <div className="flex flex-col items-center gap-0 flex-1 justify-center px-6 mb-[10%]">
                     <p className="text-[#FFFFFF] text-[2rem] font-bold">{conteudos[estadoAtual].titulo}</p>
                     <p className="text-[#FFFFFF] text-[1rem] text-center mx-[20%]">{conteudos[estadoAtual].descricao}</p>
+                </div>
+                <div className="flex flex-row justify-between mb-[20%]">
+                    <button onClick={() => setEstadoAtual("parcerias")} className={`h-[3rem] w-[12rem] border border-[#F1863D] border-[0.1rem] text-[#FFFFFF] text-[1rem] rounded-[2rem] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer transition-ease-in-out duration-300 mx-[5%] ${estadoAtual === "parcerias" ? "bg-[#F1863D] text-[#FFFFFF]" : "bg-transparent text-[#FFFFFF]"}`}>PARCERIAS</button>
+                    <button onClick={() => setEstadoAtual("processoSeletivo")} className={`h-[3rem] w-[12rem] border border-[#F1863D] border-[0.1rem] text-[#FFFFFF] text-[1rem] rounded-[2rem] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer transition-ease-in-out duration-300 mx-[5%] ${estadoAtual === "processoSeletivo" ? "bg-[#F1863D] text-[#FFFFFF]" : "bg-transparent text-[#FFFFFF]"}`}>QUERO SER TURING</button>
+                </div>
+            </div>
+            <div className='flex flex-col flex-1 items-start justify-between ml-[2%] px-[5%] mt-[4%]'>
+                <p className='text-[#000000] text-[2rem] font-bold mb-[5%] text-center w-full'>{conteudos[estadoAtual].formTitulo}</p>
+                <div className='w-full max-w-[500px]'>
+                    <form action={handleContato} className="flex flex-col">
+                        {conteudos[estadoAtual].formCampos}
+                    </form>
+                </div>
+                <div className="flex w-full justify-center">
+                <button type="submit" className="h-[3rem] w-[12rem] border border-[#F1863D] border-[0.1rem] text-[#000000] text-[1rem] mt-[5%] rounded-[2rem] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer transition-ease-in-out duration-300 self-center">ENVIAR</button>
                 </div>
             </div>
     </main>
