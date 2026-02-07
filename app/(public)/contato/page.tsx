@@ -19,7 +19,7 @@ export default function Contato() {
                 <>
                     <input name="nome" type="text" placeholder="NOME COMPLETO" required className="h-[5vh] w-[40vw] bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
                     <div className="flex flex-row w-[40vw] gap-4">
-                        <input name="telefone" type="tel" placeholder="TELEFONE" required className="h-[5vh] flex-1 bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
+                        <input name="telefone" type="tel" placeholder="TELEFONE" required maxLength={11} className="h-[5vh] flex-1 bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
                         <input name="email" type="email" placeholder="EMAIL" required className="h-[5vh] flex-1 bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
                     </div>
                     <select
@@ -71,7 +71,7 @@ export default function Contato() {
                 <>
                     <input name="nome" type="text" placeholder="NOME COMPLETO" required className="h-[5vh] w-[40vw] bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
                     <div className="flex flex-row gap-4 w-[40vw]">
-                        <input name="telefone" type="tel" placeholder="TELEFONE" required className="h-[5vh] flex-1 bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
+                        <input name="telefone" type="tel" placeholder="TELEFONE" required maxLength={11} className="h-[5vh] flex-1 bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
                         <input name="email" type="email" placeholder="EMAIL" required className="h-[5vh] flex-1 bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1 mb-[5%]" />
                     </div>
                     <div className="flex flex-row gap-4 w-[40vw]">
@@ -121,12 +121,12 @@ export default function Contato() {
             <div className='flex flex-col flex-1 items-start justify-between ml-[2%] px-[5%] mt-[4%]'>
                 <p className='text-[#000000] text-[2rem] font-bold mb-[5%] text-center w-full'>{conteudos[estadoAtual].formTitulo}</p>
                 <div className='w-full max-w-[500px]'>
-                    <form action={handleContato} className="flex flex-col">
+                    <form id="formContato" action={handleContato} className="flex flex-col">
                         {conteudos[estadoAtual].formCampos}
-                        <div className="flex w-full justify-center">
-                            <button type="submit" className="h-[3rem] w-[12rem] border border-[#F1863D] border-[0.1rem] text-[#000000] text-[1rem] mt-[5%] rounded-[2rem] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer transition-ease-in-out duration-300 self-center">ENVIAR</button>
-                        </div>
                     </form>
+                </div>
+                <div className="flex w-full justify-center">
+                    <button type="submit" form="formContato" className="h-[3rem] w-[12rem] border border-[#F1863D] border-[0.1rem] text-[#000000] text-[1rem] mt-[5%] rounded-[2rem] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer transition-ease-in-out duration-300 self-center">ENVIAR</button>
                 </div>
             </div>
     </main>
