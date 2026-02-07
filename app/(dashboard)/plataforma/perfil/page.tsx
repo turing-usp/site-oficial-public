@@ -1,16 +1,15 @@
 import ContainerBlue from "@/components/ui/containerblue";
 import EditInfos from "@/components/dashboard/editinfos";
-import { getUserWithProfile } from "@/lib/auth-actions";
-import { canChangeProfileImage } from "@/lib/card-config";
+import { canChangeProfileImageForUser, lerdadosusuario} from "@/lib/auth-actions";
 
 export default async function NavbarDashboard() {
-    const { tipo_usuario } = await getUserWithProfile();
-    const canChangeImage = canChangeProfileImage(tipo_usuario!);
+    const canChangeImage = await canChangeProfileImageForUser();
+    const userData = await lerdadosusuario();
 
     return(
         <>
         <ContainerBlue>
-            <EditInfos canChangeImage={canChangeImage} />
+            <EditInfos canChangeImage={canChangeImage} userData={userData} />
         </ContainerBlue>
         </>
     );

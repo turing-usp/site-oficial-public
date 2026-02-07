@@ -1,5 +1,4 @@
-import { getUserWithProfile } from "@/lib/auth-actions";
-import { getVisibleCards } from "@/lib/card-config";
+import { getUserWithProfile, getVisibleCardsForUser } from "@/lib/auth-actions";
 import { redirect } from "next/navigation";
 import Cards from "@/components/dashboard/cards";
 
@@ -16,7 +15,7 @@ export default async function Plataforma() {
   }
 
   // Busca apenas os cards que o usuário tem permissão
-  const visibleCards = getVisibleCards(tipo_usuario);
+  const visibleCards = await getVisibleCardsForUser();
 
   return (
     <div className="flex min-h-[100vh] h-auto mx-[5%] w-[90%] justify-center">

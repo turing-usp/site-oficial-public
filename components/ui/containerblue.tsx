@@ -1,26 +1,13 @@
 import { ReactNode } from 'react';
 import Subnav from '../dashboard/subnav';
-import { getAccessiblePages } from '@/lib/card-config';
-import { getUserWithProfile } from '@/lib/auth-actions';
+import { getAccessiblePagesForUser } from '@/lib/auth-actions';
 
 interface ContainerBlueProps {
     children: ReactNode;
 }
 
 export default async function ContainerBlue({ children }: ContainerBlueProps) {
-     const result = await getUserWithProfile();
-        const { tipo_usuario, error } = result;
-        
-        // Verifica se tipo_usuario é um número válido
-        if (typeof tipo_usuario !== 'number') {
-            return (
-                <div className="flex h-auto min-h-[100vh] w-[90%] mx-[5%]">
-                    <p className="text-[#000000]">Erro: Tipo de usuário inválido.</p>
-                </div>
-            );
-        }
-    
-        const pages = getAccessiblePages(tipo_usuario);
+        const pages = await getAccessiblePagesForUser();
         
         if (pages.length === 0) {
             return (

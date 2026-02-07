@@ -38,32 +38,3 @@ export const CARDS_CONFIG: Record<string, CardConfig> = {
   }
 };
 
-// Função para validar se usuário pode acessar um card
-export function canUserAccessCard(tipo_usuario: number, cardId: string): boolean {
-  const card = CARDS_CONFIG[cardId];
-  if (!card) return false;
-  return card.tipo_perfil.includes(tipo_usuario); // aqui ele verifica se o tipo_usuario está na lista de tipos permitidos
-}
-
-// Função para pegar cards visíveis para um tipo de usuário
-export function getVisibleCards(tipo_usuario: number): CardConfig[] {
-  return Object.values(CARDS_CONFIG).filter(card =>
-    card.tipo_perfil.includes(tipo_usuario) // aqui ele verifica se o tipo_usuario está na lista de tipos permitidos
-  );
-}
-
-//Função que será utilizada para enviar quais páginas o integrante terá acesso para colocar na aba lateral de navegação
-export function getAccessiblePages(tipo_usuario: number): { title: string; link: string,id: string }[] {
-    const accessiblePages: { title: string; link: string,id: string }[] = [];
-    for (const card of Object.values(CARDS_CONFIG)) {
-        if (card.tipo_perfil.includes(tipo_usuario)) {
-            accessiblePages.push({ title: card.title, link: card.link, id: card.id });
-        }
-    }
-    return accessiblePages;
-}
-
-// Função para verificar se usuário pode alterar imagem de perfil
-export function canChangeProfileImage(tipo_usuario: number): boolean {
-  return tipo_usuario === 1 || tipo_usuario === 2;
-}

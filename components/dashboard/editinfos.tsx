@@ -1,22 +1,51 @@
 "use client";
 
 import Image from "next/image";
-import { updateAvatar } from "@/lib/auth-actions";
-import { redirect } from "next/navigation";
+import { aceitando_foto } from "@/lib/auth-actions";
+import { useRef, useState } from "react";
+import type { ChangeEvent } from "react";
 
 interface EditInfosProps {
   canChangeImage: boolean;
+  userData?: {
+    tipo_usuario: number | null;
+    nome: string | null;
+    datanasc: string | null;
+    genero: string | null;
+    email: string | null;
+    avatarUrl: string | null;
+    redes_sociais: { linkedin?: string | null; github?: string | null;} | null;
+    temredes: boolean;
+  } | null;
 }
 
-export default function EditInfos({ canChangeImage }: EditInfosProps) {
-  const mudarimagem = async () => {
-    const result = await updateAvatar();
-    if (!result.ok) {
-      redirect('/plataforma'); // Redireciona de volta para a página de perfil em caso de erro
+
+
+export default function EditInfos({ canChangeImage, userData }: EditInfosProps) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+  const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const preview = URL.createObjectURL(file);
+    setPreviewUrl(preview);
+
+    const formData = new FormData();
+    formData.append("file", file);
+    const result = await aceitando_foto(formData);
+
+    if (!result?.ok) {
+      console.error(result?.error ?? "Erro ao enviar imagem.");
+      URL.revokeObjectURL(preview);
+      setPreviewUrl(null);
     }
-    else{
-      
-    }
+
+    event.target.value = "";
+  };
+  const abrirSeletorImagem = () => {
+    fileInputRef.current?.click();
   };
 
   return (
@@ -25,29 +54,42 @@ export default function EditInfos({ canChangeImage }: EditInfosProps) {
         <p className="text-[#FFFFFF] text-[1.5rem]">Editar informações do perfil</p>
         <div className="flex justify-center items-center gap-[5%]">
           <div className="flex flex-col items-center justify-center text-center">
-            <Image
-              src="/avatar.svg"
-              alt="Imagem de perfil"
-              width={120}
-              height={120}
-              className="border-[#F1863D] border-4 rounded-full my-[2%]"
-            />
+            <div className="w-[120px] h-[120px] rounded-full overflow-hidden border-[#F1863D] border-4 my-[2%] flex items-center justify-center">
+              <Image
+                src={previewUrl || userData?.avatarUrl || "/avatar.svg"}
+                alt="Imagem de perfil"
+                width={120}
+                height={120}
+                className="w-full h-full"
+                style={{ objectFit: "cover" }}
+              />
+            </div>
             <p className="text-[#FFFFFF] text-[0.8rem] my-[1%]">As fotos devem estar no formato JPG ou PNG e ter no máximo 2MB.</p>
           </div>
           {canChangeImage ? (
-              <button
-                onClick={mudarimagem}
-                className="text-[1rem] text-[#FFFFFF] bg-[#008FF8] rounded-[2rem] py-2 px-10 hover:bg-[#006FCC] cursor-pointer"
-              >
-                Alterar Imagem
-              </button>
+              <>
+                <input
+                  ref={fileInputRef || null}
+                  type="file"
+                  accept="image/jpeg, image/png"
+                  className="hidden"
+                  onChange={handleFileChange}
+                />
+                <button
+                  type="button"
+                  onClick={abrirSeletorImagem}
+                  className="text-[1rem] text-[#FFFFFF] bg-[#008FF8] rounded-[2rem] py-2 px-10 hover:bg-[#006FCC] cursor-pointer"
+                >
+                  Trocar imagem
+                </button>
+              </>
           ) : (
             <p className="text-[#FFFFFF] bg-red-500 rounded-[2rem] py-2 px-8">Você não tem permissão para mudar a imagem.</p>
           )}
         </div>
         <p className="text-[#FFFFFF] text-[1.5rem]">Informações básicas</p>
         <label htmlFor="nome" className="text-white text-[1rem] flex mb-[1%] mt-[2%] cursor-pointer">Nome Completo:</label>
-        <input id="nome" name="nome" type="text" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem]" placeholder="Digite seu nome completo" />
+        <input id="nome" name="nome" type="text" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem]" defaultValue={userData?.nome||""} />
         <div className="flex items-center justify-center gap-[5%] my-[2%]">
           <div className="flex-col flex-1">
             <label htmlFor="datanasc" className="text-white text-[1rem] flex my-[1%] cursor-pointer">Data de Nascimento</label>
@@ -69,17 +111,19 @@ export default function EditInfos({ canChangeImage }: EditInfosProps) {
         </div>
         <p className="text-[#FFFFFF] text-[1.5rem] my-[2%]">Informações de contato</p>
         <label htmlFor="email" className="text-white text-[1rem] flex my-[1%] cursor-pointer">Email:</label>
-        <input readOnly id="email" name="email" type="email" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem]" placeholder="Digite seu email" />
+        <input readOnly id="email" name="email" type="email" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem]" placeholder={userData?.email||""} />
+        {userData?.temredes && (
         <div className="flex items-center justify-center gap-[5%] my-[2%]">
           <div className="flex-col flex-1">
             <label htmlFor="LinkedIN" className="text-white text-[1rem] flex my-[1%] cursor-pointer">LinkedIN</label>
-            <input id="LinkedIN" name="LinkedIN" type="text" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem]" placeholder="Digite o link do seu LinkedIN" />
+            <input id="LinkedIN" name="LinkedIN" type="text" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem]" defaultValue={userData?.redes_sociais?.linkedin||"Digite o link do seu LinkedIN"} />
           </div>
           <div className="flex-col flex-1">
             <label htmlFor="GitHub" className="text-white text-[1rem] flex my-[1%] cursor-pointer">GitHub</label>
-            <input id="GitHub" name="GitHub" type="text" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem]" placeholder="Digite o link do seu GitHub" />
+            <input id="GitHub" name="GitHub" type="text" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem]" defaultValue={userData?.redes_sociais?.github||"Digite o link do seu GitHub"} />
           </div>
         </div>
+        )}
         <p className="text-[#FFFFFF] text-[1.5rem] my-[2%]">Redefinir Senha</p>
         <label htmlFor="senhaatual" className="text-white text-[1rem] flex my-[1%] cursor-pointer">Senha atual:</label>
         <input id="senhaatual" name="senhaatual" type="password" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem]" placeholder="Digite sua senha atual" />
