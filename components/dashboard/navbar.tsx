@@ -4,7 +4,7 @@ import Logout from "@/components/dashboard/btnlogout";
 import { getUserWithProfile } from "@/lib/auth-actions";
 
 export default async function NavbarDashboard() {
-    const { user, tipo_usuario } = await getUserWithProfile();
+    const { avatarUrl } = await getUserWithProfile();
 
     return(
         <nav className="flex bg-transparent fixed z-10 my-[1%] mx-[5%] w-[90%] justify-between items-center">
@@ -19,13 +19,13 @@ export default async function NavbarDashboard() {
             </Link>
             <div className="flex gap-[1.5rem]">
                 <Logout />
-                <Link href="/plataforma/perfil">
+                <Link href="/plataforma/perfil" className="w-[35px] h-[35px] rounded-full overflow-hidden border-[#F1863D] border-2 my-[2%] flex items-center justify-center">
                     <Image
-                        src={`${user?.user_metadata?.avatar_url || '/avatar.svg'}`}
+                        src={avatarUrl || "/avatar.svg"}
                         alt="User Icon"
                         width={35}
                         height={35}
-                        className="cursor-pointer rounded-full overflow-hidden border-[#F1863D] border-2 inline-block mr-[1%]"
+                        className="object-cover w-full h-full"
                     />
                 </Link>
             </div>

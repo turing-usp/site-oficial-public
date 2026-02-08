@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { aceitando_foto } from "@/lib/auth-actions";
-import { useRef, useState } from "react";
+import { useRef, useState, useActionState } from "react";
 import type { ChangeEvent } from "react";
 import { inserirdados } from "@/app/(dashboard)/plataforma/perfil/actions";
 
@@ -26,6 +25,11 @@ export default function EditInfos({ canChangeImage, userData }: EditInfosProps) 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [state, formAction] = useActionState(inserirdados, { 
+    error: null, 
+    success: false,
+    data: null
+  });
 
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -38,6 +42,14 @@ export default function EditInfos({ canChangeImage, userData }: EditInfosProps) 
     event.target.value = "";
   };
 
+  // Wrapper para adicionar a foto ao FormData
+  const handleFormAction = async (formData: FormData) => {
+    if (selectedFile) {
+      formData.set("foto", selectedFile);
+    }
+    return formAction(formData);
+  };
+
   const abrirSeletorImagem = () => {
     fileInputRef.current?.click();
   };
@@ -45,7 +57,18 @@ export default function EditInfos({ canChangeImage, userData }: EditInfosProps) 
   return (
     <div className="flex-col h-auto mx-[5%] w-[90%]">
       <div className="flex-col my-[3%]">
-        <form action={inserirdados} >
+        {state?.error && (
+          <div className="bg-red-500 text-white p-4 rounded-lg mb-4 text-center">
+            <p> Ops, aconteceu um erro! {state.error} </p>
+          </div>
+        )}
+
+        {state?.success && (
+          <div className="bg-green-500 text-white p-4 rounded-lg mb-4 text-center">
+            <p>Alterações salvas com sucesso!</p>
+          </div>
+        )}
+        <form action={handleFormAction} >
             <p className="text-[#FFFFFF] text-[1.5rem]">Editar informações do perfil</p>
             <div className="flex justify-center items-center gap-[5%]">
               <div className="flex flex-col items-center justify-center text-center">
@@ -59,14 +82,15 @@ export default function EditInfos({ canChangeImage, userData }: EditInfosProps) 
                     style={{ objectFit: "cover" }}
                   />
                 </div>
-                <p className="text-[#FFFFFF] text-[0.8rem] my-[1%]">As fotos devem estar no formato JPG ou PNG e ter no máximo 2MB.</p>
+                <p className="text-[#FFFFFF] text-[0.8rem] my-[1%]">As fotos devem estar no formato JPG ou JPEG ou PNG e ter no máximo 2MB.</p>
               </div>
               {canChangeImage ? (
                   <>
                     <input
                       ref={fileInputRef || null}
                       type="file"
-                      accept="image/jpeg, image/png"
+                      name="foto"
+                      accept="image/jpeg, image/jpg, image/png"
                       className="hidden"
                       onChange={handleFileChange}
                     />
