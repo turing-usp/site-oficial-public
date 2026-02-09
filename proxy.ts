@@ -1,4 +1,5 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
+import { error } from 'console'
 import { NextResponse, type NextRequest } from 'next/server'
 
 export async function proxy(request: NextRequest) {
@@ -28,11 +29,14 @@ const supabase = createServerClient(
 )
 
   // 1. Pega o usuário do cookie
-  const { data: { user } } = await supabase.auth.getUser()
+  const { data: { user },error } = await supabase.auth.getUser()
 
-  // 2. Se tentar entrar em rota protegida sem login, tchau.
-  if (!user && request.nextUrl.pathname.startsWith('/plataforma')) {
-    return NextResponse.redirect(new URL('/login', request.url))
+  // Se houver erro na verificação do user (como user não encontrado no banco),
+  // force o redirecionamento mesmo que o cookie exista.
+  if ((!user || error) && request.nextUrl.pathname.startsWith('/plataforma')) {
+    const url = request.nextUrl.clone();
+    url.pathname = '/login';
+    return NextResponse.redirect(url);
   }
 
   // 3. Se JÁ estiver logado e tentar acessar login/cadastro, redireciona para plataforma

@@ -1,17 +1,10 @@
 import Image from "next/image";
-import { supabase } from "@/lib/supabaseclient";
 import Botoes from "@/components/public/btnequipe";
+import { lerdadospublicos } from "@/lib/auth-actions";
 
 export default async function Equipe(){
-    const {data,error} = await supabase
-    .from('equipe_ativa')
-    .select('*');
 
-    if (error) {
-        console.error("Erro ao buscar dados da equipe:", error);
-    }
-
-    const equipe = data || [];
+    const { data: equipe, error } = await lerdadospublicos();
 
     return(
         <>
@@ -55,7 +48,7 @@ export default async function Equipe(){
                         </div>
             </div>
             <div>
-                <Botoes equipe={equipe} />
+                <Botoes equipe={equipe ?? []} />
             </div>
         </>
     );

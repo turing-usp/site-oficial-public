@@ -23,16 +23,16 @@ export default function Botoesnav({ equipe }: BotoesnavProps) {
     const Categorias = ["TODOS", "ÁREAS DE FOCO", "ÁREAS DE GESTÃO"];
     
     const area_de_foco = [
-        { nome: "Visão Computacional", id: 7, sigla: "CompV", logo: "/cv.svg", descricao: "" },
+        { nome: "Visão Computacional", id: 7, sigla: "CompV", logo: "/cv.svg", descricao: "Exploramos técnicas avançadas para permitir que as máquinas interpretem e compreendam imagens e vídeos, possibilitando aplicações inovadoras em diversas áreas." },
         { nome: "Processamento de Linguagem Natural", id: 3, sigla: "NLP", logo: "/nlp.svg", descricao: "Fazemos a comunicação entre as máquinas e os humanos. Por meio de números e letras mapeamos e interpretamos a linguagem natural para a construção de ferramentas como chatbots e assistentes virtuais." },
-        { nome: "Finanças Quantitativas", id: 4, sigla: "Quant", logo: "/quant.svg", descricao: "" },
-        { nome: "Data Science", id: 5, sigla: "DS", logo: "/ds.svg", descricao: "" },
-        { nome: "Aprendizado por Reforço", id: 6, sigla: "RL", logo: "/rl.svg", descricao: "" }
+        { nome: "Finanças Quantitativas", id: 4, sigla: "Quant", logo: "/quant.svg", descricao: "A junção da área Tech com finanças para desenvolver modelos e algoritmos que otimizam investimentos e gerenciam riscos financeiros." },
+        { nome: "Data Science", id: 5, sigla: "DS", logo: "/ds.svg", descricao: "Somos verdadeiros analistas de dados e buscamos extrair insights valiosos para orientar decisões estratégicas e impulsionar o sucesso dos nossos projetos." },
+        { nome: "Aprendizado por Reforço", id: 6, sigla: "RL", logo: "/rl.svg", descricao: "Como um minotauro em um labirinto, a equipe de RL busca saídas para a conexão entre inteligência artificial e software para a produção de ferramentas inovadoras como robôs e algoritmos que aprendem com a experiência." }
     ];
     
     const area_de_gestao = [
-        { nome: "RH", id: 0, sigla: "RH", logo: "/rh.svg", descricao: "" },
-        { nome: "Marketing", id: 1, sigla: "Marketing", logo: "/mkt.svg", descricao: "" },
+        { nome: "RH", id: 0, sigla: "RH", logo: "/rh.svg", descricao: "Gestão de emoções e pessoas não é uma tarefa fácil, mas nossa equipe de RH está aqui para garantir um ambiente de trabalho saudável e produtivo para todos." },
+        { nome: "Marketing", id: 1, sigla: "Marketing", logo: "/mkt.svg", descricao: "Criativos e inovadores, a equipe de marketing é responsável por promover a marca e os produtos da empresa, utilizando estratégias inovadoras para alcançar o público-alvo." },
         { nome: "Estratégia", id: 2, sigla: "Estratégia", logo: "/estrategia.svg", descricao: "Como bons enxadristas, os membros de estratégia devem ser responsáveis por analisar estratégias e formas de ganhar um jogo. Somos responsáveis pelo planejamento e direcionamento estratégico da equipe com empresas e com a própria equipe." }
     ];
 

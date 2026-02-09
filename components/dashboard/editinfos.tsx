@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRef, useState, useActionState } from "react";
 import type { ChangeEvent } from "react";
 import { inserirdados } from "@/app/(dashboard)/plataforma/perfil/actions";
+import { deleteuser } from "@/app/(dashboard)/plataforma/perfil/actions2";
 
 interface EditInfosProps {
   canChangeImage: boolean;
@@ -16,12 +17,19 @@ interface EditInfosProps {
     avatarUrl: string | null;
     redes_sociais: { linkedin?: string | null; github?: string | null;} | null;
     temredes: boolean;
+    temdelete: boolean;
   } | null;
+}
+
+interface DeleteState {
+  error: string | null;
+  success: boolean;
 }
 
 
 
 export default function EditInfos({ canChangeImage, userData }: EditInfosProps) {
+  const formRef = useRef<HTMLFormElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -30,6 +38,12 @@ export default function EditInfos({ canChangeImage, userData }: EditInfosProps) 
     success: false,
     data: null
   });
+
+  const [deleteState, deleteAction] = useActionState(deleteuser, {
+    error: null,
+    success: false
+  } as DeleteState);
+
 
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -50,6 +64,14 @@ export default function EditInfos({ canChangeImage, userData }: EditInfosProps) 
     return formAction(formData);
   };
 
+  const handleFormReset = () => {
+    setPreviewUrl(null);
+    setSelectedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
   const abrirSeletorImagem = () => {
     fileInputRef.current?.click();
   };
@@ -68,7 +90,7 @@ export default function EditInfos({ canChangeImage, userData }: EditInfosProps) 
             <p>Alterações salvas com sucesso!</p>
           </div>
         )}
-        <form action={handleFormAction} >
+        <form ref={formRef} action={handleFormAction} onReset={handleFormReset} >
             <p className="text-[#FFFFFF] text-[1.5rem]">Editar informações do perfil</p>
             <div className="flex justify-center items-center gap-[5%]">
               <div className="flex flex-col items-center justify-center text-center">
@@ -151,15 +173,17 @@ export default function EditInfos({ canChangeImage, userData }: EditInfosProps) 
             <label htmlFor="confirmarsenha" className="text-white text-[1rem] flex my-[1%] cursor-pointer">Confirmar nova senha:</label>
             <input id="confirmarsenha" name="confirmarsenha" type="password" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem]" placeholder="Confirme sua nova senha" />
             <div className="my-[2%] gap-[3%] flex justify-end items-center">
-              <button className="text-[1rem] text-[#FFFFFF] bg-transparent rounded-[2rem] border-[0.1rem] border-[#F1863D] py-2 px-8 hover:border-transparent hover:bg-[#C75B2B] cursor-pointer">Cancelar</button>
-              <button className="text-[1rem] text-[#FFFFFF] bg-[#F1863D] rounded-[2rem]  py-2 px-10 hover:bg-[#C75B2B] cursor-pointer">Salvar</button>
+              <button type="reset" name="limpar" className="text-[1rem] text-[#FFFFFF] bg-transparent rounded-[2rem] border-[0.1rem] border-[#F1863D] py-2 px-8 hover:border-transparent hover:bg-[#C75B2B] cursor-pointer">Cancelar</button>
+              <button type="submit" name="salvar" className="text-[1rem] text-[#FFFFFF] bg-[#F1863D] rounded-[2rem]  py-2 px-10 hover:bg-[#C75B2B] cursor-pointer">Salvar</button>
             </div>
         </form>
-        <div className="my-[2%] gap-[3%] flex-col justify-end items-center">
+        {userData?.temdelete && (
+        <form action={deleteAction} className="my-[2%] gap-[3%] flex-col justify-end items-center">
           <p className="text-[#FFFFFF] text-[1.5rem] my-[2%]">Excluir a conta</p>
           <p className="text-[#FFFFFF] text-[1rem] my-[2%]">Essa ação tem consequências permanentes e não pode ser desfeita.</p>
-          <button className="text-[1rem] text-[#FFFFFF] bg-red-800 rounded-[2rem] py-2 px-8 hover:bg-red-900 cursor-pointer">Excluir conta</button>
-        </div>
+          <button type="submit" className="text-[1rem] text-[#FFFFFF] bg-red-800 rounded-[2rem] py-2 px-8 hover:bg-red-900 cursor-pointer">Excluir conta</button>
+        </form>
+        )}
       </div>
     </div>
   );
