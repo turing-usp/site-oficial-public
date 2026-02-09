@@ -21,12 +21,10 @@ interface EditInfosProps {
   } | null;
 }
 
-interface DeleteState {
+interface DeleteState{
   error: string | null;
   success: boolean;
 }
-
-
 
 export default function EditInfos({ canChangeImage, userData }: EditInfosProps) {
   const formRef = useRef<HTMLFormElement>(null);
@@ -44,7 +42,6 @@ export default function EditInfos({ canChangeImage, userData }: EditInfosProps) 
     success: false
   } as DeleteState);
 
-
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -52,23 +49,33 @@ export default function EditInfos({ canChangeImage, userData }: EditInfosProps) 
     const preview = URL.createObjectURL(file);
     setPreviewUrl(preview);
     setSelectedFile(file);
-
-    event.target.value = "";
   };
 
-  // Wrapper para adicionar a foto ao FormData
-  const handleFormAction = async (formData: FormData) => {
-    if (selectedFile) {
-      formData.set("foto", selectedFile);
+  // Criar FormData com o arquivo correto
+  const handleFormAction = (formData: FormData) => {
+    // Limpar arquivo antigo se existir
+    if (formData.has("foto")) {
+      formData.delete("foto");
     }
+    
+    // Adicionar apenas o arquivo novo selecionado
+    if (selectedFile) {
+      formData.append("foto", selectedFile, selectedFile.name);
+    }
+    
+    console.log("Enviando arquivo:", selectedFile?.name, "Tamanho:", selectedFile?.size);
     return formAction(formData);
   };
 
   const handleFormReset = () => {
     setPreviewUrl(null);
     setSelectedFile(null);
+    
+    // Limpar input corretamente
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
+      fileInputRef.current.type = "file";
+      fileInputRef.current.type = "file"; // Força reset
     }
   };
 
@@ -102,6 +109,7 @@ export default function EditInfos({ canChangeImage, userData }: EditInfosProps) 
                     height={120}
                     className="w-full h-full"
                     style={{ objectFit: "cover" }}
+                    priority
                   />
                 </div>
                 <p className="text-[#FFFFFF] text-[0.8rem] my-[1%]">As fotos devem estar no formato JPG ou JPEG ou PNG e ter no máximo 2MB.</p>
@@ -109,7 +117,7 @@ export default function EditInfos({ canChangeImage, userData }: EditInfosProps) 
               {canChangeImage ? (
                   <>
                     <input
-                      ref={fileInputRef || null}
+                      ref={fileInputRef}
                       type="file"
                       name="foto"
                       accept="image/jpeg, image/jpg, image/png"
