@@ -35,7 +35,7 @@ export default function SubnavDashboard({ pages }: SubnavProps) {
                         <Link 
                             key={page.id} 
                             href={page.link}
-                            className="p-2 text-[#000000] text-[1.2rem] hover:text-[#FFFFFF] hover:bg-[#F1863D] hover:bg-opacity-10 rounded-md block"
+                            className="p-2 text-[#000000] text-[1rem] hover:text-[#FFFFFF] w-full hover:bg-[#F1863D] hover:bg-opacity-10 rounded-md block"
                         >
                             {page.title}
                         </Link>
