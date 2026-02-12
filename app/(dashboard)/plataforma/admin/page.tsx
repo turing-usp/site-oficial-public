@@ -1,7 +1,7 @@
 import ContainerBlue from "@/components/ui/containerblue";
 import { acessarmembrosadmin } from "@/lib/auth-actions";
 import { redirect } from "next/navigation";
-import LateralAdmin from "@/components/dashboard/lateraladmin";
+import Adminwrapper from "@/components/dashboard/adminwrapper";
 
 export default async function AdminPage() {
     const { error , membros_por_tipo} = await acessarmembrosadmin();
@@ -12,7 +12,7 @@ export default async function AdminPage() {
     return (
         <>
         <ContainerBlue>
-            <LateralAdmin data={membros_por_tipo} />
+            <Adminwrapper data={membros_por_tipo} />
         </ContainerBlue>
         </>
     );
