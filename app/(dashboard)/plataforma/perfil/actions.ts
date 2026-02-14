@@ -6,8 +6,8 @@ export async function inserirdados(prevState: any, formData: FormData) {
     const nome = (formData.get("nome") || "").toString();
     const datanasc = (formData.get("datanasc") || "").toString();
     const genero = (formData.get("genero") || "").toString();
-    const github = (formData.get("github") || "").toString();
-    const linkedin = (formData.get("linkedin") || "").toString();
+    const github = (formData.get("GitHub") || "").toString();
+    const linkedin = (formData.get("LinkedIN") || "").toString();
     const senha_velha = (formData.get("senhaatual") || "").toString();
     const senha_nova = (formData.get("novasenha") || "").toString();
     const confirmar_senha = (formData.get("confirmarsenha") || "").toString();

@@ -146,8 +146,8 @@ export default function EditInfos({ canChangeImage, userData }: EditInfosProps) 
               </div>
               <div className="flex-col flex-1">
                 <label htmlFor="genero" className="text-white text-[1rem] flex my-[1%] cursor-pointer">Gênero:</label>
-                <select id="genero" name="genero" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem] bg-transparent">
-                  <option defaultValue={userData?.genero || "Gênero"} value="" disabled className="text-[#000000]">Gênero</option>
+                <select defaultValue={userData?.genero || "Gênero"} id="genero" name="genero" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem] bg-transparent">
+                  <option value="Gênero" disabled className="text-[#000000]">Gênero</option>
                                 <option value="Homem-cis" className="text-[#000000]">Homem-cis</option>
                                 <option value="Mulher-cis" className="text-[#000000]">Mulher-cis</option>
                                 <option value="Homem-Trans" className="text-[#000000]">Homem-Trans</option>
@@ -165,11 +165,11 @@ export default function EditInfos({ canChangeImage, userData }: EditInfosProps) 
             <div className="flex items-center justify-center gap-[5%] my-[2%]">
               <div className="flex-col flex-1">
                 <label htmlFor="LinkedIN" className="text-white text-[1rem] flex my-[1%] cursor-pointer">LinkedIN</label>
-                <input id="LinkedIN" name="LinkedIN" type="text" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem]" defaultValue={userData?.redes_sociais?.linkedin||"Digite o link do seu LinkedIN"} />
+                <input id="LinkedIN" name="LinkedIN" type="text" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem]" defaultValue={userData?.redes_sociais?.linkedin||""} />
               </div>
               <div className="flex-col flex-1">
                 <label htmlFor="GitHub" className="text-white text-[1rem] flex my-[1%] cursor-pointer">GitHub</label>
-                <input id="GitHub" name="GitHub" type="text" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem]" defaultValue={userData?.redes_sociais?.github||"Digite o link do seu GitHub"} />
+                <input id="GitHub" name="GitHub" type="text" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem]" defaultValue={userData?.redes_sociais?.github||""} />
               </div>
             </div>
             )}
