@@ -104,8 +104,9 @@ export default function ListaUsu({membros,  cargos,  areas }: { membros: any[], 
         try {
             const formData = new FormData();
             formData.append('senha', password);
-            const pegaselect = Object.entries(areasAtuais).map(([idArea, idCargo]) => `${idArea}-${idCargo}`).join(",");
-            formData.append('areas_cargos', pegaselect);
+            formData.append('areas_cargos', JSON.stringify(areasAtuais));
+            formData.append('nome', membroParaAcao.nome);
+            
 
             const { error, success } = await editareascargos(membroParaAcao.id, formData);
             if (success === true) {

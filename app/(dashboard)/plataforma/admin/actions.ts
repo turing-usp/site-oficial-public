@@ -1,6 +1,7 @@
 "use server";
 import { createSupabaseServer } from "@/lib/supabase-server";
 import { revalidatePath } from "next/cache";
+import {areascargos} from "@/lib/auth-actions";
 
 export async function removeMember(id: number,nome: string, formData: FormData) {
 
@@ -127,11 +128,7 @@ export async function editareascargos(id: number, formData: FormData) {
     const prefixoEsperado = "#" + formData.get("nome")?.toString().slice(0, 4);
     const prefixoEsperadoLower = prefixoEsperado.toLowerCase();
     const senhaLower = senha.toLowerCase();
-    const pegaselect = formData.get("areas_cargos")?.toString() || "";
-    const [idArea, idCargo] = pegaselect.split("-").map(part => part.trim());
-    console.log("ID do membro a editar:", id);
-    console.log("ID da área selecionada:", idArea);
-    console.log("ID do cargo selecionado:", idCargo);
+    const areas_cargos = formData.get("areas_cargos")?.toString() || "";
 
     if (senhaLower !== prefixoEsperadoLower) {
         return { error: "Senha de confirmação incorreta.", success: false };
@@ -139,26 +136,10 @@ export async function editareascargos(id: number, formData: FormData) {
     else if (senha.length === 0 || !formData.get("nome")) {
         return { error: "Nome e senha de confirmação são obrigatórios.", success: false };
     }
-
-    // Verificação que as áreas e cargos enviados são válidos:
-
-    if (!idArea || !idCargo) {
-        return { error: "Área e cargo devem ser selecionados.", success: false };
+    const retornoAreasCargos = await areascargos(id,areas_cargos);
+    if (retornoAreasCargos.error) {
+        return { error: retornoAreasCargos.error, success: false };
     }
-
-    const supabase = await createSupabaseServer();
-    const {data, error} = await supabase 
-        .from('Perfis')
-        .update({ areas: idArea, cargo: idCargo })
-        .eq('id', id);
-
-    if (error) {
-        console.error("Erro ao atualizar áreas e cargos:", error);
-        return { error: error.message, success: false };
-    }
-
-    console.log("Áreas e cargos atualizados com sucesso para o membro ID:", id);
-
     revalidatePath('/dashboard/plataforma/admin');
     return { success: true };
 }
