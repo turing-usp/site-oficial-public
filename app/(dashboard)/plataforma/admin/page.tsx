@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import Adminwrapper from "@/components/dashboard/adminwrapper";
 
 export default async function AdminPage() {
-    const { error , membros_por_tipo} = await acessarmembrosadmin();
+    const { error , membros_por_tipo, cargos, areas} = await acessarmembrosadmin();
     if (error) {
         redirect('/plataforma');
     }
@@ -12,7 +12,7 @@ export default async function AdminPage() {
     return (
         <>
         <ContainerBlue>
-            <Adminwrapper data={membros_por_tipo} />
+            <Adminwrapper data={{membros: membros_por_tipo, cargos: cargos, areas: areas}} />
         </ContainerBlue>
         </>
     );

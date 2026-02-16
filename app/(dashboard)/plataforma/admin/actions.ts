@@ -97,3 +97,68 @@ export async function atualizarCargosEmLote(payload: { p_id: string, p_cargo: nu
     
     return { success: true };
 }
+
+export async function desbanirMember(id: number,nome : string, formData: FormData) {
+    const senha = (formData.get("senha") || "").toString();
+    const prefixoEsperado = "#" + nome.slice(0, 4);
+    const prefixoEsperadoLower = prefixoEsperado.toLowerCase();
+    const senhaLower = senha.toLowerCase();
+
+    if (senhaLower !== prefixoEsperadoLower) {
+        return { error: "Senha de confirmação incorreta.", success: false };
+    }
+    else if (senha.length === 0 || nome.length === 0) {
+        return { error: "Nome e senha de confirmação são obrigatórios.", success: false };
+    }
+    const supabase = await createSupabaseServer();
+    const { error: rpcError } = await supabase.rpc('desbanir_usuario', {
+        target_user_id: id
+    });
+
+    if (rpcError) return { error: rpcError.message, success: false };
+
+    revalidatePath('/dashboard/plataforma/admin');
+    return { success: true };
+
+}
+
+export async function editareascargos(id: number, formData: FormData) {
+    const senha = (formData.get("senha") || "").toString();
+    const prefixoEsperado = "#" + formData.get("nome")?.toString().slice(0, 4);
+    const prefixoEsperadoLower = prefixoEsperado.toLowerCase();
+    const senhaLower = senha.toLowerCase();
+    const pegaselect = formData.get("areas_cargos")?.toString() || "";
+    const [idArea, idCargo] = pegaselect.split("-").map(part => part.trim());
+    console.log("ID do membro a editar:", id);
+    console.log("ID da área selecionada:", idArea);
+    console.log("ID do cargo selecionado:", idCargo);
+
+    if (senhaLower !== prefixoEsperadoLower) {
+        return { error: "Senha de confirmação incorreta.", success: false };
+    }
+    else if (senha.length === 0 || !formData.get("nome")) {
+        return { error: "Nome e senha de confirmação são obrigatórios.", success: false };
+    }
+
+    // Verificação que as áreas e cargos enviados são válidos:
+
+    if (!idArea || !idCargo) {
+        return { error: "Área e cargo devem ser selecionados.", success: false };
+    }
+
+    const supabase = await createSupabaseServer();
+    const {data, error} = await supabase 
+        .from('Perfis')
+        .update({ areas: idArea, cargo: idCargo })
+        .eq('id', id);
+
+    if (error) {
+        console.error("Erro ao atualizar áreas e cargos:", error);
+        return { error: error.message, success: false };
+    }
+
+    console.log("Áreas e cargos atualizados com sucesso para o membro ID:", id);
+
+    revalidatePath('/dashboard/plataforma/admin');
+    return { success: true };
+}

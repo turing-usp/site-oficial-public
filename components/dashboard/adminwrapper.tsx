@@ -4,43 +4,55 @@ import { useState } from 'react';
 import BotaoMembro from './botaomembro';
 import ListaUsu from './listausu';
 
-interface MembrosInfo {
-    titulo: string;
-    membros: any[];
-    tt_membro: number;
-}
+export default function AdminWrapper({ 
+    data 
+}: { 
+    data: {  
+        membros: any, // Este é o objeto com as categorias (ex: Ativos, Inativos)
+        cargos: {[key: string]: string},  
+        areas: {[key: string]: string} 
+    } 
+}) {
+    // 1. Destruture o que vem do servidor
+    const { membros, cargos, areas } = data;
 
-interface AbasAdminProps {
-    [key: string]: MembrosInfo;
-}
-
-export default function AdminWrapper({ data }: { data: AbasAdminProps }) {
-    const [abaSelecionada, setAbaSelecionada] = useState<string | null>(null);
+    // 2. Defina a aba inicial como a primeira chave do objeto membros (ex: 'Diretoria' ou 'Membros')
+    const [abaSelecionada, setAbaSelecionada] = useState<string | null>(
+        Object.keys(membros).length > 0 ? Object.keys(membros)[0] : null
+    );
     
-    const membrosAtivos = abaSelecionada && data[abaSelecionada] 
-        ? data[abaSelecionada].membros 
+    // 3. Pegue os membros da categoria selecionada
+    // Note que agora acessamos 'membros[abaSelecionada]' e não 'data[abaSelecionada]'
+    const membrosParaExibir = (abaSelecionada && membros[abaSelecionada]) 
+        ? membros[abaSelecionada].membros 
         : [];
 
     return (
         <div className="flex gap-4 w-full h-auto">
             <div id="menu lateral" className="flex flex-col items-center w-[20%]">
-                <h1 className="text-white text-[1.5rem] text-center my-[5%]">ADMINISTRAÇÃO</h1>
+                <h1 className="text-white text-[1.5rem] text-center my-[5%] font-bold">ADMINISTRAÇÃO</h1>
                 <p className="text-gray-300 text-[1rem] text-center mb-[5%]">Gerenciamento de membros</p>
+                
                 <div className="w-full">
-                    {Object.entries(data).map(([tipo, info]) => (
+                    {Object.entries(membros).map(([tipo, info]: [string, any]) => (
                         <BotaoMembro 
                             key={tipo} 
                             tipo={tipo} 
-                            info={info}
+                            info={info} 
                             ativo={abaSelecionada === tipo}
                             onClick={() => setAbaSelecionada(tipo)}
                         />
                     ))}
                 </div>
             </div>
-            <div className="w-[0.1rem] bg-white"></div>
+
+            <div className="w-[0.1rem] bg-gray-700"></div>
             <div className="flex flex-col flex-1">
-                <ListaUsu membros={membrosAtivos} />
+                <ListaUsu 
+                    membros={membrosParaExibir} 
+                    cargos={cargos} 
+                    areas={areas} 
+                />
             </div>
         </div>
     );

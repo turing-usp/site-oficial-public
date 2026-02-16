@@ -1,17 +1,17 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { atualizarCargosEmLote, removeMember } from '@/app/(dashboard)/plataforma/admin/actions';
-import { banMember } from '@/app/(dashboard)/plataforma/admin/actions';
+import { atualizarCargosEmLote, removeMember, banMember, desbanirMember, editareascargos } from '@/app/(dashboard)/plataforma/admin/actions';
 
-export default function ListaUsu({ membros }: { membros: any[] }) {
+export default function ListaUsu({membros,  cargos,  areas }: { membros: any[],  cargos: {[key: string]: string}, areas: {[key: string]: string} }) {
     const [pesquisa, setPesquisa] = useState('');
     
     // Inicializa o estado com a prop recebida
     const [membrosAtivos, setMembrosAtivos] = useState(membros);
     const [membroParaAcao, setMembroParaAcao] = useState<any | null>(null);
     const [confirmacaoNome, setConfirmacaoNome] = useState('');
-    const [tipoAcao, setTipoAcao] = useState<'banir' | 'remover' | null>(null);
+    const [tipoAcao, setTipoAcao] = useState<'banir' | 'remover' | 'desbanir' | 'editarCargo' | null>(null);
     const [alteracoes, setAlteracoes] = useState<{[key: string]: number}>({});
+    const [tempoBanimento, setTempoBanimento] = useState('0');
 
     // CRUCIAL: Se a lista 'membros' mudar lá fora (ou carregar depois), 
     // precisamos avisar o estado interno para se atualizar.
@@ -33,32 +33,112 @@ export default function ListaUsu({ membros }: { membros: any[] }) {
         setTipoAcao(null); // Limpa o tipo de ação
     };
 
-    const handleRemoveMember = async (formData: FormData) => {
-        if (!membroParaAcao) return;
+    // 'areasAtuais' reflete o objeto { "id_area": id_posicao }
+    const [areasAtuais, setAreasAtuais] = useState<{[key: string]: number}>({});
 
-    try {
-        // 1. Aguarda a resposta do servidor (Segurança em primeiro lugar)
-        const { error, success } = await removeMember(membroParaAcao.id, membroParaAcao.nome, formData);
-
-        // 2. Só limpa a interface se o retorno for estritamente true
-        if (success === true) {
-            removerMembro(membroParaAcao.id);
-        } else {
-            // Caso o servidor retorne false (ex: senha incorreta)
-            alert("Não foi possível remover: verifique os dados informados.");
-        }
-    } catch (error) {
-        // Caso ocorra um erro de rede ou explosão no servidor
-        alert("Erro de conexão ao tentar remover o membro.");
+    // Carrega as áreas do membro selecionado ao abrir o modal
+    useEffect(() => {
+    if (tipoAcao === 'editarCargo' && membroParaAcao) {
+        // Se membroParaAcao.areas não existir no banco, ele usa {}
+        setAreasAtuais(membroParaAcao.areas || {}); 
     }
+    }, [tipoAcao, membroParaAcao]);
+    console.log(cargos, areas);
+    console.log("Áreas atuais no estado:", areasAtuais);
+
+    // Muda a posição (Ex: de Membro para Diretor) dentro de uma área
+    const handleChangePosicaoNaArea = (idDaArea: string, idDaNovaPosicao: string) => {
+        setAreasAtuais(prev => ({
+            ...prev,
+            [idDaArea]: Number(idDaNovaPosicao)
+        }));
     };
 
-    const handleBanMember = async (formData: FormData) => {
+    // Remove uma área do membro
+    const handleRemoverArea = (idParaRemover: string) => {
+        const novoEstado = { ...areasAtuais };
+        delete novoEstado[idParaRemover];
+        setAreasAtuais(novoEstado);
+    };
+
+    // Adiciona uma nova área à lista do membro
+    const handleAdicionarNovaArea = () => {
+        // Filtra as áreas que ele ainda não possui
+        const idsDisponiveis = Object.keys(areas).filter(id => !areasAtuais.hasOwnProperty(id));
+        
+        if (idsDisponiveis.length > 0) {
+            const proximaAreaId = idsDisponiveis[0];
+            setAreasAtuais(prev => ({
+                ...prev,
+                [proximaAreaId]: 2 // Default: 'Membro'
+            }));
+        } else {
+            alert("O membro já participa de todas as áreas.");
+        }
+    };
+
+    const handleRemoveMember = async (password: string) => {
         if (!membroParaAcao) return;
+
         try {
-            const { error, success } = await banMember(membroParaAcao.id, membroParaAcao.nome, formData);
+            const formData = new FormData();
+            formData.append('senha', password);
+            
+            const { error, success } = await removeMember(membroParaAcao.id, membroParaAcao.nome, formData);
+
             if (success === true) {
                 removerMembro(membroParaAcao.id);
+            } else {
+                alert("Não foi possível remover: verifique os dados informados.");
+            }
+        } catch (error) {
+            alert("Erro de conexão ao tentar remover o membro.");
+        }
+        setMembroParaAcao(null);
+        setConfirmacaoNome('');
+        setTipoAcao(null);
+    };
+
+    const handleacaoAreaCargo = async (password: string) => {
+        if (!membroParaAcao) return;
+        try {
+            const formData = new FormData();
+            formData.append('senha', password);
+            const pegaselect = Object.entries(areasAtuais).map(([idArea, idCargo]) => `${idArea}-${idCargo}`).join(",");
+            formData.append('areas_cargos', pegaselect);
+
+            const { error, success } = await editareascargos(membroParaAcao.id, formData);
+            if (success === true) {
+                setMembrosAtivos(prevMembros => prevMembros.map(membro => 
+                    membro.id === membroParaAcao.id ? { ...membro, areas: areasAtuais } : membro
+                ));
+                setMembroParaAcao(null);
+                setConfirmacaoNome('');
+                setTipoAcao(null);
+            }
+            else {
+                alert("Não foi possível atualizar as áreas e cargos: verifique os dados informados.");
+            }
+        } catch (error) {
+            alert("Erro de conexão ao tentar atualizar as áreas e cargos do membro.");
+        }
+    };
+
+    const handleBanMember = async (password: string, tempoBan: string) => {
+        if (!membroParaAcao) return;
+        try {
+            const formData = new FormData();
+            formData.append('senha', password);
+            formData.append('tempoBanimento', tempoBan);
+            
+            const { error, success } = await banMember(membroParaAcao.id, membroParaAcao.nome, formData);
+            if (success === true) {
+                setMembrosAtivos(prevMembros => prevMembros.map(membro => 
+                    membro.id === membroParaAcao.id ? { ...membro, is_banned: true } : membro
+                ));
+                setMembroParaAcao(null);
+                setConfirmacaoNome('');
+                setTipoAcao(null);
             }
             else {
                 alert("Não foi possível banir: verifique os dados informados.");
@@ -86,7 +166,30 @@ export default function ListaUsu({ membros }: { membros: any[] }) {
         } else {
             alert("Erro ao atualizar cargos: " + result.error);
         }
-};
+    };
+    const handleDesbanirMember = async (password: string) => {
+        if (!membroParaAcao) return;
+        try {
+            const formData = new FormData();
+            formData.append('senha', password);
+            
+            const { error, success } = await desbanirMember(membroParaAcao.id, membroParaAcao.nome, formData);
+            console.log("Resultado do desbanimento:", { error, success });
+            if (success === true) {
+                setMembrosAtivos(prevMembros => prevMembros.map(membro => 
+                    membro.id === membroParaAcao.id ? { ...membro, is_banned: false, banned_until: null } : membro
+                ));
+                setMembroParaAcao(null);
+                setConfirmacaoNome('');
+                setTipoAcao(null);
+            }
+            else {
+                alert("Não foi possível desbanir: verifique os dados informados.");
+            }
+        } catch (error) {
+            alert("Erro de conexão ao tentar desbanir o membro.");
+        }
+    };
                 
 
     return (
@@ -99,7 +202,7 @@ export default function ListaUsu({ membros }: { membros: any[] }) {
                 onChange={(e) => setPesquisa(e.target.value)}
             />
             
-            <form action={handleSalvarTudo} className="flex-col w-full h-auto items-center">
+            <div className="flex-col w-full h-auto items-center">
                 {membrosFiltrados.length === 0 ? (
                     <p className="text-gray-300">Nenhum membro encontrado.</p>
                 ) : (
@@ -119,7 +222,6 @@ export default function ListaUsu({ membros }: { membros: any[] }) {
                                         </span>
                                     )}
                                     <select 
-                                        name = "mudança de cargo"
                                         className="my-2 px-3 rounded-lg bg-gray-600 text-white"
                                         defaultValue={String(membro.tipo_usuario)} 
                                         onChange={(e) => handleChangeCargo(membro.id, parseInt(e.target.value))}
@@ -135,31 +237,49 @@ export default function ListaUsu({ membros }: { membros: any[] }) {
                                     >
                                         Excluir
                                     </button>
+                                    { membro.is_banned ? (
+                                    <button 
+                                        onClick={() => { setMembroParaAcao(membro); setTipoAcao('desbanir'); }} 
+                                        className="text-white bg-green-600 hover:bg-green-700 px-3 py-1 rounded-lg ml-2 transition cursor-pointer"
+                                    >
+                                        Desbanir
+                                    </button>
+                                    ): 
                                     <button 
                                         onClick={() => { setMembroParaAcao(membro); setTipoAcao('banir'); }} 
                                         className="text-white bg-[#722F37] hover:bg-[#5E2129] px-3 py-1 rounded-lg ml-2 transition cursor-pointer"
                                     >
                                         Banir
                                     </button>
+                                    }
+
+                                    {membro.podeEditarCargo && (
+                                        <button 
+                                            onClick={() => { setMembroParaAcao(membro); setTipoAcao('editarCargo'); }} 
+                                            className="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg ml-2 transition cursor-pointer"
+                                        >
+                                            Editar
+                                        </button>
+                                    )}
                                 </div>
                             </li>
                         ))}
                     </ul>
                 )}
                 <div className="mt-[-2%] gap-[3%] flex justify-end items-center">
-                    <button type="submit" name="salvar" className="text-[1rem] text-[#FFFFFF] bg-[#F1863D] rounded-[2rem] py-2 px-10 hover:bg-[#C75B2B] cursor-pointer">Salvar</button>
+                    <button type="button" onClick={handleSalvarTudo} className="text-[1rem] text-[#FFFFFF] bg-[#F1863D] rounded-[2rem] py-2 px-10 hover:bg-[#C75B2B] cursor-pointer">Salvar</button>
                 </div>
-            </form>
+            </div>
             {membroParaAcao && (
-                            <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"> 
-                                <div className="bg-gray-800 border border-red-500/30 p-8 rounded-2xl max-w-md w-full shadow-2xl mx-4"> 
+                            <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50" onClick={(e) => e.stopPropagation()}> 
+                                <div className="bg-gray-800 border border-red-500/30 p-8 rounded-2xl max-w-md w-full shadow-2xl mx-4" onClick={(e) => e.stopPropagation()}> 
                                     <h2 className="text-white text-xl font-bold mb-2">Você tem certeza absoluta?</h2>
                                     
-                                    <div className="bg-red-900/20 border-l-4 border-red-600 p-4 mb-6">
-                                        <p className="text-red-200 text-sm">
-                                            Esta ação <strong>não pode ser desfeita</strong>. Isso irá {tipoAcao === 'banir' ? 'banir' : 'remover'} permanentemente o usuário 
+                                    <div className={`border-l-4 ${tipoAcao === 'banir' ? 'border-red-600' : tipoAcao === 'desbanir' ? 'border-green-600' : tipoAcao === 'editarCargo' ? 'border-blue-600' : 'border-red-600'} p-4 mb-6`}>
+                                        <p className={`${tipoAcao === 'banir' ? 'text-red-200' : tipoAcao === 'desbanir' ? 'text-green-200' : tipoAcao === 'editarCargo' ? 'text-blue-200' : 'text-red-200'} text-sm`}>
+                                            Esta ação <strong>não pode ser desfeita</strong>. Isso irá {tipoAcao === 'banir' ? 'banir' : tipoAcao === 'desbanir' ? 'desbanir' : tipoAcao === 'editarCargo' ? 'editar o cargo do usuário' : 'remover'} o usuário 
                                             <span className="font-bold text-white"> {membroParaAcao.nome} </span> 
-                                            e removerá todos os seus acessos.
+                                            e suas respectivas funcionalidades no sistema.
                                         </p>
                                     </div>
 
@@ -167,69 +287,188 @@ export default function ListaUsu({ membros }: { membros: any[] }) {
                                         Por favor, digite <span className="text-white font-bold select-none">a senha requerida</span> para confirmar.
                                     </p>
                                     {tipoAcao === 'banir' ? (
-                                        <form action={handleBanMember}>
+                                        <div>
                                             <input
-                                                name='senha'    
-                                                type="text"
+                                                type="password"
                                                 className="w-full bg-gray-900 border border-gray-600 rounded-lg p-3 text-white mb-6 focus:ring-2 focus:ring-red-600 outline-none transition-all"
                                                 value={confirmacaoNome}
-                                                onChange={(e) => setConfirmacaoNome(e.target.value)}
+                                                onChange={(e) => { e.stopPropagation(); setConfirmacaoNome(e.target.value); }}
                                                 placeholder="Senha de confirmação"
                                                 autoFocus
                                             />
-                                            <select name="tempoBanimento" className="w-full bg-gray-900 border border-gray-600 rounded-lg p-3 text-white mb-6 focus:ring-2 focus:ring-red-600 outline-none transition-all">
+                                            <select 
+                                                value={tempoBanimento}
+                                                onChange={(e) => { e.stopPropagation(); setTempoBanimento(e.target.value); }}
+                                                className="w-full bg-gray-900 border border-gray-600 rounded-lg p-3 text-white mb-6 focus:ring-2 focus:ring-red-600 outline-none transition-all"
+                                            >
                                                 <option value="0">1 dia</option>
                                                 <option value="1">3 dias</option>
                                                 <option value="2">7 dias</option>
                                                 <option value="3">1 mês</option>
                                                 <option value="4">3 meses</option>
-                                                <option value="5"> 1 ano</option>
+                                                <option value="5">1 ano</option>
                                                 <option value="6">2 anos</option>
                                                 <option value="7">Banimento permanente</option>
                                             </select>
                                             <div className="flex flex-col gap-3">
-                                            <button
-                                                type='submit'
-                                                className={"w-full py-3 rounded-xl font-bold transition-all bg-[#722F37] hover:bg-red-700 text-white"}
-                                            >
-                                                Banir este usuário
-                                            </button>
+                                                <button
+                                                    type="button"
+                                                    onClick={(e) => { e.stopPropagation(); handleBanMember(confirmacaoNome, tempoBanimento); }}
+                                                    className={"w-full py-3 rounded-xl font-bold transition-all bg-[#722F37] hover:bg-red-700 text-white"}
+                                                >
+                                                    Banir este usuário
+                                                </button>
+                                                <button 
+                                                    type='button'
+                                                    onClick={(e) => { e.stopPropagation(); setMembroParaAcao(null); setConfirmacaoNome(''); setTempoBanimento('0'); }}
+                                                    className="text-gray-400 hover:text-white text-sm transition"
+                                                >
+                                                    Cancelar e voltar
+                                                </button>
+                                            </div>
+                                        </div>) : (
+                                        tipoAcao === 'desbanir' ? (
+                                            <div>
+                                                <input
+                                                    type="password"
+                                                    className="w-full bg-gray-900 border border-gray-600 rounded-lg p-3 text-white mb-6 focus:ring-2 focus:ring-green-600 outline-none transition-all"
+                                                    value={confirmacaoNome}
+                                                    onChange={(e) => { e.stopPropagation(); setConfirmacaoNome(e.target.value); }}
+                                                    onKeyDown={(e) => { if (e.key === 'Enter') e.preventDefault(); }}
+                                                    placeholder="Senha de confirmação"
+                                                    autoFocus
+                                                />
+                                                <div className="flex flex-col gap-3">
+                                                    <button
+                                                        type="button"
+                                                        onClick={(e) => { e.stopPropagation(); handleDesbanirMember(confirmacaoNome); }}
+                                                        className={"w-full py-3 rounded-xl font-bold transition-all bg-green-500 hover:bg-green-700 text-white"}
+                                                    >
+                                                        Desbanir este usuário
+                                                    </button>
+                                                    <button 
+                                                        type='button'
+                                                        onClick={(e) => { e.stopPropagation(); setMembroParaAcao(null); setConfirmacaoNome(''); }}
+                                                        className="text-gray-400 hover:text-white text-sm transition"
+                                                    >
+                                                        Cancelar e voltar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ) 
+                                        :
+                                        tipoAcao === 'editarCargo' ? (
+                                        <div className='flex-col items-center justify-center'> 
                                             <button 
-                                                type='button'
-                                                onClick={() => { setMembroParaAcao(null); setConfirmacaoNome(''); }}
-                                                className="text-gray-400 hover:text-white text-sm transition"
-                                            >
-                                                Cancelar e voltar
+                                                type="button" // Sempre use type button para não dar submit no form
+                                                onClick={handleAdicionarNovaArea} 
+                                                className="flex items-center justify-center mb-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition cursor-pointer"
+                                                >
+                                                + Adicionar Área e Posição
                                             </button>
+
+                                                {Object.entries(areasAtuais).map(([idArea, idPosicao]) => (
+                                                <div key={idArea} className="flex gap-2 mb-2 items-center">
+                                                    <select 
+                                                    value={idArea} 
+                                                    className="bg-gray-800 text-white border border-gray-600 p-2 rounded-md flex-1"
+                                                    onChange={(e) => {
+                                                        const novaArea = e.target.value;
+                                                        if (areasAtuais[novaArea]) return; // Não deixa duplicar
+                                                        const novo = { ...areasAtuais };
+                                                        delete novo[idArea];
+                                                        novo[novaArea] = idPosicao;
+                                                        setAreasAtuais(novo);
+                                                    }}
+                                                    >
+                                                    {Object.entries(areas).map(([id, nome]) => (
+                                                        <option 
+                                                            key={id} 
+                                                            value={id} 
+                                                            disabled={areasAtuais.hasOwnProperty(id) && id !== idArea}
+                                                        >
+                                                        {nome}
+                                                        </option>
+                                                    ))}
+                                                    </select>
+
+                                                    {/* Select de Posição (Ex: Diretor, Membro) */}
+                                                    <select 
+                                                    name = "areas_cargos"
+                                                    value={idPosicao} 
+                                                    onChange={(e) => handleChangePosicaoNaArea(idArea, e.target.value)}
+                                                    className="bg-gray-800 text-[#F1863D] border border-gray-600 p-2 rounded-md flex-1"
+                                                    >
+                                                    {Object.entries(cargos).map(([id, nome]) => (
+                                                        <option key={id} value={id}>{nome}</option>
+                                                    ))}
+                                                    </select>
+
+                                                    {/* Botão de Remover */}
+                                                    <button 
+                                                    type="button"
+                                                    onClick={() => handleRemoverArea(idArea)}
+                                                    className="p-2 text-gray-400 hover:text-red-500 transition"
+                                                    >
+                                                    🗑️
+                                                    </button>
+                                                </div>
+                                                ))}
+                                            <input
+                                                type="password"
+                                                className="w-full bg-gray-900 border border-gray-600 rounded-lg p-3 text-white mb-6 focus:ring-2 focus:ring-blue-600 outline-none transition-all"
+                                                value={confirmacaoNome}
+                                                onChange={(e) => { e.stopPropagation(); setConfirmacaoNome(e.target.value); }}
+                                                placeholder="Senha de confirmação"
+                                                autoFocus
+                                            />
+                                            <div className="flex flex-col gap-3">
+                                                <button
+                                                    type="button"
+                                                    onClick={(e) => { e.stopPropagation(); handleacaoAreaCargo(confirmacaoNome); }}
+                                                    className={"w-full py-3 rounded-xl font-bold transition-all bg-blue-600 hover:bg-blue-700 text-white"}
+                                                >
+                                                    Editar cargo deste usuário
+                                                </button>
+                                                <button 
+                                                    type='button'
+                                                    onClick={(e) => { e.stopPropagation(); setMembroParaAcao(null); setConfirmacaoNome(''); setTempoBanimento('0'); }}
+                                                    className="text-gray-400 hover:text-white text-sm transition"
+                                                >
+                                                    Cancelar e voltar
+                                                </button>
+                                            </div>
                                         </div>
-                                        </form>
-                                    ) : (
-                                    <form action={handleRemoveMember}>
-                                        <input
-                                            name='senha'    
-                                            type="text"
-                                            className="w-full bg-gray-900 border border-gray-600 rounded-lg p-3 text-white mb-6 focus:ring-2 focus:ring-red-600 outline-none transition-all"
-                                            value={confirmacaoNome}
-                                            onChange={(e) => setConfirmacaoNome(e.target.value)}
-                                            placeholder="Senha de confirmação"
-                                            autoFocus
-                                        />
-                                        <div className="flex flex-col gap-3">
-                                            <button
-                                                type='submit'
-                                                className={"w-full py-3 rounded-xl font-bold transition-all bg-red-600 hover:bg-red-700 text-white"}
-                                            >
-                                               Remover este usuário
-                                            </button>
-                                            <button 
-                                                type='button'
-                                                onClick={() => { setMembroParaAcao(null); setConfirmacaoNome(''); }}
-                                                className="text-gray-400 hover:text-white text-sm transition"
-                                            >
-                                                Cancelar e voltar
-                                            </button>
-                                        </div>
-                                    </form>
+                                        ) :
+                                         (
+                                            <div>
+                                                <input
+                                                    type="password"
+                                                    className="w-full bg-gray-900 border border-gray-600 rounded-lg p-3 text-white mb-6 focus:ring-2 focus:ring-red-600 outline-none transition-all"
+                                                    value={confirmacaoNome}
+                                                    onChange={(e) => { e.stopPropagation(); setConfirmacaoNome(e.target.value); }}
+                                                    onKeyDown={(e) => { if (e.key === 'Enter') e.preventDefault(); }}
+                                                    placeholder="Senha de confirmação"
+                                                    autoFocus
+                                                />
+                                                <div className="flex flex-col gap-3">
+                                                    <button
+                                                        type="button"
+                                                        onClick={(e) => { e.stopPropagation(); handleRemoveMember(confirmacaoNome); }}
+                                                        className={"w-full py-3 rounded-xl font-bold transition-all bg-red-600 hover:bg-red-700 text-white"}
+                                                    >
+                                                        Remover este usuário
+                                                    </button>
+                                                    <button 
+                                                        type='button'
+                                                        onClick={(e) => { e.stopPropagation(); setMembroParaAcao(null); setConfirmacaoNome(''); }}
+                                                        className="text-gray-400 hover:text-white text-sm transition"
+                                                    >
+                                                        Cancelar e voltar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        )
                                     )}
                                 </div>
                             </div> 
