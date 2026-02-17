@@ -112,7 +112,7 @@ export default function EditInfos({ canChangeImage, userData }: EditInfosProps) 
                     priority
                   />
                 </div>
-                <p className="text-[#FFFFFF] text-[0.8rem] my-[1%]">As fotos devem estar no formato JPG ou JPEG ou PNG e ter no máximo 2MB.</p>
+                <p className="text-[#FFFFFF] text-[0.8rem] my-[1%]">As fotos devem estar no formato PNG e ter no máximo 2MB.</p>
               </div>
               {canChangeImage ? (
                   <>
@@ -120,7 +120,7 @@ export default function EditInfos({ canChangeImage, userData }: EditInfosProps) 
                       ref={fileInputRef}
                       type="file"
                       name="foto"
-                      accept="image/jpeg, image/jpg, image/png"
+                      accept="image/png"
                       className="hidden"
                       onChange={handleFileChange}
                     />

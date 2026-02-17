@@ -15,10 +15,10 @@ export async function inserirdados(prevState: any, formData: FormData) {
 
     // Verificar se a foto está nos formatos aceitos
     if (foto && foto.size > 0) {
-        const formatosAceitos = ["image/jpeg", "image/jpg", "image/png"];
+        const formatosAceitos = ["image/png"];
         if (!formatosAceitos.includes(foto.type)) {
             return {
-                error: "Formato de imagem não aceito. Use PNG ou JPEG.",
+                error: "Formato de imagem não aceito. Use PNG.",
                 success: false,
                 data: null
             };

@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Botoes from "@/components/public/btnequipe";
-import { lerdadospublicos } from "@/lib/auth-actions";
+import { lerdadospublicos,lerdadoshistoricos } from "@/lib/auth-actions";
 
 export default async function Equipe(){
 
     const { data: equipe, error } = await lerdadospublicos();
+    const { data: historico, error: errorHistorico } = await lerdadoshistoricos();
 
     return(
         <>
@@ -48,7 +49,7 @@ export default async function Equipe(){
                         </div>
             </div>
             <div>
-                <Botoes equipe={equipe ?? []} />
+                <Botoes equipe={equipe ?? []} historico={historico ?? []} />
             </div>
         </>
     );
