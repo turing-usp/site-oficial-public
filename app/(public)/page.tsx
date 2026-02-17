@@ -69,8 +69,8 @@ export default function Home() {
                 <div className='mr-[5%] flex flex-col w-[45%] '>
                     <p className='text-[#000000] text-[3rem]  font-bold'>QUEM SOMOS</p>
                     <div className='w-[50%] h-[0.5vh] bg-[#F1863D]'></div>
-                    <p className='mt-[5%] text-[#000000]  text-[1.5rem]'>O Turing é um grupo de extensão da USP campus Butantã que foi fundado em 2015 por 5 amigos. Desde então é referência na pesquisa e produção do assunto.</p>
-                    <p className='mt-[5%] text-[#000000] text-[1.5rem]'>O grupo tem como objeto de estudos diferentes áreas da inteligência artificial: Data Science, Processamento de Linguagem Natural, Computação visual, Aprendizado por reforço e finanças quantitativas.</p>
+                    <p className='mt-[5%] text-[#000000]  text-[1.5rem] text-justify'>O Turing é um grupo de extensão da USP campus Butantã que foi fundado em 2015 por 5 amigos. Desde então é referência na pesquisa e produção do assunto.</p>
+                    <p className='mt-[5%] text-[#000000] text-[1.5rem] text-justify'>O grupo tem como objeto de estudos diferentes áreas da inteligência artificial: Data Science, Processamento de Linguagem Natural, Computação visual, Aprendizado por reforço e finanças quantitativas.</p>
                     <div className='mt-[5%] self-center'>
                         <Link href="/equipe">
                             <button className='text-[#000000] bg-[#FFFFFF] border border-[#F1863D] w-[12rem] h-[3rem] rounded rounded-[2rem] hover:scale-103 transition-transform duration-300 cursor-pointer hover:bg-[#F1863D] hover:text-[#FFFFFF]'>CONHEÇA A EQUIPE</button>
@@ -120,7 +120,7 @@ export default function Home() {
                             className='w-[15vh] h-auto mb-[5%]'
                         />
                         <p className=' text-[#000000] text-[1.5rem] text-center mx-[10%] mb-[5%]'>PESQUISAR</p>
-                        <p className=' text-[#000000] text-[1rem] mx-[10%] text-center'>Exploramos artigos científicos e descobertas para aplicarmos em necessidades do cotidiano.</p>
+                        <p className=' text-[#000000] text-[1rem] mx-[10%] text-justify'>Exploramos artigos científicos e descobertas para aplicarmos em necessidades do cotidiano.</p>
                    </div>
                    <div className='bg-[#FFFFFF] flex-1 h-[60vh] flex flex-col items-center justify-center rounded-[1rem] hover:scale-105 transition-transform duration-500'>
                         <Image 
@@ -131,7 +131,7 @@ export default function Home() {
                             className='w-[22vh] h-auto mb-[5%]'
                         />
                         <p className=' text-[#000000] text-[1.5rem] text-center mx-[10%] mb-[5%]'>APLICAR</p>
-                        <p className=' text-[#000000] text-[1rem] mx-[10%] text-center'>Transformamos teoria em código. Desenvolvemos modelos inéditos e aplicações robustas para diversos tipos de uso.</p>
+                        <p className=' text-[#000000] text-[1rem] mx-[10%] text-justify'>Transformamos teoria em código. Desenvolvemos modelos inéditos e aplicações robustas para diversos tipos de uso.</p>
                    </div>
                    <div className='bg-[#FFFFFF] flex-1 h-[60vh] flex flex-col items-center justify-center rounded-[1rem] hover:scale-105 transition-transform duration-500'>
                         <Image 
@@ -142,7 +142,7 @@ export default function Home() {
                             className='w-[20vh] h-auto mb-[5%]'
                         />
                         <p className=' text-[#000000] text-[1.5rem] text-center mx-[10%] mb-[5%]'>DISSEMINAR</p>
-                        <p className=' text-[#000000] text-[1rem] mx-[10%] text-center'>Democratizamos o conhecimento técnico através de cursos, workshops e conteúdos abertos, conectando a USP à sociedade e ao mercado.</p>
+                        <p className=' text-[#000000] text-[1rem] mx-[10%] text-justify'>Democratizamos o conhecimento técnico através de cursos, workshops e conteúdos abertos, conectando a USP à sociedade e ao mercado.</p>
                    </div>
                 </div>
             </div>

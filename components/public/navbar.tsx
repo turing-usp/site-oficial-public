@@ -50,6 +50,7 @@ export default function Navbar() {
                         <Link href ="/projetos" className={`text-[1rem] text-[#000000] ${isOverBlue ? 'text-[#F1863D] hover:text-[#FFFFFF]' : 'text-[#000000] hover:text-[#F1863D]'}`}>PROJETOS</Link>
                         <Link href ="/equipe" className={`text-[1rem] text-[#000000] ${isOverBlue ? 'text-[#F1863D] hover:text-[#FFFFFF]' : 'text-[#000000] hover:text-[#F1863D]'}`}>EQUIPE</Link>
                         <Link href ="/turing-talks" className={`text-[1rem] text-[#000000] whitespace-nowrap ${isOverBlue ? 'text-[#F1863D] hover:text-[#FFFFFF]' : 'text-[#000000] hover:text-[#F1863D]'}`}>TURING TALKS</Link>
+                        <Link href ="/eventos" className={`text-[1rem] text-[#000000] whitespace-nowrap ${isOverBlue ? 'text-[#F1863D] hover:text-[#FFFFFF]' : 'text-[#000000] hover:text-[#F1863D]'}`}>EVENTOS</Link>
                         <Link href ="/contato" className={`text-[1rem] text-[#000000] ${isOverBlue ? 'text-[#F1863D] hover:text-[#FFFFFF]' : 'text-[#000000] hover:text-[#F1863D]'}`}>CONTATO</Link>
                     </div>
                 </div>
