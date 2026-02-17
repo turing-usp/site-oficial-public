@@ -17,7 +17,7 @@ export default function Eventos(){
                 </div>
                     <div className="flex flex-1 flex-col items-center justify-center gap-6">
                         <p className="text-[1.5rem] text-[#766F6F] font-bold">NOSSOS EVENTOS E COMPETIÇÕES</p>
-                        <p className="text-[4rem] font-bold text-[#000000] text-center leading-none max-w-[18ch]">IDEAS QUE EVOLUEM EM CONJUNTO</p>
+                        <p className="text-[4rem] font-bold text-[#000000] text-center leading-none max-w-[18ch]">IDEIAS QUE EVOLUEM EM CONJUNTO</p>
                         <p className="text-[1.5rem] text-[#000000] text-center">Descubra um pouco mais sobre os eventos organizados pelo Turing ao longo dos anos.</p>
                     </div>
                     <div className="flex flex-1 items-center relative">
@@ -41,7 +41,7 @@ export default function Eventos(){
                     <p className='w-full text-[#FFFFFF] text-[3rem] font-bold text-right mr-[10%]'>NOSSOS COMPETIÇÕES</p>
                 </div>
                 <div className='flex mr-[5%] ml-[5%] mt-[5%] gap-[10%]'>
-                    <div className='bg-[#FFFFFF] flex-1 h-auto flex flex-col items-center justify-start rounded-[1rem] hover:scale-105 transition-transform duration-500 p-8'>
+                    <div className='bg-[#FFFFFF] flex-1 h-auto mb-[5%] flex flex-col items-center justify-start rounded-[1rem] hover:scale-105 transition-transform duration-500 p-8'>
                         <div className='h-[25vh] flex items-center justify-center mb-[5%]'>
                             <Image 
                                 src="/trade.svg"
@@ -54,7 +54,7 @@ export default function Eventos(){
                         <p className=' text-[#000000] text-[1.5rem] text-center mx-[10%] mb-[5%]'>ITAÚ QUANT</p>
                         <p className=' text-[#000000] text-[1rem] mx-[10%] text-justify'>O Turing tem uma longa tradição na participação da competição anual Itaú Quant, uma competição de modelagem matemática e financeira de uma estratégia quantitativa. O Turing obteve bons resultados em várias edições, com destaque para os robôs Ringo e Nala, que alcançaram as posições de 1º e 3º lugar, respectivamente.</p>
                     </div>
-                    <div className='bg-[#FFFFFF] flex-1 h-auto flex flex-col items-center justify-start rounded-[1rem] hover:scale-105 transition-transform duration-500 p-8'>
+                    <div className='bg-[#FFFFFF] mb-[5%] flex-1 h-auto flex flex-col items-center justify-start rounded-[1rem] hover:scale-105 transition-transform duration-500 p-8'>
                         <div className='h-[25vh] flex items-center justify-center mb-[5%]'>
                             <Image
                                 src="/mapa.svg"
@@ -67,7 +67,7 @@ export default function Eventos(){
                         <p className=' text-[#000000] text-[1.5rem] text-center mx-[10%] mb-[5%]'>ABII WAR</p>
                         <p className=' text-[#000000] text-[1rem] mx-[10%] text-justify'>A ABII War foi uma competição voltada ao desenvolvimento de modelos capazes de jogar War contra outros agentes inteligentes. O Turing se destacou ao adotar uma abordagem inovadora que combinava computação visual e aprendizado por reforço, alcançando um desempenho superior e conquistando o título de campeão da edição.</p>
                     </div>
-                    <div className='bg-[#FFFFFF] flex-1 h-auto flex flex-col items-center justify-start rounded-[1rem] hover:scale-105 transition-transform duration-500 p-8'>
+                    <div className='bg-[#FFFFFF] mb-[5%] flex-1 h-auto flex flex-col items-center justify-start rounded-[1rem] hover:scale-105 transition-transform duration-500 p-8'>
                         <div className='h-[25vh] flex items-center justify-center mb-[5%]'>
                             <Image
                                 src="/malawi.svg"

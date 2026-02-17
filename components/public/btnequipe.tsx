@@ -172,11 +172,11 @@ export default function Botoesnav({ equipe, historico }: BotoesnavProps) {
                         >
                             {/* Emblemas das Áreas - Posicionados no canto superior esquerdo */}
                             {membros.areas_formatadas && (
-                                <div className="absolute top-2 left-2 flex flex-col gap-1">
+                                <div className="absolute top-2 left-2 flex flex-col">
                                     {Object.keys(membros.areas_formatadas).map((sigla) => (
                                         <div
                                             key={`emblema-${membros.id}-${sigla}`}
-                                            className="relative flex items-center justify-center h-auto w-auto min-w-8 min-h-8"
+                                            className="relative flex items-center justify-center h-auto w-auto min-w-14 min-h-10"
                                             title={areaPorSigla[sigla]?.nome || sigla}
                                         >
                                             {membros.areas_formatadas?.[sigla] === "Diretor" && equipeFiltrada.is_equipe && (
@@ -185,7 +185,7 @@ export default function Botoesnav({ equipe, historico }: BotoesnavProps) {
                                                     alt="Diretor"
                                                     width={20}
                                                     height={20}
-                                                    className="absolute h-10 w-auto object-contain group-hover:scale-110 transition-transform duration-500"
+                                                    className="absolute h-9 w-auto object-contain group-hover:scale-110 transition-transform duration-500"
                                                 />
                                             )}
                                             {membros.areas_formatadas?.[sigla] === "Vice-Diretor" && equipeFiltrada.is_equipe && (
@@ -201,18 +201,18 @@ export default function Botoesnav({ equipe, historico }: BotoesnavProps) {
                                                 <Image
                                                     src={"/safira.svg"}
                                                     alt="Emérito"
-                                                    width={22}
-                                                    height={22}
-                                                    className="absolute h-10 w-auto object-contain group-hover:scale-110 transition-transform duration-500"
+                                                    width={20}
+                                                    height={20}
+                                                    className="absolute h-12 w-auto object-contain group-hover:scale-110 transition-transform duration-500"
                                                 />
                                             )}
                                             {membros.areas_formatadas?.[sigla] === "Vice-Diretor" && !equipeFiltrada.is_equipe && (
                                                 <Image
                                                     src={"/safira.svg"}
                                                     alt="Emérito"
-                                                    width={25}
-                                                    height={25}
-                                                    className="absolute h-10 w-auto object-contain group-hover:scale-110 transition-transform duration-500"
+                                                    width={20}
+                                                    height={20}
+                                                    className="absolute h-12 w-auto object-contain group-hover:scale-110 transition-transform duration-500"
                                                 />
                                             )}
                                             {  (
@@ -221,7 +221,7 @@ export default function Botoesnav({ equipe, historico }: BotoesnavProps) {
                                                 alt={sigla}
                                                 width={16}
                                                 height={16}
-                                                className="relative h-4 w-auto object-contain group-hover:scale-110 transition-transform duration-500"
+                                                className="relative h-5 w-auto object-contain group-hover:scale-110 transition-transform duration-500"
                                             />
                                             )}
                                             

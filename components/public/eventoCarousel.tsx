@@ -14,6 +14,18 @@
             nome: "Bússola Jovem",
             imagem: "/bussolaJovem.jpeg",
             descricao: "O evento foi feito em parceria com o Bússola Jovem, um instituto que tem como objetivo auxiliar jovens de baixa renda em zonas periféricas a ingressarem no mercado de trabalho. O evento contou com palestras sobre o Turing e sobre a vivência universitária, além de uma oficina prática de inteligência artificial."
+        },
+        {
+            id:3, 
+            nome: "Workshop de Power BI com a Thorogood",
+            imagem: "/thorogoodeturing.jpeg",
+            descricao: "O Workshop de Power BI com a Thorogood foi um evento realizado em parceria com a empresa de consultoria de tecnologia Thorogood. O workshop teve como objetivo ensinar os participantes a utilizar a ferramenta de visualização de dados Power BI, desenvolvida pela Microsoft. Durante o evento, os participantes aprenderam a criar dashboards interativos e a analisar dados de forma eficiente utilizando o Power BI. O workshop foi gratuito e aberto a todos os interessados da USP em aprimorar suas habilidades em análise de dados e visualização."
+        },
+        {
+            id:4,
+            nome: "Palestra com Nubank",
+            imagem: "/nubanketuring.jpeg",
+            descricao: "A palestra com o Nubank foi um evento realizado em parceria com a empresa de tecnologia financeira Nubank. Durante a palestra, os representantes do Nubank compartilharam insights sobre a cultura da empresa, as oportunidades de carreira e os desafios enfrentados no setor de fintech. O evento foi gratuito e aberto a todos os interessados da USP em aprender mais sobre o mercado de tecnologia financeira e as oportunidades de trabalho no Nubank."
         }
     ];
 
@@ -33,7 +45,7 @@
         const eventoAtual = eventos[currentIndex];
 
         return (
-            <div className="flex w-full max-w-6xl h-[40vh] bg-[#162B3F] rounded-2xl p-8 gap-8 items-center">
+            <div className="flex w-full max-w-6xl h-[60vh] bg-[#162B3F] rounded-2xl p-8 gap-8 items-center">
                 <button onClick={() => setCurrentIndex(currentIndex === 0 ? eventos.length - 1 : currentIndex - 1)} className='text-[#F1863D] text-[2rem]'>&#10094;</button>
                 <div className="w-[40%] aspect-video rounded-lg border-2 border-[#F1863D] overflow-hidden">
                     <Image
@@ -44,7 +56,7 @@
                         className="w-full h-full object-cover"
                     />
                 </div>
-                <div className="flex flex-col gap-4 w-[60%] h-full">
+                <div className="flex flex-col items-center justify-center gap-4 w-[60%] ">
                     <p className="text-[#FFFFFF] text-[1.4rem] font-bold mb-4">{eventoAtual.nome}</p>
                     <div className="flex-1 overflow-y-auto">
                         <p className="text-[#FFFFFF] text-[1rem] text-justify">{eventoAtual.descricao}</p>

@@ -18,7 +18,7 @@ const CONTEUDOS = [
         descricao: "Organizamos eventos para compartilhar conhecimento e promover a integração entre os membros e a comunidade, por meio de workshops, palestras e encontros para a comunidade interna e externa da USP.",
         imagem: "/w4h2025.jpeg",
         escala: "scale-100",
-        href: "#"
+        href: "/eventos"
     },
     {
         id: 3,
@@ -34,7 +34,7 @@ const CONTEUDOS = [
         descricao: "Participamos de competições nacionais e internacionais de inteligência artificial, desafiando nossas habilidades e conhecimentos para alcançar resultados excepcionais e colocar o Turing USP em destaque no cenário global.",
         imagem: "/ABII.jpg",
         escala: "scale-100",
-        href: "#"
+        href: "/eventos#secao azul"
     }
 ]
 
