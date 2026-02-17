@@ -73,10 +73,42 @@
                     <p className='text-[#000000] text-[2rem] font-bold mb-[2%]'>ÚLTIMOS <span style={{fontFamily: 'var(--font-irish-grover)'}}>TALKS:</span></p>
                 </div>
             </div>
+            {artigos && artigos.length > 0 && (
+                <div className='flex w-full px-[5%] mb-12'>
+                    <Link 
+                        href={artigos[0].medium_url} 
+                        target="_blank" 
+                        className="group flex flex-col md:flex-row w-full gap-8 overflow-hidden transition-all"
+                    >
+                    <div className="relative w-full md:w-[40%] h-[35vh]">
+                        <Image
+                            src={artigos[0].image_url || "/heteronimos.png"}
+                            alt={artigos[0].title}
+                            fill
+                            className="object-cover transition-transform group-hover:scale-105"
+                        />
+                    </div>
+                    <div className="flex flex-col justify-center p-6 flex-1">
+                        <span className="text-[#F1863D] font-bold text-xs mb-2 uppercase tracking-widest">Destaque</span>
+                        <h2 className="text-[2rem] font-bold text-black leading-tight mb-4">
+                            {artigos[0].title}
+                        </h2>
+                        <p className="text-gray-600 line-clamp-3 mb-6">
+                            {artigos[0].summary}
+                        </p>
+                        <div className="flex items-center gap-2 text-xs text-black opacity-60">
+                            <p>{artigos[0].author}</p>
+                            <p>•</p>
+                            <p>{new Date(artigos[0].published_at).toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" })}</p>
+                        </div>
+                    </div>
+                </Link>
+            </div>  
+            )}
             <div className='flex w-[100%] h-auto'>
                 <div className='flex flex-col mx-[5%]'>
                     <div className='grid grid-cols-3 gap-[2%]'>
-                        {artigos?.slice(0,6).map((artigo) => (
+                        {artigos?.slice(1,7).map((artigo) => (
                             <Link
                                 href={artigo.medium_url}
                                 key={artigo.medium_id}
