@@ -16,6 +16,7 @@ type Projeto = {
     resultados?: string;
     anoinicio?: number;
     anofim?: number;
+    links?: any;
 }
 
 
@@ -45,6 +46,9 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
     cadastro em si*/
     const lista_categorias = projeto.cat;
     const areas_de_projeto = (projeto.area as string[]).map(id => converteArea[id]);
+
+    // Pega as URLS do projeto
+    const urls_do_projeto = projeto.urlProjeto as string[];
 
     return (
         <div>
@@ -155,6 +159,25 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
                 <p className="text-[#000000] text-[3rem] font-bold text-center mb-[5%]">RESULTADOS</p>
                 <p className="text-[#000000] text-[1.2rem] mb-[2%]">{projeto.resultados}</p>
             </div>
+            {/* Condicional. Só printa a parte de link do projeto se houver um ou mais cadastrado*/}
+            {projeto.links && (
+                <div className="flex flex-col mx-[5%] mb-[5%] min-h-[20vh] h-auto w-[90%] items-center">
+                    <div className="flex mb-[5%] bg-[#4A90D9] rounded-[3rem] h-[3rem] w-[12rem] justify-center items-center">
+                        <Image
+                            src="/links.svg"
+                            alt="Links"
+                            width={50}
+                            height={50}
+                            className="w-[2rem] h-auto object-contain"
+                        />
+                        <p className="text-[#FFFFFF] text-[1rem] font-bold ml-[2%]">Links</p>
+                    </div>
+                    <p className="text-[#000000] text-[3rem] font-bold text-center mb-[5%]">LINKS DO PROJETO</p>
+                    {(projeto.links as string[]).map((url, index) => (
+                        <a key={index} href={url} className="text-[#F1863D] text-[1.2rem] mb-[2%]">{url}</a>
+                    ))}
+                </div>
+            )}
         </div>
     )
 }
