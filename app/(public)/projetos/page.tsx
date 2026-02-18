@@ -1,12 +1,12 @@
 import Lista_Projetos from "@/components/public/Lista_projetos";
-import { projetosSimulados } from "@/data/projetosDara";
+import { getCatalogo, getProjeto } from "@/app/(public)/projetos/actions";
 
 export default async function Projetos() {
-    const projetos = projetosSimulados;
+    const projetos = await getCatalogo();
     return (
         <div>
             <div>
-                <Lista_Projetos projetosIniciais={projetos} />
+                <Lista_Projetos projetosIniciais={projetos as any} />
             </div>
         </div>
     );
