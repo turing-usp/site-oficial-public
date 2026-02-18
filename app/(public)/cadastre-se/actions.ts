@@ -51,6 +51,6 @@ export async function handleCadastro(formData: FormData) {
     }
 
     // Sucesso
-    redirect("/login?success=cadastro-realizado");
+    redirect("/cadastre-se/sucesso");
 
 }
