@@ -1,60 +1,70 @@
-import { createServerClient, type CookieOptions } from '@supabase/ssr'
-import { error } from 'console'
+import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
 export async function proxy(request: NextRequest) {
+  // Criamos a resposta inicial
   let response = NextResponse.next({
     request: { headers: request.headers },
   })
 
-const supabase = createServerClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-  {
-    cookies: {
-      getAll() {
-        return request.cookies.getAll()
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll()
+        },
+        setAll(cookiesToSet) {
+          // Atualiza tanto o request quanto a response para evitar dessincronização
+          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
+          response = NextResponse.next({ request })
+          cookiesToSet.forEach(({ name, value, options }) =>
+            response.cookies.set(name, value, options)
+          )
+        },
       },
-      setAll(cookiesToSet) {
-        cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
-        response = NextResponse.next({
-          request,
-        })
-        cookiesToSet.forEach(({ name, value, options }) =>
-          response.cookies.set(name, value, options)
-        )
-      },
-    },
-  }
-)
+    }
+  )
 
-  // 1. Pega o usuário do cookie
-  const { data: { user },error } = await supabase.auth.getUser()
+  // IMPORTANTE: Use getUser() para segurança, mas cuidado com redirecionamentos imediatos em caso de erro de rede
+  const { data: { user } } = await supabase.auth.getUser()
+  const pathname = request.nextUrl.pathname
 
-  // Se houver erro na verificação do user (como user não encontrado no banco),
-  // force o redirecionamento mesmo que o cookie exista.
-  if ((!user || error) && request.nextUrl.pathname.startsWith('/plataforma')) {
-    const url = request.nextUrl.clone();
-    url.pathname = '/login';
-    return NextResponse.redirect(url);
+  // 1. Se NÃO está logado e tenta acessar plataforma
+  if (!user && pathname.startsWith('/plataforma')) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/login'
+    return NextResponse.redirect(url)
   }
 
-  // 3. Se JÁ estiver logado e tentar acessar login/cadastro, redireciona para plataforma
-  if (user && (request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/cadastre-se')) {
+  // 2. Se JÁ está logado e tenta acessar login/cadastro
+  if (user && (pathname === '/login' || pathname === '/cadastre-se')) {
     return NextResponse.redirect(new URL('/plataforma', request.url))
   }
 
-  // 4. PROTEÇÃO DE ADMIN: Se a rota for /plataforma/admin, checamos o tipo no banco
-  if (request.nextUrl.pathname.startsWith('/plataforma/admin')) {
+  // 3. PROTEÇÃO DE ADMIN (Onde o loop costuma morar)
+  if (user && pathname.startsWith('/plataforma/admin')) {
     const { data: perfil } = await supabase
       .from('Perfis')
       .select('tipo_usuario')
-      .eq('id', user?.id)
+      .eq('id', user.id)
       .single()
 
     if (perfil?.tipo_usuario !== 2) {
-      // Se não for admin (tipo 2), manda para a home da plataforma
+      // Importante: redireciona para a base da plataforma, não para a mesma rota
       return NextResponse.redirect(new URL('/plataforma', request.url))
+    }
+  }
+
+  // 4. Lógica de Nova Senha
+  if (pathname === '/nova-senha') {
+    const hasCode = request.nextUrl.searchParams.has('code')
+    if (!user && !hasCode) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/login'
+      url.searchParams.set('reason', 'acesso-negado')
+      return NextResponse.redirect(url)
     }
   }
 
@@ -62,5 +72,5 @@ const supabase = createServerClient(
 }
 
 export const config = {
-  matcher: ['/plataforma/:path*', '/login', '/cadastre-se'], // Monitora plataforma + páginas de auth
+  matcher: ['/plataforma/:path*', '/login', '/cadastre-se', '/nova-senha'],
 }

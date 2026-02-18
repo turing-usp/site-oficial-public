@@ -39,7 +39,7 @@ export default function Login() {
                                     />
                                     <Senha/>
                                     <button className="h-[3rem] w-[12rem] border border-[#F1863D] border-[0.1rem] text-[#000000] text-[1rem] mt-[5%] rounded-[2rem] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer transition-ease-in-out duration-300">ENTRAR</button>
-                                    <Link href="/cadastre-se" className="text-[#000000] italic text-[1rem] mt-[3%] hover:underline">Esqueci minha senha</Link>
+                                    <Link href="/esqueciasenha" className="text-[#000000] italic text-[1rem] mt-[3%] hover:underline">Esqueci minha senha</Link>
                                 </div>
                             </form>
                         </div>
