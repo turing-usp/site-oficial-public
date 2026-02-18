@@ -16,6 +16,7 @@ type Projeto = {
     resultados?: string;
     anoinicio?: number;
     anofim?: number;
+    links?: any;
 }
 
 export async function getCatalogo()
