@@ -143,7 +143,7 @@ export default function Lista_Projetos({ projetosIniciais }: { projetosIniciais?
                                         <p className="text-[2rem] text-[#000000] font-bold">{projeto.titulo}</p>
                                         <p className="text-[1rem] text-[#000000]">{projeto.resumo}</p>
                                     </div>
-                                    <div className="flex bg-transparent text-[#000000] text-[1rem] h-[5vh] w-[15vh] rounded-[1rem] text-center items-center justify-center border-[0.1rem] border-[#F1863D] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer duration-500 ease-in-out">
+                                    <div className="flex bg-transparent text-[#000000] text-[1rem] h-[5vh] w-[12vw] rounded-[1rem] text-center items-center justify-center border-[0.1rem] border-[#F1863D] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer duration-500 ease-in-out">
                                         Veja mais
                                     </div>
                                 </div>

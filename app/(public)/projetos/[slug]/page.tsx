@@ -2,23 +2,6 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getCatalogo, getProjeto } from "@/app/(public)/projetos/actions";
 
-type Projeto = {
-    id: string;
-    slug: string;
-    area: string[];
-    titulo: string;
-    resumo: string;
-    parceiros?: string;
-    imagem: string;
-    cat?: any;
-    problema?: string;
-    confeccao?: string;
-    resultados?: string;
-    anoinicio?: number;
-    anofim?: number;
-    links?: any;
-}
-
 
 type ProjetoSlugProps = {
     params: Promise<{
@@ -36,7 +19,6 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
         notFound();
     }
 
-
     const converteArea: { [key: string]: string } = {
         "0": "Quant", "1": "NLP", "2": "RL", "3": "DS",
         "4": "Comp Visual", "5": "Marketing", "6": "RH", "7": "Estratégia"
@@ -46,9 +28,6 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
     cadastro em si*/
     const lista_categorias = projeto.cat;
     const areas_de_projeto = (projeto.area as string[]).map(id => converteArea[id]);
-
-    // Pega as URLS do projeto
-    const urls_do_projeto = projeto.urlProjeto as string[];
 
     return (
         <div>
