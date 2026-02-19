@@ -1,8 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import supaEventos from "@/app/(public)/eventos/action";
 import EventoCarousel from '@/components/public/eventoCarousel';
 
-export default function Eventos(){
+export default async function Eventos(){
+
+    const {error, success, eventos} = await supaEventos();
+
     return(
         <main>
             <div className="relative flex h-[100vh] w-[100%] items-center justify-center">
@@ -34,7 +38,7 @@ export default function Eventos(){
                 <p className='w-full text-[#000000] text-[3rem] font-bold text-left ml-[10%]'>NOSSOS EVENTOS</p>
             </div>
             <div className="flex w-full items-center justify-center mt-[5%] mb-[5%]">
-                <EventoCarousel />
+                <EventoCarousel eventos={eventos || []} />
             </div>
             <div id='secao azul' className='flex flex-col min-h-screen h-auto z-0 relative bg-[#162B3F]'>
                 <div className='flex justify-center mt-[5%]'>

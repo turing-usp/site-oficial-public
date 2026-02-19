@@ -2,41 +2,14 @@
     import Image from 'next/image';
     import { useState, useEffect } from 'react';
 
-    const eventos = [
-        {
-            id: 1,
-            nome: "Workshop for Her",
-            imagem: "/WorkshopForHer23.jpg",
-            descricao: "O Workshop for Her é o maior evento anual do Turing USP, feito e projetado por mulheres para mulheres com interesse em tecnologia. O evento tem como objetivo capacitar e inspirar mulheres a ingressarem na área de tecnologia, aumentando a diversidade e inclusão no setor. O Workshop for Her oferece uma variedade de atividades, incluindo palestras, workshops práticos e painés de discussão, abordando tema como inteligência artificial e ciência de dados. O evento é grátis e aberto a todas as mulheres, independentemente do nível de experiência."
-        },
-        {
-            id: 2,
-            nome: "Bússola Jovem",
-            imagem: "/bussolaJovem.jpeg",
-            descricao: "O evento foi feito em parceria com o Bússola Jovem, um instituto que tem como objetivo auxiliar jovens de baixa renda em zonas periféricas a ingressarem no mercado de trabalho. O evento contou com palestras sobre o Turing e sobre a vivência universitária, além de uma oficina prática de inteligência artificial."
-        },
-        {
-            id:3, 
-            nome: "Workshop de Power BI com a Thorogood",
-            imagem: "/thorogoodeturing.jpeg",
-            descricao: "O Workshop de Power BI com a Thorogood foi um evento realizado em parceria com a empresa de consultoria de tecnologia Thorogood. O workshop teve como objetivo ensinar os participantes a utilizar a ferramenta de visualização de dados Power BI, desenvolvida pela Microsoft. Durante o evento, os participantes aprenderam a criar dashboards interativos e a analisar dados de forma eficiente utilizando o Power BI. O workshop foi gratuito e aberto a todos os interessados da USP em aprimorar suas habilidades em análise de dados e visualização."
-        },
-        {
-            id:4,
-            nome: "Palestra com Nubank",
-            imagem: "/nubanketuring.jpeg",
-            descricao: "A palestra com o Nubank foi um evento realizado em parceria com a empresa de tecnologia financeira Nubank. Durante a palestra, os representantes do Nubank compartilharam insights sobre a cultura da empresa, as oportunidades de carreira e os desafios enfrentados no setor de fintech. O evento foi gratuito e aberto a todos os interessados da USP em aprender mais sobre o mercado de tecnologia financeira e as oportunidades de trabalho no Nubank."
-        }
-    ];
-
-    export default function EventoCarousel(){
+    export default function EventoCarousel({eventos} : any){
         const [currentIndex, setCurrentIndex] = useState(0);
         // Função para pular para o próximo passo
         const nextEvento = () => {
             setCurrentIndex((prev) => (prev === eventos.length - 1 ? 0 : prev + 1)); // Prev é o índice atual do relato e relatos.legth é o número total de relatos, logo, se chegarmos no final dos relatos ele volta para o início
         };
 
-        //Efeito para trocar o relato a cada 8 segundos
+        //Efeito para trocar o relato a cada 10 segundos
         useEffect(() => {
             const interval = setInterval(nextEvento, 10000);
             return () => clearInterval(interval);
