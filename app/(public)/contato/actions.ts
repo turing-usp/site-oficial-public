@@ -13,11 +13,16 @@ export async function handleContato(formData: FormData) {
     const areasDeInteresse = (formData.get("areasDeInteresse") || "").toString();
     const anoDeIngresso = (formData.get("anoDeIngresso") || "").toString();
     const curso = (formData.get("curso") || "").toString();
+    let is_comercial = true;
+    // Se ambos anoDeIngresso e curso estiverem vazios, não é um contato, mas sim uma mensagem para entrar no grupo
+    if (!anoDeIngresso && !curso) {
+        is_comercial = false;
+    }
 
     if (!nome || !email){
         redirect("/contato?error=campos-vazios");
     }
-    const {error} = await contato({ nome, email, areasDeInteresse, telefone, mensagem, tipoDeProjeto, anoDeIngresso, curso });
+    const {error} = await contato({ nome, email, areasDeInteresse, telefone, mensagem, tipoDeProjeto, anoDeIngresso, curso, is_comercial });
     if (error) {
         console.error("Erro:", error);
         redirect("/contato?error=erro-ao-enviar");
