@@ -6,39 +6,39 @@ import Link from 'next/link';
 export default function Home() {
     return (
         <main>
-            <div className='h-[100vh] flex flex-row z-0 items-center'>
-                <div className='ml-[5%] mr-[5%] flex flex-col w-[45%] items-center justify-center h-[100%]'>
-                    <p className='text-[#000000] text-[4rem] text-center font-bold leading-tight'>CONSTRUINDO O FUTURO DA <span className='text-[#F1863D]'>IA</span></p>
-                    <p className='mt-[5%] text-[#000000] text-center text-[1.5rem] leading-tight'>Desde 2015 o Turing é o maior grupo voltado a inteligência artificial da USP</p>
+            <div className='h-[100vh] flex flex-col md:flex-row z-0 items-center'>
+                <div className='ml-[5%] mr-[5%] flex flex-col w-full md:w-[45%] items-center justify-center h-[100%]'>
+                    <p className='text-[#000000] text-[2.2rem] md:text-[4rem] text-center font-bold leading-tight px-4 md:px-0'>CONSTRUINDO O FUTURO DA <span className='text-[#F1863D]'>IA</span></p>
+                    <p className='mt-[5%] text-[#000000] text-center text-[1.5rem] leading-tight px-4 md:px-0'>Desde 2015 o Turing é o maior grupo voltado a inteligência artificial da USP</p>
                 </div>
-                <div className='absolute bg-gradient-to-b from-[#EBB84A] to-[#F1863D] w-[40%] h-[100%] top-0 right-0 rounded-tl-[2rem] rounded-bl-[2rem] overflow-hidden'>
+                <div className='absolute bg-gradient-to-b from-[#EBB84A] to-[#F1863D] w-[40%] h-[100%] top-0 right-0 rounded-tl-[2rem] rounded-bl-[2rem] overflow-hidden hidden md:block'>
                    <Image 
                         src="/circuito.svg"
                         alt="Circuitos"
                         width={100}
                         height={100}
-                        className='absolute w-[10vh] h-auto object-cover z-0 left-[10%] top-0 rotate-90'
+                        className='absolute w-[10vh] h-auto object-cover z-0 left-[10%] top-0 rotate-90 hidden md:block'
                    />
                     <Image 
                         src="/circuito.svg"
                         alt="Circuitos"
                         width={100}
                         height={100}
-                        className='absolute w-[10vh] h-auto object-cover bottom-0 z-0 rotate-35 left-[8%] origin-left'
+                        className='absolute w-[10vh] h-auto object-cover bottom-0 z-0 rotate-35 left-[8%] origin-left hidden md:block'
                    />
                    <Image 
                         src="/circuito.svg"
                         alt="Circuitos"
                         width={100}
                         height={100}
-                        className='absolute w-[10vh] h-auto object-cover bottom-0 z-0 rotate-0 right-0'
+                        className='absolute w-[10vh] h-auto object-cover bottom-0 z-0 rotate-0 right-0 hidden md:block'
                    />
                    <Image 
                         src="/circuito.svg"
                         alt="Circuitos"
                         width={100}
                         height={100}
-                        className='absolute w-[10vh] h-auto object-cover z-0 right-[7%] rotate-215 top-0'
+                        className='absolute w-[10vh] h-auto object-cover z-0 right-[7%] rotate-215 top-0 hidden md:block'
                    />
                 </div>
                 <Image
@@ -46,34 +46,34 @@ export default function Home() {
                     alt="Processador"
                     width={800}
                     height={800}
-                    className='absolute w-[75vh] h-auto object-contain relative z-0'
+                    className='w-[60vw] mb-5 md:mb-0 md:absolute md:w-[75vh] md:h-auto md:object-contain md:relative md:z-0'
                 />
             </div>
-            <div className='flex flex-row items-center h-[100vh] z-0 relative overflow-hidden'>
-                <div className='ml-[5%] flex flex-col w-[45%] items-center justify-center h-[100%]'>
+            <div className='flex flex-col md:flex-row items-center py-16 md:h-[100vh] z-0 relative'>
+                <div className='ml-[5%] flex flex-col w-full md:w-[45%] items-center justify-center h-auto md:h-[100%]'>
                     <Image
                         src="/fotointe2.jpeg"
                         alt=""
                         width={800}
                         height={800}
-                        className='w-[55vh] h-auto border border-[#F1863D] border-[0.2rem] mb-[5%] rotate-354'
+                        className='w-[85%] md:w-[55vh] h-auto border border-[#F1863D] border-[0.2rem] mb-[5%] mt-[5%] md:mt-0 rotate-354'
                     />
                     <Image
                         src="/fotointeg.jpg"
                         alt=""
                         width={800}
                         height={800}
-                        className='w-[55vh] h-auto border border-[#F1863D] border-[0.2rem] rotate-6'
+                        className='w-[85%] md:w-[55vh] h-auto border border-[#F1863D] border-[0.2rem] rotate-6'
                     />
                 </div>
-                <div className='mr-[5%] flex flex-col w-[45%] '>
-                    <p className='text-[#000000] text-[3rem]  font-bold'>QUEM SOMOS</p>
-                    <div className='w-[50%] h-[0.5vh] bg-[#F1863D]'></div>
-                    <p className='mt-[5%] text-[#000000]  text-[1.5rem] text-justify'>O Turing é um grupo de extensão da USP campus Butantã que foi fundado em 2015 por 5 amigos. Desde então é referência na pesquisa e produção do assunto.</p>
-                    <p className='mt-[5%] text-[#000000] text-[1.5rem] text-justify'>O grupo tem como objeto de estudos diferentes áreas da inteligência artificial: Data Science, Processamento de Linguagem Natural, Computação visual, Aprendizado por reforço e finanças quantitativas.</p>
+                <div className='mr-[5%] flex flex-col w-full md:w-[45%] pb-10 md:pb-0'>
+                    <p className='text-[#000000] text-[2.2rem] md:text-[3rem] font-bold ml-[5%] md:ml-0'>QUEM SOMOS</p>
+                    <div className='w-[50%] h-[0.5vh] bg-[#F1863D] ml-[5%] md:ml-0'></div>
+                    <p className='mt-[5%] text-[#000000]  text-[1rem] md:text-[1.5rem] text-justify ml-[5%] md:ml-0'>O Turing é um grupo de extensão da USP campus Butantã que foi fundado em 2015 por 5 amigos. Desde então é referência na pesquisa e produção do assunto.</p>
+                    <p className='mt-[5%] text-[#000000] text-[1rem] md:text-[1.5rem] text-justify ml-[5%] md:ml-0'>O grupo tem como objeto de estudos diferentes áreas da inteligência artificial: Data Science, Processamento de Linguagem Natural, Computação visual, Aprendizado por reforço e finanças quantitativas.</p>
                     <div className='mt-[5%] self-center'>
                         <Link href="/equipe">
-                            <button className='text-[#000000] bg-[#FFFFFF] border border-[#F1863D] w-[12rem] h-[3rem] rounded rounded-[2rem] hover:scale-103 transition-transform duration-300 cursor-pointer hover:bg-[#F1863D] hover:text-[#FFFFFF]'>CONHEÇA A EQUIPE</button>
+                            <button className='text-[#000000] bg-[#FFFFFF] border border-[#F1863D] w-[12rem] h-[3rem] mb-[5%] md:mb-0 rounded rounded-[2rem] hover:scale-103 transition-transform duration-300 cursor-pointer hover:bg-[#F1863D] hover:text-[#FFFFFF]'>CONHEÇA A EQUIPE</button>
                         </Link>
                     </div>
                 </div>
@@ -82,21 +82,21 @@ export default function Home() {
                     alt="Circuitos"
                     width={100}
                     height={100}
-                    className='absolute w-[8vh] h-auto object-cover z-0 rotate-90 top-0'
+                    className='absolute w-[8vh] h-auto object-cover z-0 rotate-90 top-0 hidden md:block'
                 />
                 <Image 
                     src="/circuitoorange.svg"
                     alt="Circuitos"
                     width={100}
                     height={100}
-                    className='absolute w-[8vh] h-auto object-cover z-0 rotate-65 origin-left-bottom bottom-0'
+                    className='absolute w-[8vh] h-auto object-cover z-0 rotate-65 origin-left-bottom bottom-0 hidden md:block'
                 />
                 <Image 
                     src="/circuitoorange.svg"
                     alt="Circuitos"
                     width={100}
                     height={100}
-                    className='absolute w-[8vh] h-auto object-cover z-0 rotate-270 origin-right-top top-0 right-[7%]'
+                    className='absolute w-[8vh] h-auto object-cover z-0 rotate-270 origin-right-top top-0 right-[7%] hidden md:block'
                 />
             </div>
             <div id='secao azul' className='flex flex-col h-[100vh] z-0 relative bg-[#162B3F]'>

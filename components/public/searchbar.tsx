@@ -22,7 +22,7 @@ export default function SearchBar({ artigosIniciais }: { artigosIniciais: any[] 
     }, [searchTerm, artigosIniciais]);
     
     return (
-        <section className={`flex flex-col w-full items-center justify-center bg-[#162B3F] transition-all duration-500 ease-in-out ${results.length > 0 ? 'py-12 min-h-[50vh]' : 'h-[30vh]'}`}>
+        <section id='secao azul' className={`flex flex-col w-full items-center justify-center bg-[#162B3F] transition-all duration-500 ease-in-out ${results.length > 0 ? 'py-12 min-h-[50vh]' : 'h-[30vh]'}`}>
             
             {/* Barra de Pesquisa */}
             <div className='relative w-[50vw]'>
@@ -63,6 +63,7 @@ export default function SearchBar({ artigosIniciais }: { artigosIniciais: any[] 
                                         src={item.image_url || "/heteronimos.png"} 
                                         fill 
                                         alt="" 
+                                        unoptimized
                                         className='object-cover rounded-md'
                                     />
                                 </div>
