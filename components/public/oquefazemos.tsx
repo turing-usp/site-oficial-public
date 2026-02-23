@@ -45,7 +45,7 @@ export default function OqueFazemos() {
     return (
         <div>
             {/* Renderização dos Botões */}
-            <div className='flex flex-row mx-[5%] gap-[5%]'>
+            <div className='grid grid-cols-2 md:flex md:flex-row mx-[5%] gap-3 md:gap-[5%]'>
                 {CONTEUDOS.map((item, index) => ( //O map funciona como um loop que percorre cada item do array CONTEUDOS e retorna um botão para cada um, além disso pega o indice do item atual no array
                     <button 
                         key={item.id}
@@ -58,9 +58,9 @@ export default function OqueFazemos() {
                 ))}
             </div>
 
-            <div className='mx-[10%] my-[2%] bg-[#162B3F] flex flex-row h-[50vh] rounded-[1rem] relative overflow-hidden'>
-                <div className='w-[45%]'>
-                    <div className=' ml-[5%] flex items-center justify-center h-[100%]'>
+            <div className='mx-[5%] md:mx-[10%] my-[5%] bg-[#162B3F] flex flex-col md:flex-row min-h-fit md:h-[55vh] rounded-[1rem] relative overflow-hidden py-8 md:py-0'>
+                <div className='w-full md:w-[45%] flex items-center justify-center p-4 md:p-0'>
+                    <div className='relative w-[85%] md:w-[50vh] flex flex-col'>
                         <Image
                             src={CONTEUDOS[abaAtiva].imagem} 
                             alt={CONTEUDOS[abaAtiva].titulo}
@@ -79,11 +79,11 @@ export default function OqueFazemos() {
                 </div>
 
                 
-                <div className='w-[45%] mx-[5%] flex flex-col justify-center items-center'>
-                    <h3 className='text-[#FFFFFF] text-[2rem] font-bold'>
+                <div className='w-full md:w-[45%] md:mx-[5%] flex flex-col justify-center items-center text-center'>
+                    <h3 className='text-[#FFFFFF] text-[1.8rem] md:text-[2.2rem] font-bold uppercase'>
                         {CONTEUDOS[abaAtiva].titulo}
                     </h3>
-                    <p className='text-[#FFFFFF] text-center my-[3%]'>
+                    <p className='text-[#FFFFFF] text-[1rem] md:text-[1.1rem] leading-relaxed my-[5%] md:my-[3%] px-2'>
                         {CONTEUDOS[abaAtiva].descricao}
                     </p>
                     <Link className='flex bg-[#F1863D] text-[#FFFFFF] text-[1rem] h-[5vh] w-[25vh] mt-[2%] rounded-[1rem] text-center items-center justify-center hover:bg-[#C25E1A] cursor-pointer duration-500 ease-in-out' href={CONTEUDOS[abaAtiva].href}>

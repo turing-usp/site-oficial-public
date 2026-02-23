@@ -40,7 +40,7 @@ export default function Carousel() {
     const relatoAtual = relatos[currentIndex];
 
     return (
-        <div className="flex flex-col w-full h-[60vh] bg-[#162B3F] rounded-[1rem] overflow-hidden justify-center">
+        <div className="flex flex-col w-full min-h-[400px] h-auto py-8 md:h-[60vh] bg-[#162B3F] rounded-[1rem] overflow-hidden justify-center">
             <div className="flex flex-row items-center w-full px-[5%] gap-[4%] pt-[3%]">
                 <div className="flex-shrink-0 w-[10vh] h-[10vh] rounded-full overflow-hidden border-[0.2rem] border-[#F1863D]">
                     <Image 
@@ -58,7 +58,7 @@ export default function Carousel() {
             </div>
             <div className='flex flex-row px-[5%] my-[3%]'>
                 <button onClick={() => setCurrentIndex(currentIndex === 0 ? relatos.length - 1 : currentIndex - 1)} className='text-[#F1863D] text-[2rem] mr-[5%]'>&#10094;</button>
-                <p className='flex-1 text-center text-[#FFFFFF] text-[1rem] text-justify'>{relatoAtual.relato}</p>
+                <p className='flex-1 text-center text-[#FFFFFF] text-[1rem] text-center md:text-justify'>{relatoAtual.relato}</p>
                 <button onClick={() => setCurrentIndex(currentIndex === relatos.length - 1 ? 0 : currentIndex + 1)} className='text-[#F1863D] text-[2rem] ml-[5%]'>&#10095;</button>
             </div>
             <p className="mx-[5%] text-[#F1863D] text-[3.5rem]">&#10077;</p>
