@@ -6,10 +6,15 @@ interface MembrosInfo {
     tt_membro: number;
 }
 
-interface AbasAdminProps {
-    [key: string]: MembrosInfo;
+interface AdminData {
+    membros: {
+        [key: string]: MembrosInfo; // Ex: "Diretoria": { ... }, "Assessoria": { ... }
+    };
+    cargos: { [key: string]: string };
+    areas: { [key: string]: string };
 }
 
-export default async function LateralAdmin({ data }: { data: AbasAdminProps }) {
+
+export default async function LateralAdmin({ data }: { data: AdminData }) {
     return <AdminWrapper data={data} />;
 }

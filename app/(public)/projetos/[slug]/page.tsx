@@ -13,19 +13,23 @@ type ProjetoSlugProps = {
 // Página server component que lê o slug da rota dinâmica
 export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
     const { slug } = await params;
-    const projeto = await getProjeto(slug);
+    const projeto = await getProjeto(slug) as any;
 
     if (!projeto) {
         notFound();
     }
 
     const converteArea: { [key: string]: string } = {
-        "0": "Quant", "1": "NLP", "2": "RL", "3": "DS",
-        "4": "Comp Visual", "5": "Marketing", "6": "RH", "7": "Estratégia"
+        "0": "Recursos Humanos",
+        "1": "Marketing",
+        "2": "Estratégia",
+        "3": "NLP",
+        "4": "Quant",
+        "5": "DS",
+        "6": "RL",
+        "7": "Comp. Visual"
     };
 
-    /* Categoria apenas pega. Para área, está convertendo o id para o nome, supondo que houve a conversão no
-    cadastro em si*/
     const lista_categorias = projeto.cat;
     const areas_de_projeto = (projeto.area as string[]).map(id => converteArea[id]);
 
@@ -44,7 +48,7 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
                         <Image
                             src={projeto.parceiros}
                             alt="Parceiros"
-                            width={150}
+                            width={50}
                             height={50}
                             className=""
                         />
@@ -54,7 +58,7 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
                         alt="Turing.usp"
                         width={100}
                         height={50}
-                        className="w-[100%] h-[3rem] object-contain"
+                        className="flex w-[100%] h-[3rem] object-contain"
                     />
                 </div>
             </div>

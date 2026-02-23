@@ -34,8 +34,7 @@ export async function getCatalogo()
     return data;
 }
 
-export async function getProjeto(slug: string)
-{
+export async function getProjeto(slug: string){
     const supabase = await createClient();
     const { data, error } = await supabase.from("Projeto").select().eq("slug", slug);
 
@@ -43,7 +42,6 @@ export async function getProjeto(slug: string)
         console.error("Ocorreu o seguinte erro ao buscar o projeto:", error);
         return undefined;
     }
-    
-    // Retorna o primeiro projeto encontrado (que é o único)
+
     return data?.[0];
 }

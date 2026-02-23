@@ -25,38 +25,38 @@ export default function Lista_Projetos({ projetosIniciais }: { projetosIniciais?
     const [subAbaAtiva, setSubAbaAtiva] = useState(0);
     const ÁREAS_DE_FOCO = [
         {
-            nome: "Visão Computacional",
-            id: "0"
-        },
-        {
             nome: "Processamento de Linguagem Natural",
-            id: "1"
-        },
-        {
-            nome: "Finanças Quantitativas",
-            id: "2"
-        },
-        {
-            nome: "Data Science",
             id: "3"
         },
         {
-            nome: "Aprendizado por Reforço",
+            nome: "Finanças Quantitativas",
             id: "4"
+        },
+        {
+            nome: "Data Science",
+            id: "5"
+        },
+        {
+            nome: "Aprendizado por Reforço",
+            id: "6"
+        },
+        {
+            nome: "Visão Computacional",
+            id: "7"
         }
     ]
     const ÁREAS_DE_GESTÃO = [
         {
             nome: "Recursos Humanos",
-            id: "5"
+            id: "0"
         },
         {
             nome: "Marketing",
-            id: "6"
+            id: "1"
         },
         {
             nome: "Estratégia",
-            id: "7"
+            id: "2"
         }
     ]
 
