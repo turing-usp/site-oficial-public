@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { mandarforms } from "@/app/(dashboard)/plataforma/projetos/actions";
 
 export default function proj(dados: any) {
@@ -17,7 +17,7 @@ export default function proj(dados: any) {
     const handleNovoProjetoClick = () => {
         setMostrarFormulario(true);
     };
-    const [itemAtual, setItemAtual] = useState("RH");
+    const [itemAtual, setItemAtual] = useState("0");
     // Vamos pegar o valor do select e guardar para colocar numa tag p para mostrarmos a area, um projeto pode ter no máximo 3 áreas
     const [areaSelect, setAreaSelect] = useState<string[]>([]);
 
@@ -29,9 +29,11 @@ export default function proj(dados: any) {
 
     const [links, setLinks] = useState<string[]>([]);
     const [linkAtual, setLinkAtual] = useState("");
-    const adicionarLink = () => {        if(linkAtual && !links.includes(linkAtual)) {
-            setLinks([...links, linkAtual]);
-            setLinkAtual("");
+    const adicionarLink = () => {
+    const linkLimpo = linkAtual.trim();
+    if(linkLimpo !== "" && !links.includes(linkLimpo)) {
+        setLinks([...links, linkLimpo]);
+        setLinkAtual("");
         }
     };
     // Agora vamos fazer a lógica para pegar as fotos do projeto ou parceiros 
@@ -61,31 +63,88 @@ export default function proj(dados: any) {
         }
     };
 
+    const [projetoEmEdicao, setProjetoEmEdicao] = useState<any | null>(null);
+
+    const handleEditarclick = (projeto: any) => {
+        setProjetoEmEdicao(projeto);
+        setMostrarFormulario(true);
+        // Aqui você pode preencher os campos do formulário com os dados do projeto selecionado para edição
+        setAreaSelect(projeto.area || []);
+        const linksDoBanco = projeto.links 
+        ? (Array.isArray(projeto.links) ? projeto.links : [projeto.links]) 
+        : [];
+        setLinks(linksDoBanco);
+        
+    }
+
+    const mapa_areas: { [key: string]: string } = {
+        "0": "RH",
+        "1": "Estratégia",
+        "2": "Marketing",
+        "3": "NLP",
+        "4": "Quant",
+        "5": "DS",
+        "6": "RL",
+        "7": "Comp. V."
+    }
+
+    const [modaldelete, setModalDelete] = useState(false);
+
+    useEffect(() => {
+        if (projetoEmEdicao) {
+            // Áreas (lógica anterior)
+            const areasBanco = projetoEmEdicao.areas || projetoEmEdicao.area || [];
+            setAreaSelect(Array.isArray(areasBanco) ? areasBanco.map(String) : String(areasBanco).split(',').filter(Boolean));
+
+            // Links
+            const linksBanco = projetoEmEdicao.links || [];
+            // Se o banco retornar string separada por vírgula, transformamos em array
+            const linksArray = Array.isArray(linksBanco) 
+                ? linksBanco 
+                : String(linksBanco).split(',').map(l => l.trim()).filter(Boolean);
+                
+            setLinks(linksArray);
+        } else {
+            setAreaSelect([]);
+            setLinks([]);
+        }
+    }, [projetoEmEdicao]);
+   
     return (
     <>
         {mostrarFormulario ? (
-        <form className="flex-col mx-[5%] w-[90%] h-auto" action={mandarforms} >
+        <form id="form-projeto" key={projetoEmEdicao?.id || 'novo_projeto'} className="flex-col mx-[5%] w-[90%] h-auto" action={mandarforms} >
             <button 
                 id="voltar_projetos" 
                 className="mb-6 text-[#F1863D] hover:underline flex items-center gap-2 w-fit cursor-pointer"
-                onClick={() => setMostrarFormulario(false)}
+                onClick={() => {
+                    setMostrarFormulario(false);
+                    setProjetoEmEdicao(null);
+                    setAreaSelect([]);
+                    setLinks([]);
+                    setPreviewPrincipal(null);
+                    setPreviewParceiros(null);
+                }}
             >
                 ← Voltar para a lista
             </button>
-            <h2 className="text-white text-xl font-bold my-[2%]">Formulário de Criação de Projeto:</h2>
+            <h2 className="text-white text-xl font-bold my-[2%]"> {projetoEmEdicao ? "Editar Projeto" : "Formulário de Criação de Projeto"}</h2>
             <label className="text-white mt-4">Título do Projeto:</label>
             <input
                 required
                 id="titulo"
                 name="titulo"
+                defaultValue={projetoEmEdicao?.titulo || ""}
                 type="text"
                 className="w-full my-[1%] p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#F1863D]"
             />
             <label className="text-white">Slug (rota) do projeto:</label>
             <input
                 required
+                readOnly={!!projetoEmEdicao}
                 id="slug"
                 name="slug"
+                defaultValue={projetoEmEdicao?.slug || ""}
                 type="text"
                 className="w-full my-[1%] p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#F1863D]"
             />
@@ -94,6 +153,7 @@ export default function proj(dados: any) {
                 required
                 id="resumo"
                 name="resumo"
+                defaultValue={projetoEmEdicao?.resumo || ""}
                 className="w-full my-[1%] p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#F1863D]"
                 rows={3}
             />
@@ -102,6 +162,7 @@ export default function proj(dados: any) {
                 required
                 id="problema"
                 name="problema"
+                defaultValue={projetoEmEdicao?.problema || ""}
                 className="w-full my-[1%] p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#F1863D]"
                 rows={3}
             />
@@ -110,6 +171,7 @@ export default function proj(dados: any) {
                 required
                 id="confeccao"
                 name="confeccao"
+                defaultValue={projetoEmEdicao?.confeccao || ""}
                 className="w-full my-[1%] p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#F1863D]"
                 rows={3}
             />
@@ -118,6 +180,7 @@ export default function proj(dados: any) {
                 required
                 id="resultado"
                 name="resultado"
+                defaultValue={projetoEmEdicao?.resultados || ""}
                 className="w-full my-[1%] p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#F1863D]"
                 rows={3}
             />
@@ -127,17 +190,26 @@ export default function proj(dados: any) {
                     <button type="button" className="bg-[#9c2e41] hover:bg-[#9c2e41]/90 text-white font-bold py-2 cursor-pointer px-4 rounded-full ml-[2%]" onClick={() => setAreaSelect([])}>Limpar Áreas</button>
                 </div>
                 <select onChange={(e) => setItemAtual(e.target.value)} className="w-full my-[1%] p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#F1863D]" >
-                    <option value="RH">RH</option>
-                    <option value="Estratégia">Estratégia</option>
-                    <option value="Marketing">Marketing</option>
-                    <option value="NLP">NLP</option>
-                    <option value="Quant">Quant</option>
-                    <option value="DS">DS</option>
-                    <option value="RL">RL</option>
-                    <option value="Comp. V.">Comp. V.</option>
+                    <option value="0">RH</option>
+                    <option value="1">Estratégia</option>
+                    <option value="2">Marketing</option>
+                    <option value="3">NLP</option>
+                    <option value="4">Quant</option>
+                    <option value="5">DS</option>
+                    <option value="6">RL</option>
+                    <option value="7">Comp. V.</option>
                 </select>
-                <p className="text-white"><span className="text-gray-400">Áreas:</span> {areaSelect.join(', ')}</p>
-                <input id="areas" type="hidden" name="areas" value={areaSelect.join(', ')} />
+                <input 
+                    readOnly 
+                    className="text-gray-400 w-full bg-transparent"  
+                    type="text" 
+                    value={"Áreas selecionadas: " + areaSelect.map(id => mapa_areas[id] || id).join(', ')} 
+                />
+                <input 
+                    type="hidden" 
+                    name="areas" 
+                    value={areaSelect.join(',')} 
+                />
             </div>
             <div className="flex my-[3%]">
                 <div className="flex-1">
@@ -147,6 +219,7 @@ export default function proj(dados: any) {
                         id="cat1"
                         required
                         type="text"
+                        defaultValue={projetoEmEdicao?.cat[0] || ""}
                         className="w-full my-[1%] p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#F1863D]"
                     />
                 </div>
@@ -156,6 +229,7 @@ export default function proj(dados: any) {
                         name="cat2"
                         id="cat2"
                         type="text"
+                        defaultValue={projetoEmEdicao?.cat[1] || ""}
                         className="w-full my-[1%] p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#F1863D]"
                     />
                 </div>
@@ -164,6 +238,7 @@ export default function proj(dados: any) {
                     <input
                         id="cat3"
                         name="cat3"
+                        defaultValue={projetoEmEdicao?.cat[2] || ""}
                         type="text"
                         className="w-full my-[1%] p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#F1863D]"
                     />
@@ -176,6 +251,7 @@ export default function proj(dados: any) {
                         required
                         id="ano_inicio"
                         name="ano_inicio"
+                        defaultValue={projetoEmEdicao?.anoinicio || ""}
                         type="text"
                         className="w-full my-[1%] p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#F1863D]"
                     />
@@ -186,6 +262,7 @@ export default function proj(dados: any) {
                         required
                         id="ano_termino"
                         name="ano_termino"
+                        defaultValue={projetoEmEdicao?.anofim || ""}
                         type="text"
                         className="w-full my-[1%] p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#F1863D]"
                     />
@@ -203,8 +280,34 @@ export default function proj(dados: any) {
                     value={linkAtual}
                     onChange={(e) => setLinkAtual(e.target.value)}
                 />
-                <p className="text-white my-[1%]"><span className="text-gray-400">Links adicionados:</span> {links.join(', ')}</p>
-                <input id="links" type="hidden" name="links" value={links.join(', ')} />
+                <div className="flex-col">
+                    {links.map((link, index) => (
+                        link && (
+                            <div key={index} className="flex gap-2 items-center justify-between bg-gray-700 p-2 rounded my-1">
+                                <a 
+                                    href={link} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="text-blue-400 hover:underline"
+                                >
+                                    {link}
+                                </a>
+                                <button 
+                                    type="button" 
+                                    className="text-red-500 hover:text-red-700 cursor-pointer" 
+                                    onClick={() => setLinks(links.filter((_, i) => i !== index))}
+                                >
+                                    X
+                                </button>
+                            </div>
+                        )
+                    ))}
+                </div>
+                <input 
+                    type="hidden" 
+                    name="links" 
+                    value={Array.isArray(links) ? links.join(',') : links} 
+                />
             </div>
             <div className="flex">
                 <div className="flex-1">
@@ -226,7 +329,7 @@ export default function proj(dados: any) {
                     </button>
                     <div className="mt-2 relative w-[200px] h-[150px]">
                         <Image 
-                            src={previewPrincipal || "/preview.svg"} 
+                            src={previewPrincipal || projetoEmEdicao?.imagem || "/preview.svg"} 
                             alt="Preview" 
                             fill 
                             className="rounded object-cover" 
@@ -251,7 +354,7 @@ export default function proj(dados: any) {
                     </button>
                     <div className="mt-2 relative w-[200px] h-[150px]">
                         <Image 
-                            src={previewParceiros || "/preview.svg"} 
+                            src={previewParceiros || projetoEmEdicao?.parceiros || "/preview.svg"} 
                             alt="Preview" 
                             fill
                             className="rounded object-cover" 
@@ -259,9 +362,56 @@ export default function proj(dados: any) {
                     </div>
                 </div>
             </div>
+            {projetoEmEdicao ? (
+                <div className="flex items-end justify-end gap-4">
+                    <button 
+                        className="mt-[3%] bg-[#F1863D] hover:bg-[#F1863D]/90 text-white font-bold py-2 cursor-pointer px-4 rounded-full"
+                        name="acao"
+                        value="editar"
+                        type="submit"
+                        form="form-projeto"
+                        formNoValidate
+                    >
+                        Salvar Edições
+                    </button>
+                    <button 
+                        type="button"
+                        className="mt-[3%] bg-transparent border border-[#F1863D] hover: text-white font-bold py-2 cursor-pointer px-4 rounded-full"
+                        onClick={() => setModalDelete(true)}
+                    >
+                        Remover Projeto
+                    </button>
+                </div>
+            ) : (
             <div className="flex items-end justify-end">
                 <button className="mt-[3%] bg-[#F1863D] hover:bg-[#F1863D]/90 text-white font-bold py-2 cursor-pointer px-4 rounded-full">Salvar Projeto</button>
             </div>
+            )}
+            {modaldelete && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <div className="bg-gray-800 p-6 rounded">
+                        <p className="text-white mb-4">Tem certeza que deseja remover este projeto?</p>
+                        <div className="flex justify-end gap-4">
+                            <button 
+                                className="bg-transparent border border-[#F1863D] hover:text-white font-bold py-2 cursor-pointer px-4 rounded-full mr-2"
+                                onClick={() => setModalDelete(false)}
+                            >
+                                Cancelar
+                            </button>
+                            <button
+                                className="bg-[#F1863D] hover:bg-[#F1863D]/90 text-white font-bold py-2 cursor-pointer px-4 rounded-full"
+                                name="acao"
+                                value="remover"
+                                type="submit"
+                                form="form-projeto"
+                                formNoValidate
+                            >                                
+                            Confirmar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </form>
     ) : (
             <div className="flex-col mx-[5%] w-[90%] h-auto">
@@ -288,7 +438,7 @@ export default function proj(dados: any) {
     {!mostrarFormulario && (
             <div className="flex-col mx-[5%] w-[90%] h-auto">
                 {projetosExibidos.map((projeto: any) => (
-                    <div key={projeto.id} className="flex flex-col my-[2%] p-4 border border-gray-700 rounded-[0.5rem] hover:bg-[#F1863D]/10 cursor-pointer">
+                    <div key={projeto.id} className="flex flex-col my-[2%] p-4 border border-gray-700 rounded-[0.5rem] hover:bg-[#F1863D]/10 cursor-pointer" onClick={() => handleEditarclick(projeto)}>
                         <h2 className="text-white text-[1.25rem] font-bold">{projeto.titulo}</h2>
                         <p className="text-gray-400 text-sm">{projeto.resumo}</p>
                     </div>
