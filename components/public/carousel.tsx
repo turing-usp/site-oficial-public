@@ -42,7 +42,7 @@ export default function Carousel() {
     return (
         <div className="flex flex-col w-full min-h-[400px] h-auto py-8 md:h-[60vh] bg-[#162B3F] rounded-[1rem] overflow-hidden justify-center">
             <div className="flex flex-row items-center w-full px-[5%] gap-[4%] pt-[3%]">
-                <div className="flex-shrink-0 w-[10vh] h-[10vh] rounded-full overflow-hidden border-[0.2rem] border-[#F1863D]">
+                <div className="flex-shrink-0 w-[7vh] h-[7vh] md:w-[10vh] md:h-[10vh] rounded-full overflow-hidden border-[0.2rem] border-[#F1863D]">
                     <Image 
                         src={relatoAtual.imagem}
                         alt="Membro da equipe"
@@ -52,16 +52,16 @@ export default function Carousel() {
                     />
                 </div>
                 <div className="flex flex-1 justify-between items-center">
-                    <p className="text-[#FFFFFF] text-[1.4rem] font-bold">{relatoAtual.nome}</p>
-                    <p className="text-[#F1863D] text-[3.5rem] ml-[1rem] self-start">&#10078;</p>
+                    <p className="text-[#FFFFFF] text-[1.2rem] md:text-[1.4rem] font-bold">{relatoAtual.nome}</p>
+                    <p className="text-[#F1863D] text-[2rem] md:text-[3.5rem] ml-[1rem] self-start">&#10078;</p>
                 </div>
             </div>
             <div className='flex flex-row px-[5%] my-[3%]'>
-                <button onClick={() => setCurrentIndex(currentIndex === 0 ? relatos.length - 1 : currentIndex - 1)} className='text-[#F1863D] text-[2rem] mr-[5%]'>&#10094;</button>
-                <p className='flex-1 text-center text-[#FFFFFF] text-[1rem] text-center md:text-justify'>{relatoAtual.relato}</p>
-                <button onClick={() => setCurrentIndex(currentIndex === relatos.length - 1 ? 0 : currentIndex + 1)} className='text-[#F1863D] text-[2rem] ml-[5%]'>&#10095;</button>
+                <button onClick={() => setCurrentIndex(currentIndex === 0 ? relatos.length - 1 : currentIndex - 1)} className='text-[#F1863D] text-[1.5rem] md:text-[2rem] mr-[5%]'>&#10094;</button>
+                <p className='flex-1 text-center text-[#FFFFFF] text-[0.85rem] md:text-[1rem] text-center md:text-justify'>{relatoAtual.relato}</p>
+                <button onClick={() => setCurrentIndex(currentIndex === relatos.length - 1 ? 0 : currentIndex + 1)} className='text-[#F1863D] text-[1.5rem] md:text-[2rem] mr-[5%]'>&#10095;</button>
             </div>
-            <p className="mx-[5%] text-[#F1863D] text-[3.5rem]">&#10077;</p>
+            <p className="mx-[5%] text-[#F1863D] text-[2rem] md:text-[3.5rem]">&#10077;</p>
         </div>
     );
 }
