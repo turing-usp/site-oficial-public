@@ -75,7 +75,7 @@ export default function Lista_Projetos({ projetosIniciais }: { projetosIniciais?
 
     return (
         <div>
-            <div className="min-h-[70dvh] py-20 lg:h-[100vh] flex flex-row w-[100%]">
+            <div className="min-h-[60dvh] py-20 lg:h-[100vh] flex flex-row w-[100%]">
                 <div className="flex-col mx-[10%]   lg:mt-0 flex flex-col lg:mx-[20%] items-center justify-center text-center gap-[2rem]">
                     <p className="text-[0.9rem] lg:text-[1.5rem] text-[#766F6F] font-bold">NOSSOS PROJETOS</p>
                     <p className="text-[2rem] lg:text-[4rem] font-bold text-[#000000]">O FUTURO, PROJETO A PROJETO</p>
@@ -86,14 +86,14 @@ export default function Lista_Projetos({ projetosIniciais }: { projetosIniciais?
                     alt="Projetos"
                     width={800}
                     height={800}
-                    className="w-[15%] mt-[40%] h-auto max-lg:landscape:mt-0 lg:mt-[5%] lg:w-[35vh] absolute h-auto object-contain right-0"
+                    className="w-[15%] mt-[30%] h-auto max-lg:landscape:mt-0 lg:mt-[5%] lg:w-[35vh] absolute h-auto object-contain right-0"
                 />
                 <Image
                     src="/projimge.svg"
                     alt="Projetos"
                     width={800}
                     height={800}
-                    className="w-[15%] mt-[50%] h-auto max-lg:landscape:mt-0 lg:mt-[10%] lg:w-[35vh] absolute h-auto object-contain object-fill rotate-180 left"
+                    className="w-[15%] mt-[40%] h-auto max-lg:landscape:mt-0 lg:mt-[10%] lg:w-[35vh] absolute h-auto object-contain object-fill rotate-180 left"
                 />
             </div>
             <div className="flex flex-col w-[100%] h-auto min-h-[80vh]">
