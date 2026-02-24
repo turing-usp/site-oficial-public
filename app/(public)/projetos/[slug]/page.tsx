@@ -35,10 +35,10 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
 
     return (
         <div>
-            <div className="flex flex-row h-[88vh] w-[100%] justify-center items-center">
-                <div className="flex mx-[5%]">
-                    <p className="flex flex-1 text-[#000000] text-[4rem]">{projeto.titulo}</p>
-                    <p className="flex flex-1 text-[#000000] text-[1.4rem]">{projeto.resumo}</p>
+            <div className="min-h-[60dvh] lg:h-[88vh] flex flex-row w-[100%] justify-center items-center">
+                <div className="flex flex-col lg:flex-row mx-[5%]">
+                    <p className="text-[1.5rem] lg:text-[4rem] flex flex-1 text-[#000000]">{projeto.titulo}</p>
+                    <p className="text-[0.7rem] lg:text-[1.4rem] flex flex-1 text-[#000000]">{projeto.resumo}</p>
                 </div>
             </div>
             <div className="flex flex-row bg-[#F1863D] w-[100%] h-[12vh] justify-between items-center">
@@ -71,25 +71,25 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
                     className="w-[100%] h-auto object-contain"
                 />
             </div>
-            <div className="flex h-[10rem] w-[100%] justify-center items-center">
-                <div className="flex mx-[5%] w-[100%] justify-between">
+            <div className="min-h-[20dvh] py-10 lg:h-[10rem] lg:py-0 flex w-[100%] justify-center items-center">
+                <div className="flex flex-col lg:flex-row mx-[5%] w-[100%] justify-between">
                     <div className="flex flex-1 flex-col items-center">
-                        <p className="text-[#000000] text-[2rem] font-bold mb-[2%]">Categorias:</p>
+                        <p className="text-[1.2rem] lg:text-[2rem] text-[#000000] font-bold mb-[2%]">Categorias:</p>
                         <div className="flex gap-[5%]">
                             {lista_categorias.map((categoria: any, index: number) => (
-                                <p key={index} className="flex items-center justify-center text-[#000000] text-[0.9rem] border border-[#F1863D] rounded rounded-[2rem] w-[8rem] min-h-[2rem] text-center">{categoria}</p>
+                                <p key={index} className="text-[0.7rem] w-[7rem]  lg:text-[0.9rem] lg:w-[8rem] flex items-center justify-center text-[#000000] border border-[#F1863D] rounded rounded-[2rem] min-h-[2rem] text-center">{categoria}</p>
                             ))}
                         </div>
                     </div>
                     <div className="flex flex-1 flex-col items-center">
-                        <p className="text-[#000000] text-[2rem] font-bold mb-[2%]">Anos:</p>
-                        <p className="text-[#000000] text-[1rem]">{projeto.anoinicio} - {projeto.anofim}</p>
+                        <p className="text-[1.2rem] lg:text-[2rem] text-[#000000] font-bold mb-[2%]">Anos:</p>
+                        <p className="text-[1rem] text-[#000000] lg:text-[1rem]">{projeto.anoinicio} - {projeto.anofim}</p>
                     </div>
                     <div className="flex flex-1 flex-col items-center">
-                        <p className="text-[#000000] text-[2rem] font-bold mb-[2%]">Áreas:</p>
+                        <p className="text-[1.2rem] lg:text-[2rem] text-[#000000] font-bold mb-[2%]">Áreas:</p>
                         <div className="flex gap-[5%]">
                             {areas_de_projeto.map((area, index: number) => (
-                                <p key={index} className="flex items-center justify-center text-[#000000] text-[0.9rem] border border-[#F1863D] rounded rounded-[2rem] w-[8rem] min-h-[2rem] text-center">{area}</p>
+                                <p key={index} className="text-[0.7rem] w-[7rem] lg:text-[0.9rem] lg:w-[8rem] flex items-center justify-center text-[#000000] border border-[#F1863D] rounded rounded-[2rem] min-h-[2rem] text-center">{area}</p>
                             ))}
                         </div>
                     </div>
@@ -97,7 +97,7 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
             </div>
             <div className="flex items-center justify-center h-[20vh] w-[100%]">
                 <div className="flex mx-[5%] w-[100%] justify-center items-center">
-                    <p className="text-[#000000] text-[3rem] font-bold">SOBRE O PROJETO:</p>
+                    <p className="text-[#000000] text-[1.2rem] lg:text-[3rem] font-bold">SOBRE O PROJETO:</p>
                 </div>
             </div>
             <div className="flex flex-col mx-[5%] mb-[5%] min-h-[20vh] h-auto w-[90%] items-center ">
@@ -111,8 +111,8 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
                     />
                     <p className="text-[#FFFFFF] text-[1rem] font-bold ml-[2%]">Problema</p>
                 </div>
-                <p className="text-[#000000] text-[3rem] font-bold text-center mb-[5%]">PROBLEMA</p>
-                <p className="text-[#000000] text-[1.2rem] mb-[2%]">{projeto.problema}</p>
+                <p className="text-[#000000] text-[1.2rem] lg:text-[3rem] font-bold text-center mb-[5%]">PROBLEMA</p>
+                <p className="text-[#000000] text-[0.8rem] lg:text-[1.2rem] mb-[2%]">{projeto.problema}</p>
             </div>
             <div className="flex flex-col mx-[5%] mb-[5%] min-h-[20vh] h-auto w-[90%] items-center ">
                 <div className="flex mb-[5%] bg-[#162B3F] rounded-[3rem] h-[3rem] w-[12rem] justify-center items-center">
@@ -125,8 +125,8 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
                     />
                     <p className="text-[#FFFFFF] text-[1rem] font-bold ml-[2%]">Confecção</p>
                 </div>
-                <p className="text-[#000000] text-[3rem] font-bold text-center mb-[5%]">CONFECÇÃO</p>
-                <p className="text-[#000000] text-[1.2rem] mb-[2%]">{projeto.confeccao}</p>
+                <p className="text-[#000000] text-[1.2rem] lg:text-[3rem] font-bold text-center mb-[5%]">CONFECÇÃO</p>
+                <p className="text-[#000000] text-[0.8rem] lg:text-[1.2rem] mb-[2%]">{projeto.confeccao}</p>
             </div>
             <div className="flex flex-col mx-[5%] mb-[5%] min-h-[20vh] h-auto w-[90%] items-center ">
                 <div className="flex mb-[5%] bg-[#EBB84A] rounded-[3rem] h-[3rem] w-[12rem] justify-center items-center">
@@ -139,8 +139,8 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
                     />
                     <p className="text-[#FFFFFF] text-[1rem] font-bold ml-[2%]">Resultados</p>
                 </div>
-                <p className="text-[#000000] text-[3rem] font-bold text-center mb-[5%]">RESULTADOS</p>
-                <p className="text-[#000000] text-[1.2rem] mb-[2%]">{projeto.resultados}</p>
+                <p className="text-[#000000] text-[1.2rem] lg:text-[3rem] font-bold text-center mb-[5%]">RESULTADOS</p>
+                <p className="text-[#000000] text-[0.8rem] lg:text-[1.2rem] mb-[2%]">{projeto.resultados}</p>
             </div>
             {/* Condicional. Só printa a parte de link do projeto se houver um ou mais cadastrado*/}
             {projeto.links && (
@@ -155,7 +155,7 @@ export default async function ProjetoSlug({ params }: ProjetoSlugProps) {
                         />
                         <p className="text-[#FFFFFF] text-[1rem] font-bold ml-[2%]">Links</p>
                     </div>
-                    <p className="text-[#000000] text-[3rem] font-bold text-center mb-[5%]">LINKS DO PROJETO</p>
+                    <p className="text-[#000000] text-[1.2rem] lg:text-[3rem] font-bold text-center mb-[5%]">LINKS DO PROJETO</p>
                     {(projeto.links as string[]).map((url, index) => (
                         <a key={index} href={url} className="text-[#F1863D] text-[1.2rem] mb-[2%]">{url}</a>
                     ))}

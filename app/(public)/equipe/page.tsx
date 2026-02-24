@@ -28,7 +28,7 @@ export default async function Equipe(){
                         </div>
                         <div className="flex flex-1 flex-col items-center justify-center">
                             <p className="text-[1.5rem] text-[#766F6F] font-bold">NOSSA EQUIPE</p>
-                            <p className="text-[4rem] font-bold text-[#000000] text-center">CONSTRUTORES DO FUTURO</p>
+                            <p className="text-[4rem] font-bold text-[#000000] text-center leading-tight my-[3%]">CONSTRUTORES DO FUTURO</p>
                             <p className="text-[1.5rem] text-[#000000] text-center">Conheça a nossa equipe que ajuda a construir e aplicar conceitos importantes para o aprendizado da Inteligência artificial.</p>
                         </div>
                         <div className="flex flex-1 items-center relative">

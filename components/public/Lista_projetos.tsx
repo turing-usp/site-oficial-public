@@ -75,35 +75,35 @@ export default function Lista_Projetos({ projetosIniciais }: { projetosIniciais?
 
     return (
         <div>
-            <div className="flex flex-row h-[100vh] w-[100%]">
-                <div className="flex flex-col mx-[20%] items-center justify-center text-center gap-[2rem]">
-                    <p className="text-[1.5rem] text-[#766F6F] font-bold">NOSSOS PROJETOS</p>
-                    <p className="text-[4rem] font-bold text-[#000000]">O FUTURO, PROJETO A PROJETO</p>
-                    <p className="text-[1.5rem] text-[#000000] text-center">Conheça as iniciativas e tecnologias que desenvolvemos no Turing USP para moldar o amanhã da inteligência artificial.</p>
+            <div className="min-h-[70dvh] py-20 lg:h-[100vh] flex flex-row w-[100%]">
+                <div className="flex-col mx-[10%]   lg:mt-0 flex flex-col lg:mx-[20%] items-center justify-center text-center gap-[2rem]">
+                    <p className="text-[0.9rem] lg:text-[1.5rem] text-[#766F6F] font-bold">NOSSOS PROJETOS</p>
+                    <p className="text-[2rem] lg:text-[4rem] font-bold text-[#000000]">O FUTURO, PROJETO A PROJETO</p>
+                    <p className="text-[0.9rem] lg:text-[1.5rem] text-[#000000] text-center">Conheça as iniciativas e tecnologias que desenvolvemos no Turing USP para moldar o amanhã da inteligência artificial.</p>
                 </div>
                 <Image
                     src="/projimgd.svg"
                     alt="Projetos"
                     width={800}
                     height={800}
-                    className="absolute w-[35vh] h-auto object-contain right-0 mt-[10%]"
+                    className="w-[15%] mt-[40%] h-auto max-lg:landscape:mt-0 lg:mt-[5%] lg:w-[35vh] absolute h-auto object-contain right-0"
                 />
                 <Image
                     src="/projimge.svg"
                     alt="Projetos"
                     width={800}
                     height={800}
-                    className="absolute w-[35vh] h-auto object-contain object-fill rotate-180 left mt-[15%]"
+                    className="w-[15%] mt-[50%] h-auto max-lg:landscape:mt-0 lg:mt-[10%] lg:w-[35vh] absolute h-auto object-contain object-fill rotate-180 left"
                 />
             </div>
-            <div className="flex flex-col w-[100%] h-auto min-h-[100vh]">
+            <div className="flex flex-col w-[100%] h-auto min-h-[80vh]">
                 <div className="flex flex-col mx-[5%]">
                     <div className="flex flex-row w-[100%] justify-center items-center">
                         {Categorias.map((categoria) => (
                             <button
                                 key={categoria}
                                 onClick={() => setAbaAtiva(Categorias.indexOf(categoria))}
-                                className={`mx-[5%] my-[2%] text-[#000000] text-[1.5rem] w-[20vw] h-[8vh] rounded-[1rem] border border-[#F1863D] cursor-pointer duration-500 ease-in-out
+                                className={`w-[40vw] text-[0.8rem]   lg:text-[1.5rem] mx-[5%] my-[2%] text-[#000000]  lg:w-[20vw] h-[8vh] rounded-[1rem] border border-[#F1863D] cursor-pointer duration-500 ease-in-out
                                     ${abaAtiva === Categorias.indexOf(categoria) ? 'bg-[#F1863D] text-[#FFFFFF]' : 'bg-[#FFFFFF] hover:bg-[#F1863D] hover:text-[#FFFFFF]'}`}
                             >
                                 {categoria}
@@ -111,39 +111,60 @@ export default function Lista_Projetos({ projetosIniciais }: { projetosIniciais?
                         ))
                         }
                     </div>
-                    <div className="flex flex-wrap justify-center items-center w-[100%]">
-                        {/* Agora vamos criar um componente que caso seja área de foco vai criar 5 botões e caso seja área de gestão vai criar 3 botões */}
-                        {(abaAtiva === 0 ? ÁREAS_DE_FOCO : ÁREAS_DE_GESTÃO).map((area) => (
+                    <div className="
+                        /* Mobile: Scroll horizontal com tamanho fixo para não esmagar */
+                        flex flex-row overflow-x-auto gap-4 px-6 py-4 no-scrollbar
+                        
+                        /* Desktop: Distribuição automática (flex-1) */
+                        lg:flex-row lg:flex-wrap lg:justify-center lg:overflow-x-visible lg:px-0 
+                    ">
+                        {(abaAtiva === 0 ? ÁREAS_DE_FOCO : ÁREAS_DE_GESTÃO).map((area, index) => (
                             <button
                                 key={area.nome}
-                                onClick={() => setSubAbaAtiva((abaAtiva === 0 ? ÁREAS_DE_FOCO : ÁREAS_DE_GESTÃO).indexOf(area))}
-                                className={`mx-[2%] my-[1%] text-[#000000] text-[1rem] flex-1 h-[8vh] rounded-[1rem] border border-[#F1863D] cursor-pointer duration-500 ease-in-out
-                                    ${subAbaAtiva === (abaAtiva === 0 ? ÁREAS_DE_FOCO : ÁREAS_DE_GESTÃO).indexOf(area) ? 'bg-[#F1863D] text-[#FFFFFF]' : 'bg-[#FFFFFF] hover:bg-[#F1863D] hover:text-[#FFFFFF]'}`}
+                                onClick={() => setSubAbaAtiva(index)}
+                                className={`
+                                    /* MOBILE: Tamanho fixo para garantir o scroll e leitura */
+                                    flex-none w-[160px] h-[60px]
+                                    
+                                    /* DESKTOP: Vira flex-1 para ocupar o espaço proporcionalmente */
+                                    lg:flex-1 lg:h-[70px]
+                                    
+                                    /* Alinhamento e Texto */
+                                    flex items-center justify-center text-center px-2
+                                    text-[0.7rem] lg:text-[1.2rem] font-medium leading-tight whitespace-normal
+                                    
+                                    /* Estilo Visual */
+                                    rounded-[1rem] border border-[#F1863D] transition-all duration-300
+                                    
+                                    hover:cursor-pointer hover:bg-[#F1863D] hover:text-[#FFFFFF]
+                                    ${subAbaAtiva === index 
+                                        ? 'bg-[#F1863D] text-white' 
+                                        : 'bg-white text-black hover:bg-[#F1863D] hover:text-white'}
+                                `}
                             >
                                 {area.nome}
                             </button>
-                        ))
-                        }
+                        ))}
                     </div>
                 </div>
                 <div className="flex flex-col mt-[2%]">
                     {projetosFiltrados.map((projeto, index) => (
                         <Link href={`/projetos/${projeto.slug}`} className="group flex flex-col bg-[#FFFFFF] overflow-hidden hover: cursor-pointer" key={index}>
                             {/* <div className="flex bg-[#000000] h-[0.05rem] w-[100%] object-contain"></div> */}
-                            <div className="flex flex-row  h-[20vh] items-center justify-center group-hover:bg-[#F5F5F5] group-hover:scale-103 duration-500 ease-in-out">
+                            <div className=" lg:h-[20vh] flex flex-row items-center justify-center group-hover:bg-[#F5F5F5] group-hover:scale-103 duration-500 ease-in-out">
                                 <div className="flex flex-row h-[20vh] items-center justify-center mx-[5%]">
                                     <Image
                                         alt="Em breve"
                                         src={projeto.imagem}
                                         width={800}
                                         height={800}
-                                        className="w-[12rem] h-auto object-contain"
+                                        className="w-[8rem] lg:w-[12rem] h-auto object-contain"
                                     />
                                     <div className="flex flex-col mx-[10%]">
-                                        <p className="text-[2rem] text-[#000000] font-bold">{projeto.titulo}</p>
-                                        <p className="text-[1rem] text-[#000000]">{projeto.resumo}</p>
+                                        <p className="text-[0.8rem] lg:text-[2rem] text-[#000000] font-bold">{projeto.titulo}</p>
+                                        <p className="text-[0.5rem] lg:text-[1rem] text-[#000000]">{projeto.resumo}</p>
                                     </div>
-                                    <div className="flex bg-transparent text-[#000000] text-[1rem] h-[5vh] w-[12vw] rounded-[1rem] text-center items-center justify-center border-[0.1rem] border-[#F1863D] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer duration-500 ease-in-out">
+                                    <div className="hidden lg:flex bg-transparent text-[#000000] text-[1rem] h-[5vh] w-[12vw] rounded-[1rem] text-center items-center justify-center border-[0.1rem] border-[#F1863D] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer duration-500 ease-in-out">
                                         Veja mais
                                     </div>
                                 </div>
@@ -153,13 +174,13 @@ export default function Lista_Projetos({ projetosIniciais }: { projetosIniciais?
                     ))}
                     {/* <div className="flex bg-[#000000] h-[0.05rem] w-[100%] object-contain"></div> */}
                 </div>
-                <div className="flex flex-row justify-center items-center h-[30vh] w-[100%]">
+                <div className="min-h-[5dvh] py-8 lg:h-[30vh] flex flex-row justify-center items-center w-[100%]">
                     <Image
                         alt="Em breve"
                         src="/logo.svg"
                         width={800}
                         height={800}
-                        className="w-[8rem] h-auto object-contain"
+                        className="w-[6rem] lg:w-[8rem] h-auto object-contain"
                     />
                 </div>
             </div>
