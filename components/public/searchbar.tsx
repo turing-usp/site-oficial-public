@@ -31,7 +31,7 @@ export default function SearchBar({ artigosIniciais }: { artigosIniciais: any[] 
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder='Digite o termo que deseja pesquisar' 
-                    className='h-[8vh] w-full bg-[#FFFFFF] text-[#000000] text-center border-[#F1863D] border-[0.15rem] rounded-[2rem] focus:outline-none px-12'
+                    className='h-[3rem] w-auto lg:h-[8vh] w-full bg-[#FFFFFF] text-[#000000] text-center border-[#F1863D] border-[0.15rem] rounded-[2rem] focus:outline-none px-12'
                 />
                 <div className='absolute inset-y-0 right-5 flex items-center pointer-events-none'>
                     <Image 

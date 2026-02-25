@@ -18,7 +18,7 @@
         const eventoAtual = eventos[currentIndex];
 
         return (
-            <div className="flex w-full max-w-6xl h-[60vh] bg-[#162B3F] rounded-2xl p-8 gap-8 items-center">
+            <div className="min-h-[dvh] h-auto flex flex-col lg:flex-row lg:h-[60vh] w-full max-w-6xl bg-[#162B3F] rounded-2xl p-8 gap-8 items-center">
                 <button onClick={() => setCurrentIndex(currentIndex === 0 ? eventos.length - 1 : currentIndex - 1)} className='text-[#F1863D] text-[2rem]'>&#10094;</button>
                 <div className="w-[40%] aspect-video rounded-lg border-2 border-[#F1863D] overflow-hidden">
                     <Image

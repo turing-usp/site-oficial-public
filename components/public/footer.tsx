@@ -4,9 +4,9 @@ import Link from "next/link";
 export default function Footer() {
     return (
         <div>
-            <div className="flex flex-row w-[100%] h-auto min-h-[40vh] bg-gradient-to-r from-[#EBB84A] to-[#F1863D] justify-center rounded-t-[2rem] mt-[3%]">
+            <div className="min-h-[40dvh] p-10 lg:p-0 lg:min-h-[40vh] flex flex-row w-[100%] h-auto bg-gradient-to-r from-[#EBB84A] to-[#F1863D] justify-center rounded-t-[2rem] mt-[3%]">
                 <div className="flex flex-col mx-[5%] w-[90%] items-center justify-center">
-                    <div className="flex flex-row items-center gap-[5%]">
+                    <div className="flex flex-col lg:flex-row lg:items-center gap-[5%]">
                         <div className="flex flex-col">
                             <div className="flex flex-row items-center">
                                 <Link href="/" className="flex flex-row justify-center items-center">
@@ -15,9 +15,9 @@ export default function Footer() {
                                         alt="Logo Turing USP"
                                         width={50}
                                         height={50}
-                                        className="h-[5rem] mr-[0.5rem]"
+                                        className="h-[2rem] lg:h-[5rem] mr-[0.5rem]"
                                     />
-                                    <p className="text-[1rem] text-[#FFFFFF]"style={{ fontFamily: "var(--font-orbitron)" }}>turing.usp</p>
+                                    <p className="text-[0.8rem] lg:text-[1rem] text-[#FFFFFF]"style={{ fontFamily: "var(--font-orbitron)" }}>turing.usp</p>
                                 </Link>
                                 <Link href="https://www.poli.usp.br/">
                                     <Image
@@ -25,7 +25,7 @@ export default function Footer() {
                                         alt="POLI USP"
                                         width={100}
                                         height={100}
-                                        className="h-[6rem] w-auto ml-[1rem]"
+                                        className="h-[3rem] lg:h-[6rem] w-auto ml-[1rem]"
                                     />      
                                 </Link>
                                 <Link href="https://www.usp.br/">
@@ -34,21 +34,21 @@ export default function Footer() {
                                         alt="USP"
                                         width={100}
                                         height={100}
-                                        className="h-[3.5rem] w-auto ml-[1rem]"
+                                        className="h-[2rem] lg:h-[3.5rem] w-auto ml-[1rem]"
                                     />
                                 </Link>
                             </div>
-                            <p> O maior grupo de inteligência artificial da Universidade de São Paulo.</p>
+                            <p className="text-[#FFFFFF] text-[0.8rem] lg:text-[1rem]"> O maior grupo de inteligência artificial da Universidade de São Paulo.</p>
                         </div>
                         <div className="flex flex-col">
-                            <p>Páginas:</p>
-                            <Link href="/">Início</Link>
-                            <Link href="/projetos">Projetos</Link>
-                            <Link href="/equipes">Equipes</Link>
-                            <Link href="/contato">Contato</Link>
+                            <p className="font-bold">Páginas:</p>
+                            <Link className="text-[0.8rem] lg:text-[1rem] text-[#FFFFFF]" href="/">Início</Link>
+                            <Link className="text-[0.8rem] lg:text-[1rem] text-[#FFFFFF]" href="/projetos">Projetos</Link>
+                            <Link className="text-[0.8rem] lg:text-[1rem] text-[#FFFFFF]" href="/equipe">Equipe</Link>
+                            <Link className="text-[0.8rem] lg:text-[1rem] text-[#FFFFFF]" href="/contato">Contato</Link>
                         </div>
-                        <div className="flex flex-col ml-[2rem]">
-                            <p>Redes Sociais:</p>
+                        <div className="flex flex-col lg:ml-[2rem]">
+                            <p className="font-bold">Redes Sociais:</p>
                             <div className="flex flex-row">
                                 <Link href="https://www.instagram.com/turing.usp/">
                                     <Image
@@ -56,7 +56,7 @@ export default function Footer() {
                                         alt="Instagram"
                                         width={150}
                                         height={150}
-                                        className="h-[3rem] w-auto"
+                                        className="h-[2rem] lg:h-[3rem] w-auto"
                                     />
                                 </Link>
                                 <Link href="https://www.linkedin.com/company/turing-usp/">
@@ -65,7 +65,7 @@ export default function Footer() {
                                         alt="LinkedIn"
                                         width={150}
                                         height={150}
-                                        className="h-[3rem] w-auto ml-[1rem]"
+                                        className="h-[2rem] lg:h-[3rem] w-auto ml-[1rem]"
                                     />
                                 </Link>
                                 <Link href="https://www.facebook.com/turing.usp/">
@@ -74,7 +74,7 @@ export default function Footer() {
                                         alt="Facebook"
                                         width={150}
                                         height={150}
-                                        className="h-[3rem] w-auto ml-[1rem]"
+                                        className="h-[2rem] lg:h-[3rem] w-auto ml-[1rem]"
                                     />
                                 </Link>
                             </div>
@@ -83,7 +83,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="flex w-[100%] h-auto min-h-[10vh] bg-[#F1863D] items-center justify-center">
-                <p>@Turing 2026. Todos os direitos são reservados.</p>
+                <p className="text-[#FFFFFF] text-[0.8rem]  lg:text-[1rem]">@Turing 2026. Todos os direitos são reservados.</p>
             </div>
         </div>
     );
