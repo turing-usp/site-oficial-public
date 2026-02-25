@@ -42,8 +42,8 @@
                             className='flex-1 h-[50vh] w-auto object-contain'
                         />
                         <div className='flex flex-1 flex-col justify-center items-center'>
-                            <p className='text-[#000000] text-[4rem] font-bold'>TURING</p>
-                            <p className='text-[#000000] text-[4rem] font-bold mb-[5%]' style={{fontFamily: 'var(--font-irish-grover)'}}>TALKS</p>
+                            <p className='text-[#000000] text-[4rem] font-bold leading-tight' style={{fontFamily: 'var(--font-shrikhand)'}}>TURING</p>
+                            <p className='text-[#000000] text-[4rem] font-bold mb-[5%] leading-tight' style={{fontFamily: 'var(--font-shrikhand)'}}>TALKS</p>
                             <p className='text-[#000000] text-[1.2rem] mx-[20%] mb-[5%] text-center'>Conheça mais sobre assuntos de tecnologia e inovação produzidos pela nossa própria equipe!</p>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                             className='absolute font-bold'
                             style={{
                                 color,
-                                fontFamily: 'var(--font-irish-grover)',
+                                fontFamily: 'var(--font-shrikhand)',
                                 fontSize: size,
                                 top,
                                 left,
@@ -70,7 +70,7 @@
             <SearchBar artigosIniciais={ artigos || [] } />
             <div className='flex w-[100%] h-auto'>
                 <div className='flex flex-col mx-[5%] mt-[3%] mb-[1%]'>
-                    <p className='text-[#000000] text-[2rem] font-bold mb-[2%]'>ÚLTIMOS <span style={{fontFamily: 'var(--font-irish-grover)'}}>TALKS:</span></p>
+                    <p className='text-[#000000] text-[2rem] font-bold mb-[2%]' style={{fontFamily: 'var(--font-shrikhand)'}}>ÚLTIMOS TALKS:</p>
                 </div>
             </div>
             {artigos && artigos.length > 0 && (
