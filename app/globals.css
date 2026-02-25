@@ -18,3 +18,14 @@ body {
   color: var(--foreground);
   font-family: var(--font-inter);
 }
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari e Opera */
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE e Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}

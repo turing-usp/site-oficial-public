@@ -84,12 +84,12 @@ export default function Botoesnav({ equipe, historico }: BotoesnavProps) {
         <div className="flex flex-col h-auto w-[100%]">
             <div className="flex flex-col mx-[5%] my-[5%] object-contain">
                 {/* Botões de Categorias */}
-                <div className="flex flex-row h-[8vh] w-[100%] items-center justify-center">
+                <div className="flex flex-row w-full items-center overflow-x-auto overflow-y-hidden no-scrollbar">
                     {Categorias.map((categoria, index) => (
                         <button
                             key={`categoria-${categoria}`}
                             onClick={() => handleCategoriaClick(index)}
-                            className={`mx-[4%] my-[2%] text-[#000000] text-[1.5rem] flex-1 h-[8vh] rounded-[1rem] border border-[#F1863D] cursor-pointer duration-500 ease-in-out ${
+                            className={`whitespace-nowrap min-w-fit mx-[4%] my-[2%] text-[#000000] flex-nowrap text-[1.5rem] px-6 py-3 md:flex-1 md:h-[8vh] rounded-[1rem] border border-[#F1863D] cursor-pointer duration-500 ease-in-out ${
                                 abaAtiva === index
                                 ?  'bg-[#F1863D] text-[#FFFFFF]' : 'bg-[#FFFFFF] hover:bg-[#F1863D] hover:text-[#FFFFFF]'
                             }`}
@@ -101,14 +101,14 @@ export default function Botoesnav({ equipe, historico }: BotoesnavProps) {
 
                 {/* Botões de Áreas - Só aparece se TODOS não estiver selecionado */}
                 {abaAtiva !== 0 && (
-                    <div className="flex flex-row h-[8vh] w-[100%] items-center justify-center mt-[3%]">
+                    <div className="flex flex-row w-full items-center overflow-x-auto overflow-y-hidden no-scrollbar">
                        {/* Renderiza botões de sub-área apenas para Áreas de Foco (1) ou Gestão (2) */}
                         {(abaAtiva === 1 || abaAtiva === 2) && (
                             (abaAtiva === 1 ? area_de_foco : area_de_gestao).map((area) => (
                                 <button
                                     key={area.id}
                                     onClick={() => setAreaEspecificaSelecionada(area.id)}
-                                    className={`mx-[2%] my-[5%] text-[1.2rem] flex-1 h-[8vh] rounded-[1rem] border border-[#F1863D] cursor-pointer duration-500 ease-in-out ${
+                                    className={`whitespace-nowrap mx-[2%] my-[5%] text-[1.2rem] px-6 py-3 md:flex-1 md:h-[8vh] rounded-[1rem] no-scrollbar border border-[#F1863D] cursor-pointer duration-500 ease-in-out ${
                                         areaEspecificaSelecionada === area.id
                                         ? 'bg-[#F1863D] text-[#FFFFFF]'
                                         : 'bg-[#FFFFFF] text-[#000000] hover:bg-[#F1863D] hover:text-[#FFFFFF]'
@@ -129,7 +129,7 @@ export default function Botoesnav({ equipe, historico }: BotoesnavProps) {
                 )}
                 {abaAtiva !== 0 && areaEspecificaSelecionada !== null && (
                     <div className="flex h-auto min-h-[10vh] w-[100%] items-center justify-center mt-[3%]">
-                        <div className="flex mx-[5%] object-contain items-center justify-center">
+                        <div className="flex flex-col md:flex-row mx-[5%] object-contain items-center justify-center">
                             <div className="flex w-[40%] items-center justify-center">
                                 <Image 
                                     src={(() => {
