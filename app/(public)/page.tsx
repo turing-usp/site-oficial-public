@@ -46,7 +46,7 @@ export default function Home() {
                     alt="Processador"
                     width={800}
                     height={800}
-                    className='w-[60vw] mb-5 md:mb-0 md:absolute md:w-[75vh] md:h-auto md:object-contain md:relative md:z-0'
+                    className='w-[60vw] mb-5 md:mb-0 md:w-[75vh] md:h-auto md:object-contain md:overflow-hidden md:object-contain md:relative md:z-0'
                 />
             </div>
             <div className='flex flex-col md:flex-row items-center py-16 md:h-[100vh] z-0 relative'>
@@ -96,13 +96,13 @@ export default function Home() {
                     height={100}
                     className='absolute w-[8vh] h-auto object-cover z-0 rotate-65 origin-left-bottom bottom-0 hidden md:block'
                 />
-                <Image 
+                {/* <Image 
                     src="/circuitoorange.svg"
                     alt="Circuitos"
                     width={100}
                     height={100}
-                    className='absolute w-[8vh] h-auto object-cover z-0 rotate-270 origin-right-top top-0 right-[7%] hidden md:block'
-                />
+                    className='absolute w-[8vh] h-auto object-cover z-0 rotate-270 origin-right-top top-0 right-[7%] hidden md:h-auto md:w-[3rem] md:overflow-hidden lg:block'
+                /> */}
             </div>
             <div id='secao azul' className='flex flex-col min-h-screen pb-16 z-0 relative bg-[#162B3F]'>
                 <Image 
