@@ -19,8 +19,8 @@ export default async function Plataforma() {
 
   return (
     <div className="flex min-h-[100vh] h-auto mx-[5%] w-[90%] justify-center">
-        <div className="flex flex-col my-[10%]">
-            <p className="text-black text-[4rem] text-center font-bold">Olá, {nome}</p>
+        <div className="my-[15%] flex flex-col lg:my-[10%]">
+            <p className="text-black text-[2rem] lg:text-[4rem] text-center font-bold">Olá, {nome}</p>
             <p className="text-black text-[1.2rem] my-[2%] text-center">Bem-vindo à plataforma Turing USP! Aqui você encontrará conteúdos exclusivos e recursos para aprimorar seus conhecimentos em inteligência artificial.</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 px-[5%] pb-[10%]">
               {visibleCards.map((card) => (

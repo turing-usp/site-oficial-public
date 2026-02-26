@@ -5,9 +5,9 @@ export default function FooterDashboard() {
     return(
         <div>
             <div className="flex flex-row w-[100%] h-auto min-h-[40vh] bg-gradient-to-r from-[#EBB84A] to-[#F1863D] justify-center rounded-t-[2rem] mt-[3%]">
-                <div className="flex flex-col mx-[5%] w-[90%] items-center justify-center">
-                    <div className="flex flex-row items-center gap-[5%]">
-                        <div className="flex flex-col">
+                <div className="flex flex-col mx-[5%] md:w-[90%] items-center justify-center">
+                    <div className="flex flex-col md:flex-row items-center gap-[5%]">
+                        <div className="flex flex-col items-center">
                             <div className="flex flex-row items-center">
                                 <Link href="/" className="flex flex-row justify-center items-center">
                                     <Image
@@ -15,7 +15,7 @@ export default function FooterDashboard() {
                                         alt="Logo Turing USP"
                                         width={50}
                                         height={50}
-                                        className="h-[5rem] mr-[0.5rem]"
+                                        className="h-[2rem] md:h-[5rem] mr-[0.5rem]"
                                     />
                                     <p className="text-[1rem] text-[#FFFFFF]"style={{ fontFamily: "var(--font-orbitron)" }}>turing.usp</p>
                                 </Link>
@@ -25,7 +25,7 @@ export default function FooterDashboard() {
                                         alt="POLI USP"
                                         width={100}
                                         height={100}
-                                        className="h-[6rem] w-auto ml-[1rem]"
+                                        className="h-[3rem] md:h-[6rem] w-auto ml-[1rem]"
                                     />      
                                 </Link>
                                 <Link href="https://www.usp.br/">
@@ -34,13 +34,13 @@ export default function FooterDashboard() {
                                         alt="USP"
                                         width={100}
                                         height={100}
-                                        className="h-[3.5rem] w-auto ml-[1rem]"
+                                        className="h-[2rem] md:h-[3.5rem] w-auto ml-[1rem]"
                                     />
                                 </Link>
                             </div>
-                            <p> O maior grupo de inteligência artificial da Universidade de São Paulo.</p>
+                            <p className="my-[3%] md:my-0"> O maior grupo de inteligência artificial da Universidade de São Paulo.</p>
                         </div>
-                        <div className="flex flex-col ml-[2rem]">
+                        <div className="flex flex-col md:ml-[2rem]">
                             <p>Redes Sociais:</p>
                             <div className="flex flex-row">
                                 <Link href="https://www.instagram.com/turing.usp/">
@@ -49,7 +49,7 @@ export default function FooterDashboard() {
                                         alt="Instagram"
                                         width={150}
                                         height={150}
-                                        className="h-[3rem] w-auto"
+                                        className="h-[2rem] md:h-[3rem] w-auto"
                                     />
                                 </Link>
                                 <Link href="https://www.linkedin.com/company/turing-usp/">
@@ -58,7 +58,7 @@ export default function FooterDashboard() {
                                         alt="LinkedIn"
                                         width={150}
                                         height={150}
-                                        className="h-[3rem] w-auto ml-[1rem]"
+                                        className="h-[2rem] md:h-[3rem] w-auto ml-[1rem]"
                                     />
                                 </Link>
                                 <Link href="https://www.facebook.com/turing.usp/">
@@ -67,7 +67,7 @@ export default function FooterDashboard() {
                                         alt="Facebook"
                                         width={150}
                                         height={150}
-                                        className="h-[3rem] w-auto ml-[1rem]"
+                                        className="h-[2rem] md:h-[3rem] w-auto ml-[1rem]"
                                     />
                                 </Link>
                             </div>
@@ -76,7 +76,7 @@ export default function FooterDashboard() {
                 </div>
             </div>
             <div className="flex w-[100%] h-auto min-h-[10vh] bg-[#F1863D] items-center justify-center">
-                <p>@Plataforma Turing.USP 2026. Todos os direitos são reservados.</p>
+                <p className="text-[#ffffff] text-[0.8rem] text-center md:text-[1rem]">@Plataforma Turing.USP 2026. Todos os direitos são reservados.</p>
             </div>
         </div>
     )
