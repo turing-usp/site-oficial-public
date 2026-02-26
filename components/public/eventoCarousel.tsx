@@ -1,6 +1,6 @@
     "use client";
     import Image from 'next/image';
-    import { useState, useEffect } from 'react';
+    import { useState, useEffect, useRef } from 'react';
 
     export default function EventoCarousel({eventos} : any){
         const [currentIndex, setCurrentIndex] = useState(0);
@@ -13,14 +13,37 @@
         useEffect(() => {
             const interval = setInterval(nextEvento, 10000);
             return () => clearInterval(interval);
-        }, []);
+        }, [currentIndex]); // Reinicia o timer sempre que o índice muda (evita pulos bruscos)
 
         const eventoAtual = eventos[currentIndex];
+
+        const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+            const scrollLeft = e.currentTarget.scrollLeft;
+            const width = e.currentTarget.offsetWidth;
+            const newIndex = Math.round(scrollLeft / width);
+
+            if (newIndex !== currentIndex) {
+                setCurrentIndex(newIndex);
+            }
+        };
+
+        const scrollRef = useRef<HTMLDivElement>(null);
+        useEffect(() => {
+            if (scrollRef.current) {
+                const container = scrollRef.current;
+                const width = container.offsetWidth;
+                
+                container.scrollTo({
+                    left: currentIndex * width,
+                    behavior: 'smooth'
+                });
+            }
+        }, [currentIndex]);
 
         return (
             <div className="w-full max-w-6xl">
                 <div className="flex flex-col md:hidden w-full bg-[#162B3F] rounded-2xl py-6">
-                    <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+                    <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide" onScroll={handleScroll} ref={scrollRef}>
                         {eventos.map((evento: any, index: number) => (
                             <div 
                                 key={index} 
@@ -42,19 +65,20 @@
                             </div>
                         ))}
                     </div>
-
                     {/* Dots Indicadores */}
                     <div className="flex justify-center gap-2 mt-4">
                         {eventos.map((_: any, index: number) => (
-                            <div 
+                            <button 
                                 key={index}
                                 className={`h-2 rounded-full transition-all duration-300 ${
                                     index === currentIndex ? 'w-6 bg-[#F1863D]' : 'w-2 bg-gray-500'
                                 }`}
+                                onClick={() => setCurrentIndex(index)}
                             />
                         ))}
                     </div>
                 </div>
+
                 <div className="hidden md:flex py-8 px-5 h-auto lg:p-8 lg:flex-row lg:h-[60vh] w-full bg-[#162B3F] rounded-2xl gap-8 items-center">
                     <button onClick={() => setCurrentIndex(currentIndex === 0 ? eventos.length - 1 : currentIndex - 1)} className='text-[#F1863D] text-[2rem]'>&#10094;</button>
                     <div className="w-full h-[10rem] lg:w-[40%] aspect-video rounded-lg border-2 border-[#F1863D] overflow-hidden">

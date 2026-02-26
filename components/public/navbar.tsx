@@ -1,6 +1,6 @@
 "use client";
 
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -9,6 +9,10 @@ export default function Navbar() {
     const [isOverBlue, setIsOverBlue] = useState(false);
     const [isAberto, setIsAberto] = useState(false);
 
+    // 1. Criamos a referência para a Navbar ou o menu mobile
+    const navRef = useRef<HTMLElement>(null);
+
+    // Seu useEffect original de Scroll (mantido)
     useEffect(() => {
         const handleScroll = () => {
             const scrollY = window.scrollY;
@@ -17,7 +21,6 @@ export default function Navbar() {
             const blueSection = document.getElementById('secao azul');
             if (blueSection) {
                 const rect = blueSection.getBoundingClientRect();
-                // Se o topo da seção azul chegar no topo da tela (ou perto dele)
                 setIsOverBlue(rect.top <= 60 && rect.bottom >= 60);
             }
         };
@@ -25,6 +28,21 @@ export default function Navbar() {
         window.addEventListener('scroll', handleScroll);
         return () => { window.removeEventListener('scroll', handleScroll); }
     }, []);
+
+    // 2. Novo useEffect para detectar clique fora
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            // Se o menu estiver aberto e o clique for fora da navRef, fecha o menu
+            if (isAberto && navRef.current && !navRef.current.contains(event.target as Node)) {
+                setIsAberto(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isAberto]); // Depende do estado isAberto
 
     const getNavbarBg = () => {
         if (!isScrolled) return 'bg-transparent';
@@ -35,7 +53,7 @@ export default function Navbar() {
     return (
         <nav className={`flex flex-row justify-between items-center bg-transparent sticky top-0 left-0 w-full z-50
             ${getNavbarBg()}
-            `}>
+            `} ref={navRef}>
             <div className='flex px-[5%] py-[1%] justify-between w-full items-center'>
                 <div className='flex justify-center gap-4'>
                     <Link href='/' className='flex items-center'>
@@ -69,13 +87,13 @@ export default function Navbar() {
             </div>
 
             <div className={`lg:hidden absolute top-full left-0 w-full bg-white flex-col items-center gap-4 py-4 shadow-md ${isAberto ? 'flex' : 'hidden'}`}>
-                <Link href="/projetos" className={"text-[#000000]"}>PROJETOS</Link>
-                <Link href="/equipe" className={"text-[#000000]"}>EQUIPE</Link>
-                <Link href="/turing-talks" className={"text-[#000000]"}>TURING TALKS</Link>
-                <Link href="/eventos" className={"text-[#000000]"}>EVENTOS</Link>
-                <Link href="/contato" className={"text-[#000000]"}>CONTATO</Link>
-                <Link href="/cadastre-se" className={"text-[#F1863D]"}>CADASTRE-SE</Link>
-                <Link href="/login" className={"text-[#F1863D]"}>LOGIN</Link>
+                <Link href="/projetos" className={"text-[#000000]"} onClick={() => setIsAberto(false)}>PROJETOS</Link>
+                <Link href="/equipe" className={"text-[#000000]"} onClick={() => setIsAberto(false)}>EQUIPE</Link>
+                <Link href="/turing-talks" className={"text-[#000000]"} onClick={() => setIsAberto(false)}>TURING TALKS</Link>
+                <Link href="/eventos" className={"text-[#000000]"} onClick={() => setIsAberto(false)}>EVENTOS</Link>
+                <Link href="/contato" className={"text-[#000000]"} onClick={() => setIsAberto(false)}>CONTATO</Link>
+                <Link href="/cadastre-se" className={"text-[#F1863D]"} onClick={() => setIsAberto(false)}>CADASTRE-SE</Link>
+                <Link href="/login" className={"text-[#F1863D]"} onClick={() => setIsAberto(false)}>LOGIN</Link>
             </div>
         </nav>
     );

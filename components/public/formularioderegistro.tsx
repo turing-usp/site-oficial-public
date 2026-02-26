@@ -48,7 +48,7 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
     return(
         <>
         <div className="flex flex-col items-center justify-center">
-            <p className='text-[#000000] text-[2rem] font-bold'>CADASTRE-SE:</p>
+            <p className='my-[5%] lg:my-0 text-[#000000] text-[2rem] font-bold'>CADASTRE-SE:</p>
             
             {/* Exibição de erros */}
             {error && (
@@ -73,9 +73,9 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                         placeholder="NOME COMPLETO"
                         required
                         autoComplete="name"
-                        className='h-[5vh] w-[40vw] bg-transparent text-black text-[1rem] mt-[7%] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1'
+                        className='h-[5vh] lg:w-[40vw] bg-transparent text-black text-[1rem] mt-[7%] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1'
                     ></input>
-                    <div className="flex flex-row w-[40vw] gap-[4%] items-end mt-[-3%]">
+                    <div className="flex flex-col lg:flex-row lg:w-[40vw] gap-[4%] items-end py-[5%] lg:py-0 lg:pb-[2%] lg:mt-[-3%]">
                         <input 
                             id="datanasc"
                             name="datanasc"
@@ -85,7 +85,7 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                             autoComplete="bday"
                             value={datanasc}
                             onChange={(e) => setDatanasc(e.target.value)}
-                            className={`flex-1 h-[5vh] bg-transparent text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 text-left px-1 
+                            className={`lg:flex-1 w-[100%] h-[5vh] bg-transparent text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 text-left px-1 
                             ${datanasc === "" ? "text-[#B9BBBD]" : "text-black"}`}
                         ></input>
                         <select 
@@ -93,7 +93,7 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                             required 
                             value={genero}
                             onChange={(e) => setGenero(e.target.value)}
-                            className={`h-[5vh] w-[40vw] bg-transparent text-[1rem] mt-[5%] focus:outline-none border-b-[0.1rem] border-black/50 text-left px-1 appearance-none cursor-pointer 
+                            className={`h-[5vh] w-[100%] lg:w-[40vw] bg-transparent text-[1rem] mt-[5%] focus:outline-none border-b-[0.1rem] border-black/50 text-left px-1 appearance-none cursor-pointer 
                             ${genero === "" ? "text-[#A6A6B0]" : "text-black"}`}
                         >
                             <option value="" disabled className="text-[#000000]">GÊNERO</option>
@@ -111,7 +111,7 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                         required 
                         value={isAlunoUSP}
                         onChange={(e) => setIsAlunoUSP(e.target.value)}
-                        className={`h-[5vh] w-[40vw] bg-transparent text-[1rem] mt-[3%] focus:outline-none border-b-[0.1rem] border-black/50 text-left px-1 appearance-none cursor-pointer 
+                        className={`h-[5vh] lg:w-[40vw] lg:mt-0 bg-transparent text-[1rem] mt-[3%] focus:outline-none border-b-[0.1rem] border-black/50 text-left px-1 appearance-none cursor-pointer 
                             ${isAlunoUSP === "" ? "text-[#A6A6B0]" : "text-black"}`} 
                     >
                         <option value="" disabled>É Aluno da USP?</option>
@@ -130,7 +130,7 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                                 placeholder="EMAIL USP"
                                 required
                                 autoComplete="email"
-                                className='h-[5vh] w-[40vw] bg-transparent text-black text-[1rem] mt-[3%] focus:outline-none border-b-[0.1rem] border-black/50 text-left px-1'
+                                className='h-[5vh] lg:w-[40vw] bg-transparent text-black text-[1rem] mt-[3%] focus:outline-none border-b-[0.1rem] border-black/50 text-left px-1'
                             />
                             <p className="text-[0.8rem] text-[#000000] italic">Obs: Só será aceito caso seja um email USP.</p>
                         </div>
@@ -143,7 +143,7 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                             placeholder="EMAIL"
                             required
                             autoComplete="email"
-                            className='h-[5vh] w-[40vw] bg-transparent text-black text-[1rem] mt-[3%] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1'
+                            className='h-[5vh] lg:w-[40vw] bg-transparent text-black text-[1rem] mt-[3%] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1'
                         />
                     )}
                     <div className="flex relative w-full ">
@@ -160,12 +160,12 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                             onChange={(e) => setSenha(e.target.value)}
                             onFocus={() => setSenhaFocused(true)}
                             onBlur={() => setSenhaFocused(false)}
-                            className='h-[5vh] w-[40vw] bg-transparent text-black text-[1rem] mt-[3%] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1'
+                            className='h-[5vh] mt-[5%] lg:w-[40vw] lg:mt-[3%] bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1'
                         />
                         <button
                             type="button"
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute right-0 top-[65%] right-[2%] cursor-pointer"
+                            className="absolute right-0 lg:top-[65%] top-[50%] right-[2%] cursor-pointer"
                             aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
                         >
                         <Image
@@ -173,7 +173,7 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                                 alt="Toggle Password Visibility"
                                 width={20}
                                 height={20}
-                                className="h-[1rem] w-auto"
+                                className="h-[0.8rem] lg:h-[1rem] w-auto"
                         />
                         </button>
                     </div>
@@ -212,12 +212,12 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                                     autoComplete="new-password"
                                     value={confirmarSenha}
                                     onChange={(e) => setConfirmarSenha(e.target.value)}
-                                    className='h-[5vh] w-[40vw] bg-transparent text-black text-[1rem] mt-[3%] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1'
+                                    className='h-[5vh] mt-[5%] lg:mt-[3%] lg:w-[40vw] bg-transparent text-black text-[1rem] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1'
                                 />
                                 <button
                                 type="button"
                                 onClick={() => setShowPassword2(!showPassword2)}
-                                className="absolute right-0 top-[65%] right-[2%] cursor-pointer"
+                                className="absolute right-0 top-[50%] lg:top-[65%] right-[2%] cursor-pointer"
                                 aria-label={showPassword2 ? "Ocultar senha" : "Mostrar senha"}
                                 >
                                 <Image
@@ -225,7 +225,7 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                                         alt="Toggle Password Visibility"
                                         width={20}
                                         height={20}
-                                        className="h-[1rem] w-auto"
+                                        className="h-[0.8rem] lg:h-[1rem] w-auto"
                                 />
                                 </button>
                             </div>
@@ -234,7 +234,7 @@ export default function FormularioDeRegistro({ error, success }: FormularioDeReg
                             )}
                         </div>
                     <div className="flex justify-center">
-                        <button className="h-[3rem] w-[12rem] border border-[#F1863D] border-[0.1rem] text-[#000000] text-[1rem] mt-[5%] rounded-[2rem] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer transition-ease-in-out duration-300">CADASTRAR</button>
+                        <button className="mt-[10%] lg:mt-[5%] h-[3rem] w-[12rem] border border-[#F1863D] border-[0.1rem] text-[#000000] text-[1rem] rounded-[2rem] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer transition-ease-in-out duration-300">CADASTRAR</button>
                     </div>
                 </div>
             </form>

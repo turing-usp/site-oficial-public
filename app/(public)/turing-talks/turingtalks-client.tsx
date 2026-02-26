@@ -140,7 +140,7 @@ export default function TuringTalksClient({ artigos }: TuringTalksClientProps) {
                     </Link>
                 </div>  
             )}
-            <div className='py-40 lg:py-0 flex flex-col w-[100%] h-auto'>
+            <div className='pb-40 lg:py-0 flex flex-col w-[100%] h-auto'>
                 <div className='flex flex-col mx-[5%]'>
                     <div className='grid grid-cols-1 lg:grid-cols-3 gap-[2%]'>
                         {artigos?.slice(1, 7).map((artigo) => (

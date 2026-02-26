@@ -15,7 +15,7 @@ export default function Senha() {
                     placeholder="SENHA"
                     required
                     autoComplete="current-password"
-                    className='h-[5vh] w-[40vw] bg-transparent text-black text-[1rem] mt-[5%] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1'
+                    className='h-[5vh] w-auto lg:w-[40vw] bg-transparent text-black text-[1rem] mt-[5%] focus:outline-none border-b-[0.1rem] border-black/50 placeholder:text-gray-400 text-left px-1'
                 />
                 <button
                     type="button"
@@ -28,7 +28,7 @@ export default function Senha() {
                         alt="Toggle Password Visibility"
                         width={20}
                         height={20}
-                        className="h-[1.5rem] w-auto"
+                        className="h-[0.8rem] lg:h-[1.5rem] w-auto"
                 />
                 </button>
             </div>

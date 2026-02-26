@@ -9,22 +9,22 @@ export default async function Eventos(){
 
     return(
         <main>
-            <div className="px-[5%] py-[5%] lg:px-0 relative min-h-[70dvh] h-auto flex flex-col lg:flex-row lg:h-[100vh] w-[100%] items-center justify-center">
-                <div className="hidden lg:flex flex-1 items-center relative">
-                    <Image 
-                            src="/calendario.svg"
-                            alt="imagem calendário"
-                            width={600}
-                            height={600}
-                            className="absolute right-0 h-[35vh] w-auto"
-                        />
-                </div>
-                    <div className="gap-4 lg:gap-6 flex flex-1 flex-col items-center justify-center">
+            <div className="px-[5%] py-[5%] lg:flex-row landscape:flex-row landscape:py-[10%] lg:h-[100vh] lg:px-0 relative min-h-[70dvh] h-auto flex flex-col w-[100%] items-center justify-center">
+                    <div className="hidden lg:flex flex-1 items-center relative">
+                        <Image 
+                                src="/calendario.svg"
+                                alt="imagem calendário"
+                                width={600}
+                                height={600}
+                                className="absolute right-0 h-[35vh] w-auto"
+                            />
+                    </div>
+                    <div className="gap-4 landscape:ml-[10%] md:landscape:ml-0 lg:gap-6 flex flex-1 flex-col items-center justify-center">
                         <p className="text-[0.9rem] lg:text-[1.5rem] text-[#766F6F] font-bold">NOSSOS EVENTOS E COMPETIÇÕES</p>
                         <p className="text-[2rem] lg:text-[4rem] font-bold text-[#000000] text-center leading-none max-w-[18ch]">IDEIAS QUE EVOLUEM EM CONJUNTO</p>
                         <p className="text-[0.9rem] lg:text-[1.5rem] text-[#000000] text-center">Descubra um pouco mais sobre os eventos organizados pelo Turing ao longo dos anos.</p>
                     </div>
-                    <div className="flex flex-1 items-center lg:relative">
+                    <div className="flex flex-1 items-center landscape:relative lg:relative">
                         <Image 
                             src="/trofeu.svg"
                             alt="imagem Troféu"

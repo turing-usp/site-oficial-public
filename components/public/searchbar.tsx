@@ -25,7 +25,7 @@ export default function SearchBar({ artigosIniciais }: { artigosIniciais: any[] 
         <section id='secao azul' className={`flex flex-col w-full items-center justify-center bg-[#162B3F] transition-all duration-500 ease-in-out ${results.length > 0 ? 'py-12 min-h-[50vh]' : 'h-[30vh]'}`}>
             
             {/* Barra de Pesquisa */}
-            <div className='relative w-[50vw]'>
+            <div className='relative w-[80%] lg:w-[50vw]'>
                 <input 
                     type="text" 
                     value={searchTerm}
