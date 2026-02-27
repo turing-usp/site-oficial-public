@@ -68,18 +68,18 @@ export default function TuringTalksClient({ artigos }: TuringTalksClientProps) {
         <main>
             <div className='relative h-[100vh] w-[100%]'>
                 <div className='flex h-full w-full items-center justify-between z-5'>
-                    <div className='flex flex-col landscape:flex-row lg:flex-row mx-[5%] object-contain'>
+                    <div className='flex flex-col landscape:flex-row md:flex-row mx-[5%] object-contain'>
                         <Image
                             src="/ttalks.svg"
                             alt="Turing Talks Image"
                             width={600}
                             height={600}
-                            className='h-[14rem] lg:h-[50vh] w-auto object-contain'
+                            className='h-[14rem] md:h-[30vh] lg:h-[50vh] w-auto object-contain'
                         />
                         <div className='flex flex-1 flex-col justify-center items-center'>
-                            <p className='text-[#000000] text-[2rem] lg:text-[4rem] font-bold leading-tight' style={{ fontFamily: 'var(--font-shrikhand)' }}>TURING</p>
-                            <p className='text-[#000000] text-[2rem] lg:text-[4rem] font-bold mb-[5%] leading-tight' style={{ fontFamily: 'var(--font-shrikhand)' }}>TALKS</p>
-                            <p className='text-[#000000] text-[0.9rem] lg:text-[1.2rem] mx-[20%] mb-[5%] text-center'>Conheça mais sobre assuntos de tecnologia e inovação produzidos pela nossa própria equipe!</p>
+                            <p className='text-[#000000] text-[2rem] md:text-[3rem] lg:text-[4rem] font-bold leading-tight' style={{ fontFamily: 'var(--font-shrikhand)' }}>TURING</p>
+                            <p className='text-[#000000] text-[2rem] md:text-[3rem] lg:text-[4rem] font-bold mb-[5%] leading-tight' style={{ fontFamily: 'var(--font-shrikhand)' }}>TALKS</p>
+                            <p className='text-[#000000] text-[0.9rem] md:text-[1.2rem] mx-[20%] mb-[5%] text-center'>Conheça mais sobre assuntos de tecnologia e inovação produzidos pela nossa própria equipe!</p>
                         </div>
                     </div>
                 </div>
@@ -140,9 +140,9 @@ export default function TuringTalksClient({ artigos }: TuringTalksClientProps) {
                     </Link>
                 </div>  
             )}
-            <div className='pb-40 lg:py-0 flex flex-col w-[100%] h-auto'>
+            <div className='pb-40 md:py-0 flex flex-col w-[100%] h-auto'>
                 <div className='flex flex-col mx-[5%]'>
-                    <div className='grid grid-cols-1 lg:grid-cols-3 gap-[2%]'>
+                    <div className='grid grid-cols-1 md:grid-cols-3 gap-[2%]'>
                         {artigos?.slice(1, 7).map((artigo) => (
                             <Link
                                 href={artigo.medium_url}

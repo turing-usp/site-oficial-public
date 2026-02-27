@@ -27,7 +27,7 @@ export default async function Equipe(){
                             />
                         </div>
                         <div className="flex flex-1 flex-col items-center justify-center self-center order-1 md:order-2">
-                            <p className="text-[1.5rem] text-[#766F6F] font-bold">NOSSA EQUIPE</p>
+                            <p className="text-[0.9rem] md:text-[1.5rem] text-[#766F6F] font-bold">NOSSA EQUIPE</p>
                             <p className="text-[#000000] text-[2.2rem] md:text-[4rem] text-center font-bold leading-tight px-4 md:px-0">CONSTRUTORES DO FUTURO</p>
                             <p className="mt-[5%] md:mt-0 text-[#000000] text-center text-[1.2rem] md:text-[1.5rem] leading-tight px-4 md:px-0">Conheça a nossa equipe que ajuda a construir e aplicar conceitos importantes para o aprendizado da Inteligência artificial.</p>
                         </div>
