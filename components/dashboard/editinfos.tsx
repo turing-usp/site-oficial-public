@@ -180,7 +180,7 @@ export default function EditInfos({ canChangeImage, userData }: EditInfosProps) 
             <input id="novasenha" name="novasenha" type="password" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem]" placeholder="Digite sua nova senha" />
             <label htmlFor="confirmarsenha" className="text-white text-[1rem] flex my-[1%] cursor-pointer">Confirmar nova senha:</label>
             <input id="confirmarsenha" name="confirmarsenha" type="password" className="w-full p-2 rounded-full text-white border-[0.1rem] border-[#F1863D] text-center text-[1rem]" placeholder="Confirme sua nova senha" />
-            <div className="my-[2%] gap-[3%] flex justify-end items-center">
+            <div className="mt-[15%] md:my-[2%] gap-[3%] flex justify-center md:justify-end items-center">
               <button type="reset" name="limpar" className="text-[1rem] text-[#FFFFFF] bg-transparent rounded-[2rem] border-[0.1rem] border-[#F1863D] py-2 px-8 hover:border-transparent hover:bg-[#C75B2B] cursor-pointer">Cancelar</button>
               <button type="submit" name="salvar" className="text-[1rem] text-[#FFFFFF] bg-[#F1863D] rounded-[2rem]  py-2 px-10 hover:bg-[#C75B2B] cursor-pointer">Salvar</button>
             </div>

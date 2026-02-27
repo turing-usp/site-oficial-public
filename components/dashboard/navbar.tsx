@@ -7,7 +7,7 @@ export default async function NavbarDashboard() {
     const { avatarUrl } = await getUserWithProfile();
 
     return(
-        <nav className="flex bg-transparent fixed z-10 my-[1%] mx-[5%] w-[90%] justify-between items-center">
+        <nav className="flex bg-white/30 backdrop-blur-md fixed z-10 py-[1%] px-[5%] w-[100%] justify-between items-center">
             <Link href="/plataforma" className="flex items-center">
                 <Image
                     src="/logo.svg"
