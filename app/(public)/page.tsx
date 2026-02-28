@@ -188,7 +188,7 @@ export default function Home() {
                     height={100}
                     className='absolute w-[11vh] md:w-[6rem] lg:w-[8rem] xl:w-[11vh] object-cover z-0 opacity-80 rotate-180 bottom-0 right-0 hidden md:block'
                 />
-                <p className='text-[#000000] text-[2rem] font-bold flex mx-[5%] mt-[5%] mb-[2%] md:text-[3rem] md:mt-[10%] xl:mt-[5%]'>O QUE FAZEMOS</p>
+                <p className='text-[#000000] text-[2rem] font-bold flex mx-[5%] mt-[5%] mb-[2%] md:text-[3rem] lg:text-[4rem] md:mt-[10%] xl:mt-[5%]'>O QUE FAZEMOS</p>
                 <div>
                     <OqueFazemos/>
                 </div>
