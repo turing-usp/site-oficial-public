@@ -108,7 +108,7 @@ export default function Botoesnav({ equipe, historico }: BotoesnavProps) {
                                 <button
                                     key={area.id}
                                     onClick={() => setAreaEspecificaSelecionada(area.id)}
-                                    className={`whitespace-nowrap mx-[2%] my-[5%] text-[0.8rem] md:text-[1.2rem] px-6 h-[4rem] md:flex-1 md:h-[4rem] lg:h-[8vh] xl:flex-1 xl:px-0 rounded-[1rem] no-scrollbar border border-[#F1863D] cursor-pointer duration-500 ease-in-out ${
+                                    className={`whitespace-nowrap min-w-fit mx-[4%] my-[2%] text-[#000000] flex-nowrap text-[0.8rem] md:text-[1.5rem] px-6 h-[4rem] md:flex-1 md:h-[4rem] lg:h-[8vh] rounded-[1rem] border border-[#F1863D] cursor-pointer duration-500 ease-in-out ${
                                         areaEspecificaSelecionada === area.id
                                         ? 'bg-[#F1863D] text-[#FFFFFF]'
                                         : 'bg-[#FFFFFF] text-[#000000] hover:bg-[#F1863D] hover:text-[#FFFFFF]'
