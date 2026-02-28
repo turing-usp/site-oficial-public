@@ -120,7 +120,7 @@ export default function Lista_Projetos({ projetosIniciais }: { projetosIniciais?
                                 key={area.nome}
                                 onClick={() => setSubAbaAtiva(index)}
                                 className={`
-                                    flex-none w-[160px] h-[60px]
+                                    flex-none w-[50%] h-[4rem] text-[0.8rem]
                                     md:text-[1rem] 
                                     lg:flex-1
                                     xl:flex-1 xl:h-[70px]

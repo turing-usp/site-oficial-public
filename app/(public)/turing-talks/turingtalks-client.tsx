@@ -53,14 +53,32 @@ const backgroundWordsMobile = [
     { text: 'RL', color: '#EBB84A', size: '1.6rem', top: '70%', left: '80%', opacity: 0.25},
 ]
 
+const backgroundWordstablets = [
+    { text: 'MACHINE LEARNING', color: '#F1863D', size: '1.3rem', top: '20%', left: '35%', opacity: 0.2},
+    { text: 'INOVAÇÃO', color: '#EBB84A', size: '1.5rem', top: '15%', left: '10%', opacity: 0.2 },
+    { text: 'FUTURO', color: '#008FF8', size: '1rem', top: '20%', left: '75%', opacity: 0.15 },
+    { text: 'ORDENAÇÃO', color: '#F1863D', size: '1rem', top: '80%', left: '5%', opacity: 0.2 },
+    { text: 'CIÊNCIA', color: '#EBB84A', size: '1.2rem', top: '10%', left: '50%', opacity: 0.3 },
+    { text: 'PROGRAMAÇÃO', color: '#008FF8', size: '1.5rem', top: '85%', left: '40%', opacity: 0.1 },
+    { text: 'DESCOBERTA', color: '#F1863D', size: '0.8rem', top: '52%', left: '5%', opacity: 0.2 },
+    { text: 'NLP', color: '#008FF8', size: '1.5rem', top: '35%', left: '2%', opacity: 0.15 },
+    { text: 'CRIATIVIDADE', color: '#EBB84A', size: '2rem', top: '90%', left: '10%', opacity: 0.1},
+    { text: 'DS', color: '#008FF8', size: '1rem', top: '63%', left: '15%', opacity: 0.2 },
+    { text: 'QUANT', color: '#F1863D', size: '0.8rem', top: '70%', left: '50%', opacity: 0.4 },
+    { text: 'RL', color: '#EBB84A', size: '1.6rem', top: '50%', left: '50%', opacity: 0.25},
+    { text: 'COMP. VISUAL', color: '#F1863D', size: '1.4rem', top: '70%', left: '80%', opacity: 0.15}
+]
+
+
 export default function TuringTalksClient({ artigos }: TuringTalksClientProps) {
     const [filteredWords, setFilteredWords] = useState<typeof backgroundWords>([]);
 
     useEffect(() => {
         // Detecta se é mobile
         const isMobile = window.innerWidth < 768;
+        const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
         
-        const filtered = isMobile ? backgroundWordsMobile : backgroundWords;
+        const filtered = isMobile ? backgroundWordsMobile : isTablet ? backgroundWordstablets : backgroundWords;
         setFilteredWords(filtered);
     }, []);
 
@@ -74,7 +92,7 @@ export default function TuringTalksClient({ artigos }: TuringTalksClientProps) {
                             alt="Turing Talks Image"
                             width={600}
                             height={600}
-                            className='h-[14rem] md:h-[30vh] lg:h-[50vh] w-auto object-contain'
+                            className='h-[14rem] md:h-[15rem] lg:h-[20rem] xl:h-[50vh] w-auto object-contain'
                         />
                         <div className='flex flex-1 flex-col justify-center items-center'>
                             <p className='text-[#000000] text-[2rem] md:text-[3rem] lg:text-[4rem] font-bold leading-tight' style={{ fontFamily: 'var(--font-shrikhand)' }}>TURING</p>

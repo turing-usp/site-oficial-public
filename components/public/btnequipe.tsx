@@ -89,7 +89,7 @@ export default function Botoesnav({ equipe, historico }: BotoesnavProps) {
                         <button
                             key={`categoria-${categoria}`}
                             onClick={() => handleCategoriaClick(index)}
-                            className={`whitespace-nowrap min-w-fit mx-[4%] my-[2%] text-[#000000] flex-nowrap text-[1.5rem] px-6 py-3 md:flex-1 md:h-[8vh] rounded-[1rem] border border-[#F1863D] cursor-pointer duration-500 ease-in-out ${
+                            className={`whitespace-nowrap min-w-fit mx-[4%] my-[2%] text-[#000000] flex-nowrap text-[0.8rem] md:text-[1.5rem] px-6 h-[4rem] md:flex-1 md:h-[4rem] lg:h-[8vh] rounded-[1rem] border border-[#F1863D] cursor-pointer duration-500 ease-in-out ${
                                 abaAtiva === index
                                 ?  'bg-[#F1863D] text-[#FFFFFF]' : 'bg-[#FFFFFF] hover:bg-[#F1863D] hover:text-[#FFFFFF]'
                             }`}
@@ -108,7 +108,7 @@ export default function Botoesnav({ equipe, historico }: BotoesnavProps) {
                                 <button
                                     key={area.id}
                                     onClick={() => setAreaEspecificaSelecionada(area.id)}
-                                    className={`whitespace-nowrap mx-[2%] my-[5%] text-[1.2rem] px-6 py-3 md:flex-1 md:h-[8vh] rounded-[1rem] no-scrollbar border border-[#F1863D] cursor-pointer duration-500 ease-in-out ${
+                                    className={`whitespace-nowrap mx-[2%] my-[5%] text-[0.8rem] md:text-[1.2rem] px-6 h-[4rem] md:flex-1 md:h-[4rem] lg:h-[8vh] rounded-[1rem] no-scrollbar border border-[#F1863D] cursor-pointer duration-500 ease-in-out ${
                                         areaEspecificaSelecionada === area.id
                                         ? 'bg-[#F1863D] text-[#FFFFFF]'
                                         : 'bg-[#FFFFFF] text-[#000000] hover:bg-[#F1863D] hover:text-[#FFFFFF]'
@@ -121,7 +121,7 @@ export default function Botoesnav({ equipe, historico }: BotoesnavProps) {
 
                         {/* Mensagem específica para Eméritos */}
                         {abaAtiva === 3 && (
-                            <p className="mx-[2%] my-[5%] text-[#000000] text-[1.2rem] flex-1 h-[8vh] flex items-center justify-center italic text-center">
+                            <p className="mx-[2%] my-[5%] text-[#000000] text-[0.9rem] lg:text-[1.2rem] flex-1 h-[8vh] flex items-center justify-center italic text-center">
                                 Nosso agradecimento eterno a todos os membros que fizeram parte da nossa jornada e contribuíram para o crescimento e sucesso da equipe. Vocês sempre farão parte da nossa história e do nosso coração.
                             </p>
                         )}
@@ -151,7 +151,7 @@ export default function Botoesnav({ equipe, historico }: BotoesnavProps) {
                                         return areaSelecionada?.nome || "";
                                     })()}
                                 </p>
-                                <p className="text-gray-400 text-lg italic">{(() => {
+                                <p className="text-gray-400 text-[0.9rem] text-lg italic">{(() => {
                                         const areaSelecionada = (abaAtiva === 1 ? area_de_foco : area_de_gestao)
                                             .find(area => area.id === areaEspecificaSelecionada);
                                         return areaSelecionada?.descricao || "";

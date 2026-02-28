@@ -87,12 +87,12 @@ export default function Navbar() {
             </div>
 
             <div className={`xl:hidden absolute top-full left-0 w-full bg-white flex-col items-center gap-4 py-4 shadow-md ${isAberto ? 'flex' : 'hidden'}`}>
-                <Link href="/projetos" className={"text-[#000000]"} onClick={() => setIsAberto(false)}>PROJETOS</Link>
-                <Link href="/equipe" className={"text-[#000000]"} onClick={() => setIsAberto(false)}>EQUIPE</Link>
-                <Link href="/turing-talks" className={"text-[#000000]"} onClick={() => setIsAberto(false)}>TURING TALKS</Link>
-                <Link href="/eventos" className={"text-[#000000]"} onClick={() => setIsAberto(false)}>EVENTOS</Link>
-                <Link href="/contato" className={"text-[#000000]"} onClick={() => setIsAberto(false)}>CONTATO</Link>
-                <Link href="/cadastre-se" className={"text-[#F1863D]"} onClick={() => setIsAberto(false)}>CADASTRE-SE</Link>
+                <Link href="/projetos" className={"text-[#000000] text-[1rem] md:text-[1.2rem] lg:text-[1.4rem] "} onClick={() => setIsAberto(false)}>PROJETOS</Link>
+                <Link href="/equipe" className={"text-[#000000] text-[1rem] md:text-[1.2rem] lg:text-[1.4rem] "} onClick={() => setIsAberto(false)}>EQUIPE</Link>
+                <Link href="/turing-talks" className={"text-[#000000] text-[1rem] md:text-[1.2rem] lg:text-[1.4rem] "} onClick={() => setIsAberto(false)}>TURING TALKS</Link>
+                <Link href="/eventos" className={"text-[#000000] text-[1rem] md:text-[1.2rem] lg:text-[1.4rem] "} onClick={() => setIsAberto(false)}>EVENTOS</Link>
+                <Link href="/contato" className={"text-[#000000] text-[1rem] md:text-[1.2rem] lg:text-[1.4rem] "} onClick={() => setIsAberto(false)}>CONTATO</Link>
+                <Link href="/cadastre-se" className={"text-[#F1863D] text-[1rem] md:text-[1.2rem] lg:text-[1.4rem]"} onClick={() => setIsAberto(false)}>CADASTRE-SE</Link>
                 <Link href="/login" className={"text-[#F1863D]"} onClick={() => setIsAberto(false)}>LOGIN</Link>
             </div>
         </nav>

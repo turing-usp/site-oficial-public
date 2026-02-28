@@ -100,10 +100,10 @@ export default function Contato() {
     }
     
     return (
-    <main className='flex flex-col md:flex-row min-h-screen md:h-[100vh] w-full items-center justify-center py-10 md:py-0'>
+    <main className='flex flex-col md:flex-row min-h-screen lg:h-[100vh] w-full items-center justify-center py-10 md:py-0'>
         <div className="flex flex-col md:flex-row mx-[5%] mt-[5%] w-[90%] gap-10 md:gap-0">
             <div className='flex md:w-[40%] lg:flex-1 justify-center items-center'>
-                <div className='flex flex-col bg-[#162B3F] min-h-[70vh] md:h-[80vh] w-full md:w-[100%] lg:w-[70%] rounded-[2rem] items-center justify-between py-[10%] px-6 md:ml-[-10%] lg:ml-0'>
+                <div className='flex flex-col bg-[#162B3F] min-h-[70vh] w-full md:w-[100%] lg:h-[80vh] lg:w-[70%] rounded-[2rem] items-center justify-between py-[10%] px-6 md:ml-[-10%] lg:ml-0'>
                     <Image
                         src={conteudos[estadoAtual].imageSrc}
                         alt="Contato Image"

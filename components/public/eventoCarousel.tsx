@@ -59,8 +59,8 @@
                                     />
                                 </div>
                                 <div className="flex flex-col items-center gap-3">
-                                    <p className="text-[#FFFFFF] text-[1.2rem] font-bold">{evento.nome}</p>
-                                    <p className="text-[0.9rem] text-[#FFFFFF] text-justify">{evento.descricao}</p>
+                                    <p className="text-[#FFFFFF] text-[1.2rem] lg:text-[1.5rem] font-bold">{evento.nome}</p>
+                                    <p className="text-[0.9rem] lg:text-[1.2rem] text-[#FFFFFF] text-justify">{evento.descricao}</p>
                                 </div>
                             </div>
                         ))}

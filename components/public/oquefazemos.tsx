@@ -45,12 +45,12 @@ export default function OqueFazemos() {
     return (
         <div>
             {/* Renderização dos Botões */}
-            <div className='grid grid-cols-2 md:flex md:flex-row mx-[5%] gap-3 md:gap-[5%]'>
+            <div className='flex flex-row overflow-x-auto no-scrollbar md:flex md:flex-row mx-[5%] gap-3 md:gap-[5%]'>
                 {CONTEUDOS.map((item, index) => ( //O map funciona como um loop que percorre cada item do array CONTEUDOS e retorna um botão para cada um, além disso pega o indice do item atual no array
                     <button 
                         key={item.id}
                         onClick={() => setAbaAtiva(index)} 
-                        className={`flex-1 text-[#FFFFFF] text-[1rem] h-[8vh] rounded-[1rem] cursor-pointer duration-500 ease-in-out
+                        className={`text-[#FFFFFF] text-[1rem] h-[8vh] rounded-[1rem] cursor-pointer duration-500 ease-in-out flex-none min-w-[50%] md:flex-1 md:h-[4rem] md:min-w-0 lg:h-[8vh]
                         ${abaAtiva === index ? 'bg-[#F1863D]' : 'bg-[#162B3F] hover:bg-[#F1863D]'}`}
                     >
                         {item.titulo}
@@ -58,35 +58,27 @@ export default function OqueFazemos() {
                 ))}
             </div>
 
-            <div className='mx-[5%] md:mx-[10%] my-[5%] bg-[#162B3F] flex flex-col md:flex-row min-h-fit md:h-[55vh] rounded-[1rem] relative overflow-hidden py-8 md:py-0'>
-                <div className='w-full md:w-[45%] flex items-center justify-center p-4 md:p-0'>
-                    <div className='relative w-[85%] md:w-[50vh] flex flex-col'>
+            <div className='mx-[5%] md:justify-center xl:justify-start lg:mx-[10%] my-[5%] bg-[#162B3F] flex flex-col xl:flex-row min-h-fit md:h-[55vh] rounded-[1rem] relative overflow-hidden py-8 md:py-0'>
+                <div className='w-full xl:w-[45%] flex items-center justify-center p-4 md:p-0'>
+                    <div className='relative w-[85%] md:w-[70%] md:my-[5%] xl:my-0 xl:w-[50vh] flex flex-col'>
                         <Image
                             src={CONTEUDOS[abaAtiva].imagem} 
                             alt={CONTEUDOS[abaAtiva].titulo}
                             width={800}
                             height={800}
-                            className={`w-[50vh] h-auto border p-[1%] border-[#F1863D] border-[0.2rem] z-10 ${CONTEUDOS[abaAtiva].escala}`}
+                            className={`w-[50vh] md:w-auto h-auto border p-[1%] border-[#F1863D] border-[0.2rem] z-10 ${CONTEUDOS[abaAtiva].escala}`}
                         />
                     </div>
-               
-                    {/* <div className=''>
-                        <Image src="/circuitoorange.svg" alt="Circuitos" width={100} height={100} className='absolute w-[2.5vh] h-auto object-cover z-0 rotate-270 top-1/2 -translate-y-1/2 left-[11%]' />
-                        <Image src="/circuitoorange.svg" alt="Circuitos" width={100} height={100} className='absolute w-[2.5vh] h-auto object-cover z-0 rotate-0 top-0 left-[22%]' />
-                        <Image src="/circuitoorange.svg" alt="Circuitos" width={100} height={100} className='absolute w-[2.5vh] h-auto object-cover z-0 rotate-180 bottom-0 left-[25%]' />
-                        <Image src="/circuitoorange.svg" alt="Circuitos" width={100} height={100} className='absolute w-[2.5vh] h-auto object-cover z-0 rotate-90 top-1/2 -translate-y-1/2 left-[35%]' />
-                    </div> */}
                 </div>
-
                 
-                <div className='w-full md:w-[45%] md:mx-[5%] flex flex-col justify-center items-center text-center'>
+                <div className='w-full xl:w-[45%] xl:mx-[5%] flex flex-col justify-center items-center text-center'>
                     <h3 className='text-[#FFFFFF] text-[1.8rem] md:text-[2.2rem] font-bold uppercase'>
                         {CONTEUDOS[abaAtiva].titulo}
                     </h3>
                     <p className='text-[#FFFFFF] text-[1rem] md:text-[1.1rem] leading-relaxed my-[5%] md:my-[3%] px-2'>
                         {CONTEUDOS[abaAtiva].descricao}
                     </p>
-                    <Link className='flex bg-[#F1863D] text-[#FFFFFF] text-[1rem] h-[5vh] w-[25vh] mt-[2%] rounded-[1rem] text-center items-center justify-center hover:bg-[#C25E1A] cursor-pointer duration-500 ease-in-out' href={CONTEUDOS[abaAtiva].href}>
+                    <Link className='flex bg-[#F1863D] text-[#FFFFFF] w-[25vh] text-[1rem] h-[5vh] md:h-[3rem] md:w-[16rem] lg:h-[5vh] lg:w-[25vh] mt-[2%] rounded-[1rem] text-center items-center justify-center hover:bg-[#C25E1A] cursor-pointer duration-500 ease-in-out' href={CONTEUDOS[abaAtiva].href}>
                         SAIBA MAIS
                     </Link>
                 </div>

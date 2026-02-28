@@ -7,7 +7,7 @@ const relatos = [
         id:1,
         nome: "João Pedro Canabrava",
         imagem: "/chefe.jpeg",
-        relato: "Entrei no Turing USP em 2024 e logo me apaixonei pelo projeto. É um grupo com enorme atuação e potencial de crescimento que reúne pessoas brilhantes para trabalhar em um dos temas que considero mais relevantes para o futuro da sociedade: IA e ML. Integrei a área de finanças quantitativas e fui diretor da área de estratégia nas quais aprendi muito sobre aplicações de ML no mercado financeiro, administração de grupos e liderança, consegui evoluir muito como estudante e profissional e recebi oportunidades no mercado por conta do networking feito. Além disso, tão importante quanto, conheci pessoas e construí relações que levo com muito carinho. Considero que o grupo foi uma das melhores escolhas do meu período universitário e acompanho, animado, os caminhos que o grupo está trilhando e construindo."
+        relato: "Entrei no Turing USP em 2024 e logo me apaixonei pelo projeto. É um grupo com enorme atuação e potencial de crescimento que reúne pessoas brilhantes para trabalhar em um dos temas que considero mais relevantes para o futuro da sociedade: IA e ML. Integrei a área de finanças quantitativas e fui diretor da área de estratégia nas quais aprendi muito sobre aplicações de ML no mercado financeiro, administração de grupos e liderança, consegui evoluir muito como estudante e profissional e recebi oportunidades no mercado por conta do networking feito. Além disso, tão importante quanto, conheci pessoas e construí relações que levo com muito carinho."
     },
     {
         id:2,
@@ -40,9 +40,9 @@ export default function Carousel() {
     const relatoAtual = relatos[currentIndex];
 
     return (
-        <div className="flex flex-col w-full min-h-[400px] h-auto py-8 md:h-[60vh] bg-[#162B3F] rounded-[1rem] overflow-hidden justify-center">
+        <div className="flex flex-col w-full min-h-[400px] h-auto py-8 md:h-[32rem] lg:h-[36rem] xl:h-auto bg-[#162B3F] rounded-[1rem] overflow-hidden justify-center">
             <div className="flex flex-row items-center w-full px-[5%] gap-[4%] pt-[3%]">
-                <div className="flex-shrink-0 w-[7vh] h-[7vh] md:w-[8vh] md:h-[8vh] lg:w-[10vh] lg:h-[10vh] rounded-full overflow-hidden border-[0.2rem] border-[#F1863D]">
+                <div className="flex-shrink-0 w-[7vh] h-[7vh] md:w-[4rem] md:h-[4rem] xl:w-[10vh] xl:h-[10vh] rounded-full overflow-hidden border-[0.2rem] border-[#F1863D]">
                     <Image 
                         src={relatoAtual.imagem}
                         alt="Membro da equipe"
@@ -52,16 +52,16 @@ export default function Carousel() {
                     />
                 </div>
                 <div className="flex flex-1 justify-between items-center">
-                    <p className="text-[#FFFFFF] text-[1.2rem] md:text-[1.3rem] lg:text-[1.4rem] font-bold">{relatoAtual.nome}</p>
-                    <p className="text-[#F1863D] text-[2rem] md:text-[3rem] lg:text-[3.5rem] ml-[5%] self-start">&#10078;</p>
+                    <p className="text-[#FFFFFF] text-[1.2rem] md:text-[1.3rem] lg:text-[1.7rem] font-bold">{relatoAtual.nome}</p>
+                    <p className="text-[#F1863D] text-[2rem] md:text-[3rem] lg:text-[4rem] ml-[5%] self-start">&#10078;</p>
                 </div>
             </div>
             <div className='flex flex-row px-[5%] my-[3%]'>
                 <button onClick={() => setCurrentIndex(currentIndex === 0 ? relatos.length - 1 : currentIndex - 1)} className='text-[#F1863D] text-[1.5rem] md:text-[1.8rem] lg:text-[2rem] mr-[5%]'>&#10094;</button>
-                <p className='flex-1 text-center text-[#FFFFFF] text-[0.85rem] md:text-[0.9rem] lg:text-[1rem] text-center md:text-justify'>{relatoAtual.relato}</p>
+                <p className='flex-1 text-center text-[#FFFFFF] text-[0.85rem] md:text-[0.9rem] lg:text-[1.1rem] text-center md:text-justify'>{relatoAtual.relato}</p>
                 <button onClick={() => setCurrentIndex(currentIndex === relatos.length - 1 ? 0 : currentIndex + 1)} className='text-[#F1863D] text-[1.5rem] md:text-[1.8rem] lg:text-[2rem] ml-[5%]'>&#10095;</button>
             </div>
-            <p className="mx-[5%] text-[#F1863D] text-[2rem] md:text-[3rem] lg:text-[3.5rem]">&#10077;</p>
+            <p className="mx-[5%] text-[#F1863D] text-[2rem] md:text-[3rem] lg:text-[4rem]">&#10077;</p>
         </div>
     );
 }
