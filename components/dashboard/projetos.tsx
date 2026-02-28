@@ -327,7 +327,7 @@ export default function proj(dados: any) {
                     >
                         Foto principal
                     </button>
-                    <div className="mt-2 relative w-[200px] h-[150px]">
+                    <div className="mt-2 relative w-[100px] h-[100px] md:w-[200px] md:h-[150px]">
                         <Image 
                             src={previewPrincipal || projetoEmEdicao?.imagem || "/preview.svg"} 
                             alt="Preview" 
@@ -352,7 +352,7 @@ export default function proj(dados: any) {
                     >
                         Foto parceiros
                     </button>
-                    <div className="mt-2 relative w-[200px] h-[150px]">
+                    <div className="mt-2 relative w-[100px] h-[100px] md:w-[200px] md:h-[150px]">
                         <Image 
                             src={previewParceiros || projetoEmEdicao?.parceiros || "/preview.svg"} 
                             alt="Preview" 

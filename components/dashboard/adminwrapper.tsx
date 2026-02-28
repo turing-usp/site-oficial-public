@@ -28,12 +28,12 @@ export default function AdminWrapper({
         : [];
 
     return (
-        <div className="flex gap-4 w-full h-auto">
-            <div id="menu lateral" className="flex flex-col items-center w-[20%]">
-                <h1 className="text-white text-[1.5rem] text-center my-[5%] font-bold">ADMINISTRAÇÃO</h1>
+        <div className="flex flex-col md:flex-row gap-4 w-full h-auto">
+            <div id="menu lateral" className="flex flex-col items-center md:w-[20%] w-full">
+                <h1 className="text-white text-[1.5rem] md:text-[1rem] xl:text-[1.5rem] text-center my-[5%] font-bold">ADMINISTRAÇÃO</h1>
                 <p className="text-gray-300 text-[1rem] text-center mb-[5%]">Gerenciamento de membros</p>
-                
-                <div className="w-full">
+            
+                <div className="w-full flex flex-row overflow-x-auto flex-nowrap scrollbar-hide xl:flex-col">
                     {Object.entries(membros).map(([tipo, info]: [string, any]) => (
                         <BotaoMembro 
                             key={tipo} 
@@ -46,7 +46,7 @@ export default function AdminWrapper({
                 </div>
             </div>
 
-            <div className="w-[0.1rem] bg-gray-700"></div>
+            <div className="hidden xl:flex w-[0.1rem] bg-gray-700"></div>
             <div className="flex flex-col flex-1">
                 <ListaUsu 
                     membros={membrosParaExibir} 

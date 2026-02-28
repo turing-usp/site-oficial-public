@@ -75,25 +75,25 @@ export default function Lista_Projetos({ projetosIniciais }: { projetosIniciais?
 
     return (
         <div>
-            <div className="min-h-[60dvh] py-20 lg:h-[100vh] flex flex-row w-[100%]">
-                <div className="flex-col mx-[10%]   lg:mt-0 flex flex-col lg:mx-[20%] items-center justify-center text-center gap-[2rem]">
-                    <p className="text-[0.9rem] lg:text-[1.5rem] text-[#766F6F] font-bold">NOSSOS PROJETOS</p>
-                    <p className="text-[2rem] lg:text-[4rem] font-bold text-[#000000]">O FUTURO, PROJETO A PROJETO</p>
-                    <p className="text-[0.9rem] lg:text-[1.5rem] text-[#000000] text-center">Conheça as iniciativas e tecnologias que desenvolvemos no Turing USP para moldar o amanhã da inteligência artificial.</p>
+            <div className="min-h-[60dvh] py-20 xl:h-[100vh] flex flex-row w-[100%]">
+                <div className="flex-col mx-[10%]   xl:mt-0 flex flex-col xl:mx-[20%] items-center justify-center text-center gap-[2rem]">
+                    <p className="text-[0.9rem] md:text-[1.2rem] lg:text-[1.5rem] text-[#766F6F] font-bold">NOSSOS PROJETOS</p>
+                    <p className="text-[2rem] md:text-[3rem] lg:text-[4rem] font-bold text-[#000000]">O FUTURO, PROJETO A PROJETO</p>
+                    <p className="text-[0.9rem] md:text-[1.2rem] lg:text-[1.5rem] text-[#000000] text-center">Conheça as iniciativas e tecnologias que desenvolvemos no Turing USP para moldar o amanhã da inteligência artificial.</p>
                 </div>
                 <Image
                     src="/projimgd.svg"
                     alt="Projetos"
                     width={800}
                     height={800}
-                    className="w-[15%] mt-[30%] h-auto max-lg:landscape:mt-0 lg:mt-[5%] lg:w-[35vh] absolute h-auto object-contain right-0"
+                    className="w-[15%] mt-[30%] h-auto md:mt-[20%] max-xl:landscape:mt-0 xl:mt-[5%] xl:w-[35vh] absolute h-auto object-contain right-0"
                 />
                 <Image
                     src="/projimge.svg"
                     alt="Projetos"
                     width={800}
                     height={800}
-                    className="w-[15%] mt-[40%] h-auto max-lg:landscape:mt-0 lg:mt-[10%] lg:w-[35vh] absolute h-auto object-contain object-fill rotate-180 left"
+                    className="w-[15%] mt-[40%] h-auto md:mt-[25%] max-xl:landscape:mt-0 xl:mt-[10%] xl:w-[35vh] absolute h-auto object-contain object-fill rotate-180 left"
                 />
             </div>
             <div className="flex flex-col w-[100%] h-auto min-h-[80vh]">
@@ -103,7 +103,7 @@ export default function Lista_Projetos({ projetosIniciais }: { projetosIniciais?
                             <button
                                 key={categoria}
                                 onClick={() => setAbaAtiva(Categorias.indexOf(categoria))}
-                                className={`w-[40vw] text-[0.8rem]   lg:text-[1.5rem] mx-[5%] my-[2%] text-[#000000]  lg:w-[20vw] h-[8vh] rounded-[1rem] border border-[#F1863D] cursor-pointer duration-500 ease-in-out
+                                className={`w-[40vw] text-[0.8rem] h-[4rem] md:text-[1rem] xl:text-[1.5rem] mx-[5%] my-[2%] text-[#000000] xl:w-[20vw] rounded-[1rem] border border-[#F1863D] cursor-pointer duration-500 ease-in-out
                                     ${abaAtiva === Categorias.indexOf(categoria) ? 'bg-[#F1863D] text-[#FFFFFF]' : 'bg-[#FFFFFF] hover:bg-[#F1863D] hover:text-[#FFFFFF]'}`}
                             >
                                 {categoria}
@@ -112,30 +112,21 @@ export default function Lista_Projetos({ projetosIniciais }: { projetosIniciais?
                         }
                     </div>
                     <div className="
-                        /* Mobile: Scroll horizontal com tamanho fixo para não esmagar */
                         flex flex-row overflow-x-auto gap-4 px-6 py-4 no-scrollbar
-                        
-                        /* Desktop: Distribuição automática (flex-1) */
-                        lg:flex-row lg:flex-wrap lg:justify-center lg:overflow-x-visible lg:px-0 
+                        xl:flex-row xl:flex-wrap xl:justify-center xl:overflow-x-visible xl:px-0 
                     ">
                         {(abaAtiva === 0 ? ÁREAS_DE_FOCO : ÁREAS_DE_GESTÃO).map((area, index) => (
                             <button
                                 key={area.nome}
                                 onClick={() => setSubAbaAtiva(index)}
                                 className={`
-                                    /* MOBILE: Tamanho fixo para garantir o scroll e leitura */
                                     flex-none w-[160px] h-[60px]
-                                    
-                                    /* DESKTOP: Vira flex-1 para ocupar o espaço proporcionalmente */
-                                    lg:flex-1 lg:h-[70px]
-                                    
-                                    /* Alinhamento e Texto */
+                                    md:text-[1rem] 
+                                    lg:flex-1
+                                    xl:flex-1 xl:h-[70px]
                                     flex items-center justify-center text-center px-2
-                                    text-[0.7rem] lg:text-[1.2rem] font-medium leading-tight whitespace-normal
-                                    
-                                    /* Estilo Visual */
+                                    text-[0.7rem] xl:text-[1.2rem] font-medium leading-tight whitespace-normal
                                     rounded-[1rem] border border-[#F1863D] transition-all duration-300
-                                    
                                     hover:cursor-pointer hover:bg-[#F1863D] hover:text-[#FFFFFF]
                                     ${subAbaAtiva === index 
                                         ? 'bg-[#F1863D] text-white' 
@@ -151,20 +142,20 @@ export default function Lista_Projetos({ projetosIniciais }: { projetosIniciais?
                     {projetosFiltrados.map((projeto, index) => (
                         <Link href={`/projetos/${projeto.slug}`} className="group flex flex-col bg-[#FFFFFF] overflow-hidden hover: cursor-pointer" key={index}>
                             {/* <div className="flex bg-[#000000] h-[0.05rem] w-[100%] object-contain"></div> */}
-                            <div className="min-h-[20vh] h-auto flex-col lg:h-[20vh] flex lg:flex-row items-center justify-center group-hover:bg-[#F5F5F5] group-hover:lg:scale-103 duration-500 ease-in-out">
-                                <div className="flex flex-col lg:flex-row lg:h-[20vh] items-center justify-center mx-[5%]">
+                            <div className="min-h-[20vh] h-auto flex-col xl:h-[20vh] flex xl:flex-row items-center justify-center group-hover:bg-[#F5F5F5] group-hover:xl:scale-103 duration-500 ease-in-out">
+                                <div className="flex flex-col xl:flex-row xl:h-[20vh] items-center justify-center mx-[5%]">
                                     <Image
                                         alt="Em breve"
                                         src={projeto.imagem}
                                         width={800}
                                         height={800}
-                                        className="w-full h-[10rem] object-cover rounded rounded-md lg:w-[12rem] lg:rounded-none lg:h-auto lg:object-contain"
+                                        className="w-full h-[10rem] object-cover rounded rounded-md xl:w-[12rem] xl:rounded-none xl:h-auto xl:object-contain"
                                     />
-                                    <div className="flex flex-col py-4 lg:py-0 lg:mx-[10%]">
-                                        <p className="text-[1.1rem] lg:text-[2rem] text-[#000000] font-bold">{projeto.titulo}</p>
-                                        <p className="text-sm line-clamp-3 lg:text-[1rem] lg:line-clamp-none text-[#000000]">{projeto.resumo}</p>
+                                    <div className="flex flex-col py-4 xl:py-0 xl:mx-[10%]">
+                                        <p className="text-[1.1rem] md:text-[1.5rem] xl:text-[2rem] text-[#000000] font-bold">{projeto.titulo}</p>
+                                        <p className="text-sm line-clamp-3 md:line-clamp-2 xl:text-[1rem] xl:line-clamp-none text-[#000000]">{projeto.resumo}</p>
                                     </div>
-                                    <div className="hidden lg:flex bg-transparent text-[#000000] text-[1rem] h-[5vh] w-[12vw] rounded-[1rem] text-center items-center justify-center border-[0.1rem] border-[#F1863D] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer duration-500 ease-in-out">
+                                    <div className="hidden xl:flex bg-transparent text-[#000000] text-[1rem] h-[5vh] w-[12vw] rounded-[1rem] text-center items-center justify-center border-[0.1rem] border-[#F1863D] hover:bg-[#F1863D] hover:text-[#FFFFFF] cursor-pointer duration-500 ease-in-out">
                                         Veja mais
                                     </div>
                                 </div>
@@ -174,13 +165,13 @@ export default function Lista_Projetos({ projetosIniciais }: { projetosIniciais?
                     ))}
                     {/* <div className="flex bg-[#000000] h-[0.05rem] w-[100%] object-contain"></div> */}
                 </div>
-                <div className="min-h-[5dvh] py-8 lg:h-[30vh] flex flex-row justify-center items-center w-[100%]">
+                <div className="min-h-[5dvh] py-8 xl:h-[30vh] flex flex-row justify-center items-center w-[100%]">
                     <Image
                         alt="Em breve"
                         src="/logo.svg"
                         width={800}
                         height={800}
-                        className="w-[6rem] lg:w-[8rem] h-auto object-contain"
+                        className="w-[6rem] xl:w-[8rem] h-auto object-contain"
                     />
                 </div>
             </div>

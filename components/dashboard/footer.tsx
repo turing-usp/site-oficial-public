@@ -4,7 +4,7 @@ export default function FooterDashboard() {
 
     return(
         <div>
-            <div className="flex flex-row w-[100%] h-auto min-h-[40vh] bg-gradient-to-r from-[#EBB84A] to-[#F1863D] justify-center rounded-t-[2rem] mt-[3%]">
+            <div className="flex flex-row w-[100%] h-auto min-h-[40dvh] py-[5%] bg-gradient-to-r from-[#EBB84A] to-[#F1863D] justify-center rounded-t-[2rem] mt-[3%]">
                 <div className="flex flex-col mx-[5%] md:w-[90%] items-center justify-center">
                     <div className="flex flex-col md:flex-row items-center gap-[5%]">
                         <div className="flex flex-col items-center">

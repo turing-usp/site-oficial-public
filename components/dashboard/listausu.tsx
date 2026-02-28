@@ -198,7 +198,7 @@ export default function ListaUsu({membros,  cargos,  areas }: { membros: any[], 
             <input
                 type="text"
                 placeholder="Pesquisar membros"
-                className="text-center mb-4 px-40 py-1.5 rounded-full bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#F1863D]"
+                className="text-center mb-4 xl:px-40 py-1.5 rounded-full bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-[#F1863D]"
                 value={pesquisa}
                 onChange={(e) => setPesquisa(e.target.value)}
             />
@@ -209,14 +209,14 @@ export default function ListaUsu({membros,  cargos,  areas }: { membros: any[], 
                 ) : (
                     <ul className="flex flex-col w-[90%] ml-[5%] h-full">
                         {membrosFiltrados.map((membro) => (
-                            <li key={membro.id} className="flex w-full items-center justify-between px-[5%] mb-4 bg-gray-700 rounded-lg">
+                            <li key={membro.id} className="flex flex-col xl:flex-row w-full items-center justify-center xl:justify-between xl:px-[5%] mb-4 bg-gray-700 rounded-lg">
                                 <div className="flex py-4">
                                     <div>
                                         <p className="text-white font-bold">{membro.nome}</p>
                                         <p className="text-gray-300 text-sm">{membro.email}</p>
                                     </div>
                                 </div>
-                                <div className="flex items-center">
+                                <div className="flex flex-col xl:flex-row items-center">
                                     {membro.is_banned && (
                                         <span className="mr-5 bg-red-100 text-red-700 text-xs px-2 py-1 border border-red-200 flex items-center gap-1">
                                             <p className=''> Banido até {new Date(membro.banned_until).toLocaleDateString()} </p>
@@ -234,21 +234,21 @@ export default function ListaUsu({membros,  cargos,  areas }: { membros: any[], 
                                     </select>
                                     <button 
                                         onClick={() => { setMembroParaAcao(membro); setTipoAcao('remover'); }} 
-                                        className="text-white bg-red-700 hover:bg-red-800 px-3 py-1 rounded-lg ml-2 transition cursor-pointer"
+                                        className="text-white my-2 xl:my-0 bg-red-700 hover:bg-red-800 px-3 py-1 rounded-lg ml-2 transition cursor-pointer"
                                     >
                                         Excluir
                                     </button>
                                     { membro.is_banned ? (
                                     <button 
                                         onClick={() => { setMembroParaAcao(membro); setTipoAcao('desbanir'); }} 
-                                        className="text-white bg-green-600 hover:bg-green-700 px-3 py-1 rounded-lg ml-2 transition cursor-pointer"
+                                        className="text-white my-2 xl:my-0 bg-green-600 hover:bg-green-700 px-3 py-1 rounded-lg ml-2 transition cursor-pointer"
                                     >
                                         Desbanir
                                     </button>
                                     ): 
                                     <button 
                                         onClick={() => { setMembroParaAcao(membro); setTipoAcao('banir'); }} 
-                                        className="text-white bg-[#722F37] hover:bg-[#5E2129] px-3 py-1 rounded-lg ml-2 transition cursor-pointer"
+                                        className="text-white my-2 xl:my-0 bg-[#722F37] hover:bg-[#5E2129] px-3 py-1 rounded-lg ml-2 transition cursor-pointer"
                                     >
                                         Banir
                                     </button>
@@ -257,7 +257,7 @@ export default function ListaUsu({membros,  cargos,  areas }: { membros: any[], 
                                     {membro.podeEditarCargo && (
                                         <button 
                                             onClick={() => { setMembroParaAcao(membro); setTipoAcao('editarCargo'); }} 
-                                            className="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg ml-2 transition cursor-pointer"
+                                            className="text-white my-2 xl:my-0 bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg ml-2 transition cursor-pointer"
                                         >
                                             Editar
                                         </button>
