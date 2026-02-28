@@ -101,21 +101,27 @@ export default function Botoesnav({ equipe, historico }: BotoesnavProps) {
 
                 {/* Botões de Áreas - Só aparece se TODOS não estiver selecionado */}
                 {abaAtiva !== 0 && (
-                    <div className="flex flex-row w-full items-center overflow-x-auto overflow-y-hidden no-scrollbar">
-                       {/* Renderiza botões de sub-área apenas para Áreas de Foco (1) ou Gestão (2) */}
+                    <div className="flex flex-row w-full items-center lg:justify-between overflow-x-auto lg:overflow-x-hidden no-scrollbar">
                         {(abaAtiva === 1 || abaAtiva === 2) && (
                             (abaAtiva === 1 ? area_de_foco : area_de_gestao).map((area) => (
-                                <button
-                                    key={area.id}
-                                    onClick={() => setAreaEspecificaSelecionada(area.id)}
-                                    className={`whitespace-nowrap min-w-fit mx-[4%] my-[2%] text-[#000000] flex-nowrap text-[0.8rem] md:text-[1.5rem] px-6 h-[4rem] md:flex-1 md:h-[4rem] lg:h-[8vh] rounded-[1rem] border border-[#F1863D] cursor-pointer duration-500 ease-in-out ${
-                                        areaEspecificaSelecionada === area.id
-                                        ? 'bg-[#F1863D] text-[#FFFFFF]'
-                                        : 'bg-[#FFFFFF] text-[#000000] hover:bg-[#F1863D] hover:text-[#FFFFFF]'
-                                    }`}
-                                >
-                                    {area.nome}
-                                </button>
+                            <button
+                                key={area.id}
+                                onClick={() => setAreaEspecificaSelecionada(area.id)}
+                                className={`
+                                mx-2 my-4 px-4 
+                                h-[4rem] lg:h-[8vh] 
+                                flex-none lg:flex-1 lg:basis-0 
+                                text-[0.8rem] md:text-[1rem] lg:text-[1.1rem]
+                                rounded-[1rem] border border-[#F1863D] 
+                                cursor-pointer duration-500 ease-in-out
+                                ${areaEspecificaSelecionada === area.id
+                                    ? 'bg-[#F1863D] text-[#FFFFFF]'
+                                    : 'bg-[#FFFFFF] text-[#000000] hover:bg-[#F1863D] hover:text-[#FFFFFF]'
+                                }
+                                `}
+                            >
+                                {area.nome}
+                            </button>
                             ))
                         )}
 
