@@ -9,7 +9,7 @@ export default async function Equipe(){
 
     return(
         <>
-            <div className="relative flex flex-col md:flex-row min-h-fit md:h-auto md:mt-20 xl:mt-0 xl:h-[100vh] w-full items-center justify-center pt-[10vh] md:pt-0 xl:pt-[20vh] pb-10 overflow-hidden">
+            <div className="relative flex flex-col md:flex-row min-h-fit md:h-auto md:mt-20 xl:mt-0 xl:h-[100vh] w-full items-center justify-center pt-[10vh] md:pt-0 xl:pt-[10vh] pb-10 overflow-hidden">
                         <div className="flex flex-1 items-center justify-center relative self-center order-2 md:order-1 mt-10 md:mt-0">
                             <Image
                                 src="/Elipse.svg"
