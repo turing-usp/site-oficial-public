@@ -17,9 +17,9 @@ const relatos = [
     },
     {
         id:3,
-        nome: "Carlos Pereira",
-        imagem: "/ssd.svg",
-        relato: "O ambiente colaborativo do Turing me ajudou a crescer profissionalmente e pessoalmente. Recomendo a todos!"
+        nome: "Luca Henrique Tavares",
+        imagem: "/lucaimg.jpeg",
+        relato: "Entrei no Turing em 2025 e desde então tenho tido uma experiênci incrível. A oportunidade de participar de projetos desafiadores e liderar as áreas de estratégia e NLP estão me proporcionando um crescimento profissional e pessoal significativo. O ambiente colaborativo e o apoio dos colegas têm sido fundamentais para meu desenvolvimento, e estou ansioso para continuar contribuindo para o sucesso do Turing e para minha própria evolução na área de IA e ML."
     
     }
 ];
