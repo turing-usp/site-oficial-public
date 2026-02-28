@@ -1,13 +1,14 @@
-"use client";
-
 import Forms from "@/components/public/formularioderegistro";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
 
-export default function Cadastre_se(){
-    const searchParams = useSearchParams();
-    const error = searchParams.get("error") || undefined;
-    const success = searchParams.get("success") || undefined;
+type CadastreSePageProps = {
+    searchParams?: Promise<{ error?: string; success?: string }>;
+};
+
+export default async function Cadastre_se({ searchParams }: CadastreSePageProps){
+    const resolvedSearchParams = await searchParams;
+    const error = resolvedSearchParams?.error || undefined;
+    const success = resolvedSearchParams?.success || undefined;
     return(
         <>
         <div className="flex h-auto my-[10%] md:my-[2%] min-h-[100vh]">
