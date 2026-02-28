@@ -19,7 +19,7 @@ export default async function Equipe(){
                                 className="absolute left-0 h-[100vh] opacity-0 md:opacity-100 md:h-[13.6rem] lg:h-[18rem]  xl:h-[70vh] w-auto"
                             />
                             <Image 
-                                src="/ocapacete.svg"
+                                src="/capacete.svg"
                                 alt="imagem capacete"
                                 width={600}
                                 height={600}
