@@ -50,7 +50,7 @@ export default function OqueFazemos() {
                     <button 
                         key={item.id}
                         onClick={() => setAbaAtiva(index)} 
-                        className={`text-[#FFFFFF] text-[1rem] h-[8vh] rounded-[1rem] cursor-pointer duration-500 ease-in-out flex-none min-w-[50%] md:flex-1 md:h-[4rem] md:min-w-0 lg:h-[8vh]
+                        className={`text-[#FFFFFF] text-[1rem] h-[4rem] rounded-[1rem] cursor-pointer duration-500 ease-in-out flex-none min-w-[50%] md:flex-1 md:h-[4rem] md:min-w-0 lg:h-[8vh]
                         ${abaAtiva === index ? 'bg-[#F1863D]' : 'bg-[#162B3F] hover:bg-[#F1863D]'}`}
                     >
                         {item.titulo}

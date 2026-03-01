@@ -109,7 +109,7 @@ export default function Botoesnav({ equipe, historico }: BotoesnavProps) {
                                 onClick={() => setAreaEspecificaSelecionada(area.id)}
                                 className={`
                                 mx-2 my-4 w-[8rem] md:px-4 
-                                h-[4rem] md:h-[4rem] 
+                                h-[4rem] md:h-[4rem]
                                 flex-none md:flex-1 md:basis-0 
                                 text-[0.8rem] md:text-[1rem] lg:text-[1.1rem]
                                 rounded-[1rem] border border-[#F1863D] 
