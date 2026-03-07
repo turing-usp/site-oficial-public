@@ -24,7 +24,7 @@ export default async function Eventos(){
                         <p className="text-[2rem] md:text-[3rem] lg:text-[4rem] font-bold text-[#000000] text-center leading-none max-w-[18ch]">IDEIAS QUE EVOLUEM EM CONJUNTO</p>
                         <p className="text-[0.9rem] md:text-[1.2rem] text-[#000000] text-center">Descubra um pouco mais sobre os eventos organizados pelo Turing ao longo dos anos.</p>
                     </div>
-                    <div className="flex flex-1 items-center landscape:relative md:relative">
+                    <div className="flex flex-1 items-center justify-center md:justify-start landscape:relative md:relative">
                         <Image 
                             src="/trofeu.svg"
                             alt="imagem Troféu"
