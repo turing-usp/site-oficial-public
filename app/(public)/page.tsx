@@ -174,7 +174,7 @@ export default function Home() {
                     <Carousel/>
                 </div>
             </div>
-            <div className='relative flex flex-col min-h-[100vh]'>
+            <div className='relative flex flex-col min-h-[70dvh] lg:min-h-[100vh]'>
                 <Image 
                     src="/detalheporta.svg"
                     alt="Detalhe arredondado"
