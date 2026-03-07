@@ -99,7 +99,7 @@ export default function Parceiros() {
                         overflow-x-auto xl:overflow-x-hidden scroll-smooth
                         snap-x snap-mandatory xl:snap-none
                         no-scrollbar pb-4
-                        ${mostrarControles ? '' : 'justify-center w-full'}
+                        ${mostrarControles ? '' : 'justify-start xl:justify-center w-full'}
                     `}
                 >
                     {parceiros.map((parceiro, index) => (
