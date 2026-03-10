@@ -72,9 +72,9 @@ export default function OqueFazemos() {
                 </div>
                 
                 <div className='w-full xl:w-[45%] xl:mx-[5%] flex flex-col justify-center items-center text-center'>
-                    <h3 className='text-[#FFFFFF] text-[1.8rem] md:text-[2.2rem] font-bold uppercase'>
+                    <h1 className='text-[#FFFFFF] text-[1.8rem] md:text-[2.2rem] font-bold uppercase'>
                         {CONTEUDOS[abaAtiva].titulo}
-                    </h3>
+                    </h1>
                     <p className='text-[#FFFFFF] text-[1rem] md:text-[1.1rem] leading-relaxed my-[5%] md:my-[3%] px-2'>
                         {CONTEUDOS[abaAtiva].descricao}
                     </p>
