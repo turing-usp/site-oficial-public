@@ -9,7 +9,7 @@ export default function Home() {
         <main>
             <div className='min-h-[40rem] justify-center h-auto md:min-h-[45rem] lg:justify-start lg:h-[80vh] xl:h-[100vh] flex flex-col lg:flex-row z-0 items-center'>
                 <div className='ml-[5%] mr-[5%] flex flex-col w-full md:w-[65%] items-center md:items-start lg:items-center lg:w-[45%] justify-center h-[100%]'>
-                    <p className='text-[#000000] text-[2rem] md:text-[3rem] lg:text-[4rem] text-center font-bold leading-tight px-4 md:px-0'>CONSTRUINDO O FUTURO DA <span className='text-[#F1863D]'>IA</span></p>
+                    <h1 className='text-[#000000] text-[2rem] md:text-[3rem] lg:text-[4rem] text-center font-bold leading-tight px-4 md:px-0'>CONSTRUINDO O FUTURO DA <span className='text-[#F1863D]'>IA</span></h1>
                     <p className='mt-[5%] text-[#000000] text-center text-[1.2rem] md:text-[1.4rem] lg:text-[1.5rem] leading-tight px-4 md:px-0'>Desde 2015 o Turing é o maior grupo voltado a inteligência artificial da USP</p>
                 </div>
                 <div className='absolute bg-gradient-to-b from-[#EBB84A] to-[#F1863D] w-[40%] h-[100%] lg:h-[80vh] xl:h-[100vh] top-0 right-0 rounded-tl-[2rem] rounded-bl-[2rem] overflow-hidden hidden lg:block'>

@@ -38,6 +38,17 @@ const ShrikhandFont = Shrikhand({
 export const metadata: Metadata = {
   title: "Turing USP",
   description: "Turing USP é o maior grupo de inteligência artificial da melhor faculdade da América Latina, a Universidade de São Paulo. Nosso objetivo é democratizar o acesso ao conhecimento em inteligência artificial, promovendo a educação e a pesquisa nessa área. Oferecemos uma variedade de recursos, incluindo cursos, workshops, projetos de pesquisa e eventos para estudantes e entusiastas de IA. Junte-se a nós para explorar o fascinante mundo da inteligência artificial e contribuir para o avanço dessa tecnologia revolucionária.",
+  keywords: ["IA", "Inteligência Artificial", "Turing USP", "Universidade de São Paulo", "Educação em IA", "Pesquisa em IA", "Cursos de IA", "Workshops de IA", "Projetos de IA", "Eventos de IA"],
+  authors: [{ name: "Turing USP", url: "https://www.turingusp.com" }],
+  openGraph : {
+    title: "Turing USP",
+    description: "Turing USP é o maior grupo de inteligência artificial da melhor faculdade da América Latina, a Universidade de São Paulo. Nosso objetivo é democratizar o acesso ao conhecimento em inteligência artificial, promovendo a educação e a pesquisa nessa área. Oferecemos uma variedade de recursos, incluindo cursos, workshops, projetos de pesquisa e eventos para estudantes e entusiastas de IA. Junte-se a nós para explorar o fascinante mundo da inteligência artificial e contribuir para o avanço dessa tecnologia revolucionária.",
+    url: "https://www.turingusp.com",
+    images: "/logo.svg",
+  },
+  alternates: {
+    canonical: "https://www.turingusp.com",
+  }
 };
 
 export default function RootLayout({
@@ -53,13 +64,13 @@ export default function RootLayout({
       <body
         className={`${OrbitronFont.variable} ${InterFont.variable} ${IrishGroverFont.variable} ${Dynapuff.variable} ${ShrikhandFont.variable} antialiased`}
       >
-        <div className='fixed top-0 left-0 right-0 z-50'>
+        <header className='fixed top-0 left-0 right-0 z-50'>
           <Navbar/>
-        </div>
+        </header>
         {children}
-        <div>
+        <footer>
           <Footer/>
-        </div>
+        </footer>
       </body>
     </html>
   );

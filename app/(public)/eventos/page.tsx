@@ -3,6 +3,22 @@ import Link from 'next/link';
 import supaEventos from "@/app/(public)/eventos/action";
 import EventoCarousel from '@/components/public/eventoCarousel';
 
+export const metadata = {
+    title: "Eventos - Turing USP",
+    description: "Descubra os eventos e competições organizados pelo Turing USP, o maior grupo de inteligência artificial da Universidade de São Paulo. Nossos eventos abrangem uma variedade de tópicos relacionados à IA, incluindo palestras, workshops, hackathons e competições desafiadoras. Junte-se a nós para participar dessas experiências enriquecedoras, onde você pode aprender, colaborar e se inspirar com outros entusiastas de IA. Explore nossos eventos e competições para impulsionar seu conhecimento e se conectar com a comunidade de inteligência artificial do Turing USP.",
+    keywords: ["Eventos", "Turing USP", "Inteligência Artificial", "Palestras de IA", "Workshops de IA", "Hackathons de IA", "Competições de IA"],
+    authors: [{ name: "Turing USP", url: "https://www.turingusp.com" }],
+    openGraph : {
+        title: "Eventos - Turing USP",
+        description: "Descubra os eventos e competições organizados pelo Turing USP, o maior grupo de inteligência artificial da Universidade de São Paulo. Nossos eventos abrangem uma variedade de tópicos relacionados à IA, incluindo palestras, workshops, hackathons e competições desafiadoras. Junte-se a nós para participar dessas experiências enriquecedoras, onde você pode aprender, colaborar e se inspirar com outros entusiastas de IA. Explore nossos eventos e competições para impulsionar seu conhecimento e se conectar com a comunidade de inteligência artificial do Turing USP.",
+        url: "https://www.turingusp.com/eventos",
+        images: "/logo.svg",
+    },
+    alternates: {
+        canonical: "https://www.turingusp.com/eventos",
+    }
+};
+
 export default async function Eventos(){
 
     const {error, success, eventos} = await supaEventos();
@@ -21,7 +37,7 @@ export default async function Eventos(){
                     </div>
                     <div className="gap-4 landscape:ml-[10%] md:landscape:ml-0 md:gap-6 flex flex-1 flex-col items-center justify-center">
                         <p className="text-[0.9rem] md:text-[1.5rem] text-[#766F6F] text-center font-bold">NOSSOS EVENTOS E COMPETIÇÕES</p>
-                        <p className="text-[2rem] md:text-[3rem] lg:text-[4rem] font-bold text-[#000000] text-center leading-none max-w-[18ch]">IDEIAS QUE EVOLUEM EM CONJUNTO</p>
+                        <h1 className="text-[2rem] md:text-[3rem] lg:text-[4rem] font-bold text-[#000000] text-center leading-none max-w-[18ch]">IDEIAS QUE EVOLUEM EM CONJUNTO</h1>
                         <p className="text-[0.9rem] md:text-[1.2rem] text-[#000000] text-center">Descubra um pouco mais sobre os eventos organizados pelo Turing ao longo dos anos.</p>
                     </div>
                     <div className="flex flex-1 items-center justify-center md:justify-start landscape:relative md:relative">

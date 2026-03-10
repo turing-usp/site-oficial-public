@@ -5,6 +5,22 @@ type CadastreSePageProps = {
     searchParams?: Promise<{ error?: string; success?: string }>;
 };
 
+export const metadata = {
+    title: "Cadastre-se - Turing USP",
+    description: "Cadastre-se no Turing USP para acessar uma variedade de recursos, incluindo cursos, workshops, projetos de pesquisa e eventos relacionados à inteligência artificial. Junte-se a nós para explorar o fascinante mundo da IA e contribuir para o avanço dessa tecnologia revolucionária.",
+    keywords: ["Cadastro", "Turing USP", "Inteligência Artificial", "Cursos de IA", "Workshops de IA", "Projetos de IA", "Eventos de IA"],
+    authors: [{ name: "Turing USP", url: "https://www.turingusp.com" }],
+    openGraph : {
+        title: "Cadastre-se - Turing USP",
+        description: "Cadastre-se no Turing USP para acessar uma variedade de recursos, incluindo cursos, workshops, projetos de pesquisa e eventos relacionados à inteligência artificial. Junte-se a nós para explorar o fascinante mundo da IA e contribuir para o avanço dessa tecnologia revolucionária.",
+        url: "https://www.turingusp.com/cadastre-se",
+        images: "/logo.svg",
+    },
+    alternates: {
+        canonical: "https://www.turingusp.com/cadastre-se",
+    }
+};
+
 export default async function Cadastre_se({ searchParams }: CadastreSePageProps){
     const resolvedSearchParams = await searchParams;
     const error = resolvedSearchParams?.error || undefined;
