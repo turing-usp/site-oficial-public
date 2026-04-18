@@ -53,7 +53,7 @@ export default function CTT(dados: any) {
                         </div>
                     </div>
                     <div className="hidden md:flex h-full ml-[2%] w-[0.2%] bg-gray-700"></div>
-                    <div className="flex flex-col w-full md:flex-1 h-full md:p-8"> 
+                    <div className="flex flex-col w-full md:flex-1 h-full min-h-0 md:p-8"> 
                         <div className="w-full md:flex justify-center mb-8">
                             <input
                                 type="text"
@@ -63,7 +63,7 @@ export default function CTT(dados: any) {
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
                         </div>
-                        <div className="flex-col">
+                        <div className="flex flex-col flex-1 min-h-0 overflow-y-auto pr-1">
                             {cttfocado ? (
                                 <div className="flex flex-col animate-in fade-in duration-300">
                                 <button 
