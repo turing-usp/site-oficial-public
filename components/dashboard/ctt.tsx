@@ -63,7 +63,7 @@ export default function CTT(dados: any) {
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
                         </div>
-                        <div className="flex flex-col flex-1 min-h-0 overflow-y-auto pr-1">
+                        <div className="flex flex-col flex-1 min-h-0 overflow-y-auto pr-1 ctt-scrollbar">
                             {cttfocado ? (
                                 <div className="flex flex-col animate-in fade-in duration-300">
                                 <button 

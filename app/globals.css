@@ -28,4 +28,28 @@ body {
     -ms-overflow-style: none;  /* IE e Edge */
     scrollbar-width: none;  /* Firefox */
   }
+
+  .ctt-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #f1863d #1f2937;
+  }
+
+  .ctt-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .ctt-scrollbar::-webkit-scrollbar-track {
+    background: #1f2937;
+    border-radius: 9999px;
+  }
+
+  .ctt-scrollbar::-webkit-scrollbar-thumb {
+    background: #f1863d;
+    border-radius: 9999px;
+    border: 2px solid #1f2937;
+  }
+
+  .ctt-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #fb923c;
+  }
 }
